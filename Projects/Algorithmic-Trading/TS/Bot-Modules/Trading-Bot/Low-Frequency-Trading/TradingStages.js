@@ -1,4 +1,4 @@
-exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
+exports.newAlgorithmicTradingBotModulesTradingStages = function(processIndex) {
     /*
     This module packages all functions related to Stages.
     */
@@ -160,7 +160,7 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                                     let response = await portfolioManagerClientModuleObject.askPortfolioEventsManager(triggerStage.triggerOn, passed)
                                     passed = response.passed
                                 }
-                                
+
                                 if (passed) {
 
                                     tradingSystem.highlights.push(situation.id)
@@ -183,7 +183,7 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                                         }
                                     }
                                     changeStageStatus('Trigger Stage', 'Open')
-                                    break 
+                                    break
                                 }
                             }
                         }
@@ -232,7 +232,7 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                                 announcementsModuleObject.makeAnnouncements(triggerStage.triggerOff)
                                 changeStageStatus('Trigger Stage', 'Closed', 'Trigger Off Event')
                                 tradingStrategyModuleObject.closeStrategy('Trigger Off')
-                                break 
+                                break
                             }
                         }
                     }
@@ -290,7 +290,7 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                                 changeStageStatus('Trigger Stage', 'Closed', 'Position Taken')
                                 changeStageStatus('Open Stage', 'Opening')
                                 changeStageStatus('Manage Stage', 'Opening')
-                                break 
+                                break
                             } else {
                                 checkUserDefinedCode('Trigger Stage', 'Running', 'last')
                             }
@@ -404,24 +404,26 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                 this status represent a force closure of this stage.
                 */
                 switch (tradingEngine.tradingCurrent.strategyOpenStage.stageDefinedIn.value) {
-                    case 'Base Asset': {
-                        if (
-                            tradingEngine.tradingCurrent.strategyOpenStage.stageBaseAsset.sizeFilled.value >=
-                            tradingEngine.tradingCurrent.strategyOpenStage.stageBaseAsset.sizePlaced.value
-                        ) {
-                            changeStageStatus('Open Stage', 'Closed')
+                    case 'Base Asset':
+                        {
+                            if ((
+                                    tradingEngine.tradingCurrent.strategyOpenStage.stageBaseAsset.sizeFilled.value >=
+                                    tradingEngine.tradingCurrent.strategyOpenStage.stageBaseAsset.sizePlaced.value) ||
+                                (tradingEngine.tradingCurrent.strategyOpenStage.exitType.value == 'Close Stage Event')) {
+                                changeStageStatus('Open Stage', 'Closed')
+                            }
+                            break
                         }
-                        break
-                    }
-                    case 'Quoted Asset': {
-                        if (
-                            tradingEngine.tradingCurrent.strategyOpenStage.stageQuotedAsset.sizeFilled.value >=
-                            tradingEngine.tradingCurrent.strategyOpenStage.stageQuotedAsset.sizePlaced.value
-                        ) {
-                            changeStageStatus('Open Stage', 'Closed')
+                    case 'Quoted Asset':
+                        {
+                            if ((
+                                    tradingEngine.tradingCurrent.strategyOpenStage.stageQuotedAsset.sizeFilled.value >=
+                                    tradingEngine.tradingCurrent.strategyOpenStage.stageQuotedAsset.sizePlaced.value) ||
+                                (tradingEngine.tradingCurrent.strategyOpenStage.exitType.value == 'Close Stage Event')) {
+                                changeStageStatus('Open Stage', 'Closed')
+                            }
+                            break
                         }
-                        break
-                    }
                 }
             }
         }
@@ -815,10 +817,10 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
 
             function checkStopLossOrTakeProfitWasHit() {
                 let strategy = tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value]
-                /* 
-                Checking what happened since the last execution. We need to know if the Stop Loss
-                or our Take Profit were hit. 
-                */
+                    /* 
+                    Checking what happened since the last execution. We need to know if the Stop Loss
+                    or our Take Profit were hit. 
+                    */
 
                 /* Stop Loss condition: Here we verify if the Stop Loss was hit or not. */
                 if (
@@ -925,7 +927,7 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                 )
 
                 await checkIfStageNeedsToBeClosed(tradingEngineStage, tradingSystemStage, 'Close Stage')
-                /* If User Defined Code exists check for runWhileAtStage */
+                    /* If User Defined Code exists check for runWhileAtStage */
                 if (tradingEngine.tradingCurrent.strategyCloseStage.status.value === 'Open') {
                     checkUserDefinedCode('Close Stage', 'Running', 'last')
                 }
@@ -959,24 +961,26 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
                 this status represent a force closure of this stage.
                 */
                 switch (tradingEngine.tradingCurrent.strategyCloseStage.stageDefinedIn.value) {
-                    case 'Base Asset': {
-                        if (
-                            tradingEngine.tradingCurrent.strategyCloseStage.stageBaseAsset.sizeFilled.value >=
-                            tradingEngine.tradingCurrent.strategyCloseStage.stageBaseAsset.sizePlaced.value
-                        ) {
-                            changeStageStatus('Close Stage', 'Closed')
+                    case 'Base Asset':
+                        {
+                            if ((
+                                    tradingEngine.tradingCurrent.strategyCloseStage.stageBaseAsset.sizeFilled.value >=
+                                    tradingEngine.tradingCurrent.strategyCloseStage.stageBaseAsset.sizePlaced.value
+                                ) || (tradingEngine.tradingCurrent.strategyCloseStage.exitType.value == 'Close Stage Event')) {
+                                changeStageStatus('Close Stage', 'Closed')
+                            }
+                            break
                         }
-                        break
-                    }
-                    case 'Quoted Asset': {
-                        if (
-                            tradingEngine.tradingCurrent.strategyCloseStage.stageQuotedAsset.sizeFilled.value >=
-                            tradingEngine.tradingCurrent.strategyCloseStage.stageQuotedAsset.sizePlaced.value
-                        ) {
-                            changeStageStatus('Close Stage', 'Closed')
+                    case 'Quoted Asset':
+                        {
+                            if ((
+                                    tradingEngine.tradingCurrent.strategyCloseStage.stageQuotedAsset.sizeFilled.value >=
+                                    tradingEngine.tradingCurrent.strategyCloseStage.stageQuotedAsset.sizePlaced.value
+                                ) || (tradingEngine.tradingCurrent.strategyCloseStage.exitType.value == 'Close Stage Event')) {
+                                changeStageStatus('Close Stage', 'Closed')
+                            }
+                            break
                         }
-                        break
-                    }
                 }
             }
         }
@@ -1012,18 +1016,15 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
             (
                 tradingEngine.tradingCurrent.strategyTriggerStage.status.value === 'Closed' ||
                 tradingEngine.tradingCurrent.strategyTriggerStage.status.value === tradingEngine.tradingCurrent.strategyTriggerStage.status.config.initialValue
-            )
-            &&
+            ) &&
             (
                 tradingEngine.tradingCurrent.strategyOpenStage.status.value === 'Closed' ||
                 tradingEngine.tradingCurrent.strategyOpenStage.status.value === tradingEngine.tradingCurrent.strategyOpenStage.status.config.initialValue
-            )
-            &&
+            ) &&
             (
                 tradingEngine.tradingCurrent.strategyManageStage.status.value === 'Closed' ||
                 tradingEngine.tradingCurrent.strategyManageStage.status.value === tradingEngine.tradingCurrent.strategyManageStage.status.config.initialValue
-            )
-            &&
+            ) &&
             (
                 tradingEngine.tradingCurrent.strategyCloseStage.status.value === 'Closed'
             )
@@ -1081,9 +1082,9 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
         enough we will consider the target to have been reached. 
         */
         let ROUNDING_ERROR_CORRECTION_FACTOR = 1.001
-        /*
-        Overwrite the default with the config at the Stage node, if exists.
-        */
+            /*
+            Overwrite the default with the config at the Stage node, if exists.
+            */
         if (tradingSystemStage.config.roundingErrorCorrectionFactor !== undefined) {
             ROUNDING_ERROR_CORRECTION_FACTOR = tradingSystemStage.config.roundingErrorCorrectionFactor
         }
@@ -1101,22 +1102,16 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
         }
 
         if (
-            tradingEngineStage.stageBaseAsset.sizeFilled.value
-            *
-            ROUNDING_ERROR_CORRECTION_FACTOR
-            +
-            ABSOLUTE_DUST_IN_BASE_ASSET
-            >=
+            tradingEngineStage.stageBaseAsset.sizeFilled.value *
+            ROUNDING_ERROR_CORRECTION_FACTOR +
+            ABSOLUTE_DUST_IN_BASE_ASSET >=
             tradingEngineStage.stageBaseAsset.targetSize.value
         ) {
             positionFilled()
         } else if (
-            tradingEngineStage.stageQuotedAsset.sizeFilled.value
-            *
-            ROUNDING_ERROR_CORRECTION_FACTOR
-            +
-            ABSOLUTE_DUST_IN_QUOTED_ASSET
-            >=
+            tradingEngineStage.stageQuotedAsset.sizeFilled.value *
+            ROUNDING_ERROR_CORRECTION_FACTOR +
+            ABSOLUTE_DUST_IN_QUOTED_ASSET >=
             tradingEngineStage.stageQuotedAsset.targetSize.value
         ) {
             positionFilled()
@@ -1168,22 +1163,26 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
     function changeStageStatus(stageName, newStatus, exitType) {
         let stage
         switch (stageName) {
-            case 'Trigger Stage': {
-                stage = tradingEngine.tradingCurrent.strategyTriggerStage
-                break
-            }
-            case 'Open Stage': {
-                stage = tradingEngine.tradingCurrent.strategyOpenStage
-                break
-            }
-            case 'Manage Stage': {
-                stage = tradingEngine.tradingCurrent.strategyManageStage
-                break
-            }
-            case 'Close Stage': {
-                stage = tradingEngine.tradingCurrent.strategyCloseStage
-                break
-            }
+            case 'Trigger Stage':
+                {
+                    stage = tradingEngine.tradingCurrent.strategyTriggerStage
+                    break
+                }
+            case 'Open Stage':
+                {
+                    stage = tradingEngine.tradingCurrent.strategyOpenStage
+                    break
+                }
+            case 'Manage Stage':
+                {
+                    stage = tradingEngine.tradingCurrent.strategyManageStage
+                    break
+                }
+            case 'Close Stage':
+                {
+                    stage = tradingEngine.tradingCurrent.strategyCloseStage
+                    break
+                }
         }
         stage.status.value = newStatus
         if (exitType !== undefined) {
@@ -1280,6 +1279,7 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
             resetStage(tradingEngine.tradingCurrent.strategyManageStage)
             resetStage(tradingEngine.tradingCurrent.strategyCloseStage)
         }
+
         function resetStage(stage) {
             TS.projects.foundations.globals.processModuleObjects.MODULE_OBJECTS_BY_PROCESS_INDEX_MAP.get(processIndex).ENGINE_MODULE_OBJECT.initializeNode(stage)
         }
@@ -1323,24 +1323,27 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
             if (status === 'Running' && when !== tradingSystemStage.userDefinedCode.config.whileAtStageWhenToRun) { return; }
 
             switch (status) {
-                case 'Open': {
-                    if (tradingSystemStage.userDefinedCode.config.runWhenEnteringStage) {
-                        tradingSystem.evalUserCode(tradingSystemStage, 'User Defined Code')
+                case 'Open':
+                    {
+                        if (tradingSystemStage.userDefinedCode.config.runWhenEnteringStage) {
+                            tradingSystem.evalUserCode(tradingSystemStage, 'User Defined Code')
+                        }
+                        break;
                     }
-                    break;
-                }
-                case 'Running': {
-                    if (tradingSystemStage.userDefinedCode.config.runWhileAtStage) {
-                        tradingSystem.evalUserCode(tradingSystemStage, 'User Defined Code')
+                case 'Running':
+                    {
+                        if (tradingSystemStage.userDefinedCode.config.runWhileAtStage) {
+                            tradingSystem.evalUserCode(tradingSystemStage, 'User Defined Code')
+                        }
+                        break;
                     }
-                    break;
-                }
-                case 'Closed': {
-                    if (tradingSystemStage.userDefinedCode.config.runWhenExitingStage) {
-                        tradingSystem.evalUserCode(tradingSystemStage, 'User Defined Code')
+                case 'Closed':
+                    {
+                        if (tradingSystemStage.userDefinedCode.config.runWhenExitingStage) {
+                            tradingSystem.evalUserCode(tradingSystemStage, 'User Defined Code')
+                        }
+                        break;
                     }
-                    break;
-                }
             }
         }
     }
@@ -1356,22 +1359,26 @@ exports.newAlgorithmicTradingBotModulesTradingStages = function (processIndex) {
     /* getTradingSystemStage(): takes stage name returns stage object. */
     function getTradingSystemStage(stage) {
         switch (stage) {
-            case 'Trigger Stage': {
-                return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].triggerStage;
-                break;
-            }
-            case 'Open Stage': {
-                return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].openStage;
-                break;
-            }
-            case 'Manage Stage': {
-                return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].manageStage;
-                break
-            }
-            case 'Close Stage': {
-                return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].closeStage;
-                break;
-            }
+            case 'Trigger Stage':
+                {
+                    return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].triggerStage;
+                    break;
+                }
+            case 'Open Stage':
+                {
+                    return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].openStage;
+                    break;
+                }
+            case 'Manage Stage':
+                {
+                    return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].manageStage;
+                    break
+                }
+            case 'Close Stage':
+                {
+                    return tradingSystem.tradingStrategies[tradingEngine.tradingCurrent.strategy.index.value].closeStage;
+                    break;
+                }
         }
     }
 }
