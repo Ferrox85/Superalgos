@@ -50,7 +50,6 @@ function newFoundationsFunctionLibraryDataStorageFunctions() {
         scanBotArray(mine.sensorBots)
         scanBotArray(mine.apiDataFetcherBots)
         scanBotArray(mine.indicatorBots)
-        scanBotArray(mine.studyBots)
         scanBotArray(mine.tradingBots)
         scanBotArray(mine.portfolioBots)
         scanBotArray(mine.learningBots)
@@ -60,7 +59,7 @@ function newFoundationsFunctionLibraryDataStorageFunctions() {
 
             for (let i = 0; i < botArray.length; i++) {
                 let bot = botArray[i]
-                let botProducts = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(node, 'Bot Products', undefined, 'Foundations')
+                let botProducts = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(node, 'Bot Products')
                 botProducts.name = bot.name
                 botProducts.payload.floatingObject.collapseToggle()
 

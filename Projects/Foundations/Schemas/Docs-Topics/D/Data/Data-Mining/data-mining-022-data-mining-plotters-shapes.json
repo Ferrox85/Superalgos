@@ -15,11 +15,6 @@
                 "language": "RU",
                 "text": "Фигуры Shapes определяют координатные точки, используемые в качестве вершин для полигонов, которым назначаются стили.",
                 "updated": 1639727206055
-            },
-            {
-                "language": "TR",
-                "text": "Özet: Şekiller ( Shapes ), stillere atanan çokgenler için tepe noktası olarak kullanılacak koordinat noktalarını tanımlar.",
-                "updated": 1645973731568
             }
         ]
     },
@@ -46,14 +41,7 @@
         {
             "style": "Title",
             "text": "Chart Points",
-            "updated": 1611432774706,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Grafik Noktaları",
-                    "updated": 1645973778281
-                }
-            ]
+            "updated": 1611432774706
         },
         {
             "style": "Include",
@@ -77,14 +65,7 @@
         {
             "style": "Title",
             "text": "Point",
-            "updated": 1611432845898,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Nokta",
-                    "updated": 1645973790381
-                }
-            ]
+            "updated": 1611432845898
         },
         {
             "style": "Include",
@@ -99,14 +80,7 @@
         {
             "style": "Subtitle",
             "text": "Point Formula",
-            "updated": 1611432862646,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Nokta Formülü",
-                    "updated": 1645973806050
-                }
-            ]
+            "updated": 1611432862646
         },
         {
             "style": "Include",
@@ -121,14 +95,7 @@
         {
             "style": "Title",
             "text": "Polygon",
-            "updated": 1611433008071,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Çokgen",
-                    "updated": 1645973843949
-                }
-            ]
+            "updated": 1611433008071
         },
         {
             "style": "Include",
@@ -156,14 +123,7 @@
         {
             "style": "Title",
             "text": "Polygon Condition",
-            "updated": 1611433130396,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Çokgen Koşulu",
-                    "updated": 1645973877815
-                }
-            ]
+            "updated": 1611433130396
         },
         {
             "style": "Include",
@@ -178,14 +138,7 @@
         {
             "style": "Title",
             "text": "Polygon Body",
-            "updated": 1611433166294,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Çokgen Gövde",
-                    "updated": 1645973895411
-                }
-            ]
+            "updated": 1611433166294
         },
         {
             "style": "Include",
@@ -200,14 +153,7 @@
         {
             "style": "Subtitle",
             "text": "Style",
-            "updated": 1611433231745,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Stil",
-                    "updated": 1645973905794
-                }
-            ]
+            "updated": 1611433231745
         },
         {
             "style": "Include",
@@ -237,14 +183,7 @@
         {
             "style": "Title",
             "text": "Polygon Border",
-            "updated": 1611433347131,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Çokgen Kenarlığı",
-                    "updated": 1645973952834
-                }
-            ]
+            "updated": 1611433347131
         },
         {
             "style": "Include",
@@ -259,14 +198,7 @@
         {
             "style": "Title",
             "text": "Polygon Vertex",
-            "updated": 1611433401279,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Çokgen Tepe Noktası",
-                    "updated": 1645973991624
-                }
-            ]
+            "updated": 1611433401279
         },
         {
             "style": "Include",

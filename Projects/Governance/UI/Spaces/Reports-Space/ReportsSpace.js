@@ -24,7 +24,6 @@ function newGobernanceReportsSpace() {
         features: undefined,
         positions: undefined,
         mining: undefined,
-        computing: undefined,
         tablesSortingOrders: undefined,
         commandInterface: undefined,
         changeTableSortingOrder,
@@ -120,9 +119,6 @@ function newGobernanceReportsSpace() {
         thisObject.mining.finalize()
         thisObject.mining = undefined
 
-        thisObject.computing.finalize()
-        thisObject.computing = undefined
-
         thisObject.commandInterface.finalize()
         thisObject.commandInterface = undefined
 
@@ -167,7 +163,6 @@ function newGobernanceReportsSpace() {
         thisObject.features = newGovernanceReportsFeatures()
         thisObject.positions = newGovernanceReportsPositions()
         thisObject.mining = newGovernanceReportsMining()
-        thisObject.computing = newGovernanceReportsComputing()
 
         thisObject.commandInterface.initialize()
         thisObject.reportsPage.initialize()
@@ -190,7 +185,6 @@ function newGobernanceReportsSpace() {
         thisObject.features.initialize()
         thisObject.positions.initialize()
         thisObject.mining.initialize()
-        thisObject.computing.initialize()
 
         setupSidePanelTab()
 

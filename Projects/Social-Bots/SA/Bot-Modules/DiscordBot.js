@@ -93,6 +93,6 @@ exports.newSocialBotsBotModulesDiscordBot = function () {
     }
 
     function logError(message) {
-        SA.logger.error(message)
+        console.error('[ERROR]', message)
     }
 }

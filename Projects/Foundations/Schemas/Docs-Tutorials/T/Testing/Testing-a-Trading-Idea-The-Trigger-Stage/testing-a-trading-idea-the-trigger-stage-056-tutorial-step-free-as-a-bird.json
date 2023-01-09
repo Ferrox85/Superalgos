@@ -16,13 +16,8 @@
             },
             {
                 "language": "TR",
-                "text": "Superalgos, yapabilecekleriniz ya da yapamayacaklarınız konusunda çok az kısıtlama getirir ya da hiç getirmez... Özgürsünüz ve yenilik yapmaya teşvik edilirsiniz!",
-                "updated": 1669663275824
-            },
-            {
-                "language": "RU",
-                "text": "Superalgos практически не накладывает ограничений на то, что вы можете или не можете делать... Вы свободны и способны к инновациям!",
-                "updated": 1642659401707
+                "text": "Superalgos, yapabileceklerinize veya yapamayacaklarınıza çok az veya hiç kısıtlama getirmez ... özgürsünüz ve yenilikçi olmaya teşvik ediliyorsunuz!",
+                "updated": 1641662646836
             }
         ]
     },
@@ -38,13 +33,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Superalgos, oynamak ve aptal botlar inşa etmek için küçük bir oyuncak değildir. Ticareti fethetmek için güçlü ve esnek bir cephaneliktir! Ancak esnekliğin bir bedeli var!",
-                    "updated": 1669663289779
-                },
-                {
-                    "language": "RU",
-                    "text": "Superalgos - это не маленькая игрушка для игры и создания тупых ботов. Это мощный и гибкий арсенал для завоевания торговли! Но за гибкость приходится платить!",
-                    "updated": 1642659428773
+                    "text": "Superalgos, oynamak ve aptal botlar yapmak için değildir. Ticareti fethetmek için güçlü ve esnek bir cephanelik! Ancak esnekliğin bir bedeli var!",
+                    "updated": 1641662664461
                 }
             ]
         },
@@ -61,11 +51,6 @@
                     "language": "TR",
                     "text": "Bu gücü kullanmak için silahı nasıl kullanacağınızı öğrenin!",
                     "updated": 1641662679784
-                },
-                {
-                    "language": "RU",
-                    "text": "Научитесь обращаться с оружием, чтобы использовать его силу!",
-                    "updated": 1642659443033
                 }
             ]
         },
@@ -80,13 +65,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Bir dakikanızı ayırın ve şunları düşünün: Elinizde bu kadar güçlü bir araç olmasaydı algoritmik ticarette başarı şansınız ne olurdu? Bence öğrenmeye değer...",
-                    "updated": 1669663304864
-                },
-                {
-                    "language": "RU",
-                    "text": "Потратьте минуту на размышления: как вы думаете, каковы были бы ваши шансы на успех в алгоритмической торговле без такого мощного инструмента в ваших руках? Это стоит того, чтобы освоить его!",
-                    "updated": 1642659466619
+                    "text": "Not: Bir dakikanızı ayırın ve şunları düşünün: Elinizde bu kadar güçlü bir araç olmasaydı algoritmik ticarette başarı şansınız ne olurdu? Bence öğrenmeye değer...",
+                    "updated": 1641662689897
                 }
             ]
         }

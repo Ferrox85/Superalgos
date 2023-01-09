@@ -162,42 +162,6 @@
         ]
     },
     {
-        "name": "Decentralized-Exchanges",
-        "propertyName": "decentralizedExchanges",
-        "UI": {
-            "nodeActionFunctions": [
-                {
-                    "name": "Decentralized Exchanges Functions",
-                    "propertyName": "decentralizedExchangesFunctions",
-                    "functionName": "newDecentralizedExchangesFunctionLibraryDecentralizedExchangesFunctions"
-                }
-            ],
-            "systemActionFunctions": [],
-            "functionLibraries": []
-        },
-        "SA": {
-            "modules": [
-                {
-                    "name": "Wallets",
-                    "propertyName": "wallets",
-                    "functionName": "newDecentralizedExchangesModulesWallets",
-                    "fileName": "Wallets.js"
-                }
-            ],
-            "utilities": [
-                {
-                    "name": "Bsc",
-                    "propertyName": "bsc",
-                    "functionName": "newDecentralizedExchangesUtilitiesBsc",
-                    "fileName": "Bsc.js"
-                }
-            ]
-        },
-        "TS": {},
-        "plugins": [],
-        "tasks": []
-    },
-    {
         "name": "Portfolio-Management",
         "propertyName": "portfolioManagement",
         "UI": {
@@ -488,11 +452,6 @@
                     "name": "Node Path",
                     "propertyName": "nodePath",
                     "functionName": "newVisualScriptingFunctionLibraryNodePath"
-                },
-                {
-                    "name": "Reference Children",
-                    "propertyName": "referenceChildren",
-                    "functionName": "newVisualScriptingNodeActionFunctionReferenceChildren"
                 }
             ],
             "systemActionFunctions": [],
@@ -537,12 +496,6 @@
                     "propertyName": "nodeFunctions",
                     "functionName": "newVisualScriptingUtilitiesNodeFunctions",
                     "fileName": "NodeFunctions.js"
-                },
-                {
-                    "name": "Node Configuration",
-                    "propertyName": "nodeConfiguration",
-                    "functionName": "newVisualScriptingUtilitiesNodeConfiguration",
-                    "fileName": "NodeConfiguration.js"
                 }
             ]
         }
@@ -670,8 +623,8 @@
                     "animationDrawIndex": 0,
                     "onMouseWheelIndex": 6,
                     "onMouseOverIndex": 6,
-                    "onMouseClickIndex": 6,
-                    "onMouseDownIndex": 6
+                    "onMouseClickIndex": 5,
+                    "onMouseDownIndex": 5
                 },
                 {
                     "name": "Top Space",
@@ -721,8 +674,8 @@
                     "animationDrawIndex": 1,
                     "onMouseWheelIndex": 5,
                     "onMouseOverIndex": 4,
-                    "onMouseClickIndex": 5,
-                    "onMouseDownIndex": 5
+                    "onMouseClickIndex": 6,
+                    "onMouseDownIndex": 6
                 },
                 {
                     "name": "Side Space",
@@ -943,12 +896,6 @@
                     "fileName": "ProcessExecutionEvents.js"
                 },
                 {
-                    "name": "Process Trading Signals",
-                    "propertyName": "processTradingSignals",
-                    "functionName": "newFoundationsProcessModulesProcessTradingSignals",
-                    "fileName": "ProcessTradingSignals.js"
-                },                
-                {
                     "name": "Process Output",
                     "propertyName": "processOutput",
                     "functionName": "newFoundationsProcessModulesProcessOutput",
@@ -959,10 +906,10 @@
         "PL": {
             "utilities": [
                 {
-                    "name": "Credentials Functions",
-                    "propertyName": "credentials",
-                    "functionName": "newFoundationsUtilitiesCredentials",
-                    "fileName": "CredentialsFunctions.js"
+                    "name": "Web Access",
+                    "propertyName": "webAccess",
+                    "functionName": "newFoundationsUtilitiesWebAccess",
+                    "fileName": "WebAccess.js"
                 }
             ]
         },
@@ -982,12 +929,6 @@
                 }
             ],
             "utilities": [
-                {
-                    "name": "Web Access",
-                    "propertyName": "webAccess",
-                    "functionName": "newFoundationsUtilitiesWebAccess",
-                    "fileName": "WebAccess.js"
-                },
                 {
                     "name": "Miscellaneous Functions",
                     "propertyName": "miscellaneousFunctions",
@@ -1023,12 +964,6 @@
                     "propertyName": "encryption",
                     "functionName": "newFoundationsUtilitiesEncryption",
                     "fileName": "Encryption.js"
-                },
-                {
-                    "name": "Icons",
-                    "propertyName": "icons",
-                    "functionName": "newFoundationsUtilitiesIcons",
-                    "fileName": "Icons.js"
                 }
             ]
         },
@@ -1051,11 +986,6 @@
                     "name": "Mine Functions",
                     "propertyName": "mineFunctions",
                     "functionName": "newDataMiningFunctionLibraryMineFunctions"
-                },
-                {
-                    "name": "API Maintenance Functions",
-                    "propertyName": "apiMaintenanceFunctions",
-                    "functionName": "newApiMaintenanceFunctions"
                 }
             ],
             "systemActionFunctions": [],
@@ -1130,16 +1060,16 @@
                     "folderName": "Indicator-Bot/Bollinger-Bands"
                 },
                 {
-                    "name": "Indicator Multi Time Frame Market",
-                    "propertyName": "indicatorMultiTimeFrameMarket",
-                    "functionName": "newDataMiningIndicatorMultiTimeFrameMarket",
+                    "name": "Multi Time Frame Market",
+                    "propertyName": "multiTimeFrameMarket",
+                    "functionName": "newDataMiningBotModulesMultiTimeFrameMarket",
                     "fileName": "MultiTimeFrameMarket.js",
                     "folderName": "Indicator-Bot"
                 },
                 {
-                    "name": "Indicator Multi Time Frame Daily",
-                    "propertyName": "indicatorMultiTimeFrameDaily",
-                    "functionName": "newDataMiningIndicatorMultiTimeFrameDaily",
+                    "name": "Multi Time Frame Daily",
+                    "propertyName": "multiTimeFrameDaily",
+                    "functionName": "newDataMiningBotModulesMultiTimeFrameDaily",
                     "fileName": "MultiTimeFrameDaily.js",
                     "folderName": "Indicator-Bot"
                 },
@@ -1170,35 +1100,6 @@
                     "functionName": "newDataMiningBotModulesCheckWebhook",
                     "fileName": "CheckWebhook.js",
                     "folderName": "Sensor-Bot/Webhooks"
-                },
-                {
-                    "name": "Single Market Study Bot",
-                    "propertyName": "singleMarketStudyBot",
-                    "functionName": "newDataMiningBotModulesSingleMarketStudyBot",
-                    "fileName": "SingleMarketStudyBot.js",
-                    "folderName": "Study-Bot",
-                    "botType": "Study Bot"
-                },
-                {
-                    "name": "Study Multi Time Frame Market",
-                    "propertyName": "studyMultiTimeFrameMarket",
-                    "functionName": "newDataMiningStudyMultiTimeFrameMarket",
-                    "fileName": "MultiTimeFrameMarket.js",
-                    "folderName": "Study-Bot"
-                },
-                {
-                    "name": "Study Multi Time Frame Daily",
-                    "propertyName": "studyMultiTimeFrameDaily",
-                    "functionName": "newDataMiningStudyMultiTimeFrameDaily",
-                    "fileName": "MultiTimeFrameDaily.js",
-                    "folderName": "Study-Bot"
-                },
-                {
-                    "name": "Study Output",
-                    "propertyName": "studyOutput",
-                    "functionName": "newDataMiningBotModulesStudyOutput",
-                    "fileName": "StudyOutput.js",
-                    "folderName": "Study-Bot"
                 }
             ]
         },
@@ -1291,12 +1192,6 @@
                     "propertyName": "plugins",
                     "functionName": "newPluginsUtilitiesPlugins",
                     "fileName": "Plugins.js"
-                },
-                {
-                    "name": "PluginsAtGithub",
-                    "propertyName": "pluginsAtGithub",
-                    "functionName": "newPluginsUtilitiesPluginsAtGithub",
-                    "fileName": "PluginsAtGithub.js"
                 },
                 {
                     "name": "Nodes",
@@ -1597,11 +1492,6 @@
                     "name": "Airdrop Program",
                     "propertyName": "airdropProgram",
                     "functionName": "newGovernanceFunctionLibraryAirdropProgram"
-                },
-                {
-                    "name": "Computing Program",
-                    "propertyName": "computingProgram",
-                    "functionName": "newGovernanceFunctionLibraryComputingProgram"
                 }
             ],
             "globals": [
@@ -1666,11 +1556,6 @@
                     "name": "Conversions",
                     "propertyName": "conversions",
                     "functionName": "newGovernanceUtilitiesConversions"
-                },
-                {
-                    "name": "Chains",
-                    "propertyName": "chains",
-                    "functionName": "newGovernanceUtilitiesChains"
                 }
             ],
             "spaces": [
@@ -1702,33 +1587,8 @@
                 }
             ]
         },
-        "SA": {
-            "utilities": [
-                {
-                    "name": "Signing Accounts",
-                    "propertyName": "signingAccounts",
-                    "functionName": "newGovernanceUtilitiesSigningAccounts",
-                    "fileName": "SigningAccounts.js"
-                },
-                {
-                    "name": "Balances",
-                    "propertyName": "balances",
-                    "functionName": "newGovernanceUtilitiesBalances",
-                    "fileName": "Balances.js"
-                }
-            ]
-        },
         "TS": {},
-        "PL": {
-            "functionLibraries": [
-                {
-                    "name": "Pr Merge Bot",
-                    "propertyName": "prMergeBot",
-                    "functionName": "newGovernanceFunctionLibraryPrMergeBot",
-                    "fileName": "PrMergeBot.js"
-                }
-            ]
-        },
+        "PL": {},
         "plugins": [
             "User Profiles",
             "Pools",
@@ -1755,18 +1615,6 @@
                     "propertyName": "webSocketsInterface",
                     "functionName": "newNetworkModulesWebSocketsInterface",
                     "fileName": "WebSocketsInterface.js"
-                },
-                {
-                    "name": "Web RTC Interface",
-                    "propertyName": "webRTCInterface",
-                    "functionName": "newNetworkModulesWebRTCInterface",
-                    "fileName": "WebRTCInterface.js"
-                },
-                {
-                    "name": "Socket Interfaces",
-                    "propertyName": "socketInterfaces",
-                    "functionName": "newNetworkModulesSocketInterfaces",
-                    "fileName": "SocketInterfaces.js"
                 },
                 {
                     "name": "Http Interface",
@@ -1798,18 +1646,6 @@
                     "propertyName": "webSocketsNetworkClient",
                     "functionName": "newNetworkModulesWebSocketsNetworkClient",
                     "fileName": "WebSocketsNetworkClient.js"
-                },
-                {
-                    "name": "Web RTC Network Client",
-                    "propertyName": "webRTCNetworkClient",
-                    "functionName": "newNetworkModulesWebRTCNetworkClient",
-                    "fileName": "WebRTCNetworkClient.js"
-                },
-                {
-                    "name": "Socket Network Clients",
-                    "propertyName": "socketNetworkClients",
-                    "functionName": "newNetworkModulesSocketNetworkClients",
-                    "fileName": "SocketNetworkClients.js"
                 },
                 {
                     "name": "Http Network Client",
@@ -2028,38 +1864,6 @@
                     "propertyName": "p2pNetworkInterface",
                     "functionName": "newSocialTradingModulesP2PNetworkInterface",
                     "fileName": "P2PNetworkInterface.js"
-                },
-                {
-                    "name": "Social Graph Network Service Client",
-                    "propertyName": "socialGraphNetworkServiceClient",
-                    "functionName": "newSocialTradingModulesSocialGraphNetworkServiceClient",
-                    "fileName": "SocialGraphNetworkServiceClient.js"
-                }
-            ],
-            "functionLibraries": [
-                {
-                    "name": "Posts Storage",
-                    "propertyName": "postsStorage",
-                    "functionName": "newSocialTradingFunctionLibrariesPostsStorage",
-                    "fileName": "PostsStorage.js"
-                },
-                {
-                    "name": "Social Entities Storage",
-                    "propertyName": "socialEntitiesStorage",
-                    "functionName": "newSocialTradingFunctionLibrariesSocialEntitiesStorage",
-                    "fileName": "SocialEntitiesStorage.js"
-                },
-                {
-                    "name": "Social Entities Profile",
-                    "propertyName": "socialEntitiesProfile",
-                    "functionName": "newSocialTradingFunctionLibrariesSocialEntitiesProfile",
-                    "fileName": "SocialEntitiesProfile.js"
-                },
-                {
-                    "name": "User Profile",
-                    "propertyName": "userProfile",
-                    "functionName": "newSocialTradingFunctionLibrariesUserProfile",
-                    "fileName": "UserProfile.js"
                 }
             ],
             "globals": [
@@ -2121,9 +1925,16 @@
                 }
             ]
         },
-        "ST": {
+        "DK": {
             "globals": [],
-            "modules": [],
+            "modules": [
+                {
+                    "name": "Social Graph Network Service Client",
+                    "propertyName": "socialGraphNetworkServiceClient",
+                    "functionName": "newSocialTradingModulesSocialGraphNetworkServiceClient",
+                    "fileName": "SocialGraphNetworkServiceClient.js"
+                }
+            ],
             "utilities": []
         },
         "UI": {
@@ -2266,34 +2077,12 @@
             ]
         },
         "SA": {
-            "globals": [
-                {
-                    "name": "Memory",
-                    "propertyName": "memory",
-                    "functionName": "newTradingSignalsGlobalsMemory",
-                    "fileName": "Memory.js"
-                }
-            ],
-            "modules": [
-                {
-                    "name": "P2P Network Interface",
-                    "propertyName": "p2pNetworkInterface",
-                    "functionName": "newTradingSignalsModulesP2PNetworkInterface",
-                    "fileName": "P2PNetworkInterface.js"
-                },
-                {
-                    "name": "Trading Signals Network Service Client",
-                    "propertyName": "tradingSignalsNetworkServiceClient",
-                    "functionName": "newTradingSignalsModulesTradingSignalsNetworkServiceClient",
-                    "fileName": "TradingSignalsNetworkServiceClient.js"
-                }
-            ],
             "utilities": [
                 {
-                    "name": "Signal Signature Validations",
-                    "propertyName": "signalSignatureValidations",
-                    "functionName": "newTradingSignalsUtilitiesSignalSignatureValidations",
-                    "fileName": "SignalSignatureValidations.js"
+                    "name": "Signal Validations",
+                    "propertyName": "signalValidations",
+                    "functionName": "newTradingSignalsUtilitiesSignalValidations",
+                    "fileName": "SignalValidations.js"
                 }
             ]
         }
@@ -2368,156 +2157,5 @@
             "functionLibraries": []
         },
         "SA": {}
-    },
-    {
-        "name": "Contributions",
-        "propertyName": "contributions",
-        "UI": {
-            "nodeActionFunctions": [],
-            "systemActionFunctions": [],
-            "functionLibraries": [],
-            "globals": [],
-            "utilities": [],
-            "spaces": [
-                {
-                    "name": "Contributions Space",
-                    "folderName": "Contributions-Space",
-                    "propertyName": "contributionsSpace",
-                    "functionName": "newContributionsContributionsSpace",
-                    "initializationIndex": 15,
-                    "animationPhysicsIndex": 15,
-                    "animationDrawIndex": 15,
-                    "onMouseWheelIndex": 0,
-                    "onMouseOverIndex": 0,
-                    "onMouseClickIndex": 0,
-                    "onMouseDownIndex": 0
-                }
-            ]
-        },
-        "SA": {
-            "utilities": []
-        },
-        "TS": {},
-        "plugins": []
-    },
-    {
-        "name": "Bitcoin-Factory",
-        "propertyName": "bitcoinFactory",
-        "UI": {
-            "nodeActionFunctions": [],
-            "systemActionFunctions": [],
-            "functionLibraries": [],
-            "globals": [],
-            "utilities": [],
-            "spaces": []
-        },
-        "SA": {
-            "modules": [
-                {
-                    "name": "App Bootstraping Process",
-                    "propertyName": "appBootstrapingProcess",
-                    "functionName": "newBitoinFactoryAppBootstrapingProcess",
-                    "fileName": "AppBootstrapingProcess.js"
-                },
-                {
-                    "name": "Machine Learning Network Service Client",
-                    "propertyName": "machineLearningNetworkServiceClient",
-                    "functionName": "newBitcoinFactoryModulesMachineLearningNetworkServiceClient",
-                    "fileName": "MachineLearningNetworkServiceClient.js"
-                }
-            ]
-        },
-        "TS": {
-            "botModules": [
-                {
-                    "name": "Forecast-Client",
-                    "propertyName": "forecastClient",
-                    "functionName": "newBitcoinFactoryBotModulesForecastClient",
-                    "fileName": "ForecastClient.js",
-                    "folderName": "Forecast-Client"
-                },
-                {
-                    "name": "Test-Client",
-                    "propertyName": "testClient",
-                    "functionName": "newBitcoinFactoryBotModulesTestClient",
-                    "fileName": "TestClient.js",
-                    "folderName": "Test-Client"
-                },
-                {
-                    "name": "Test-Server",
-                    "propertyName": "testServer",
-                    "functionName": "newBitcoinFactoryBotModulesTestServer",
-                    "fileName": "TestServer.js",
-                    "folderName": "Test-Server"
-                },
-                {
-                    "name": "Data Bridge",
-                    "propertyName": "dataBridge",
-                    "functionName": "newDataBridge",
-                    "fileName": "DataBridge.js",
-                    "folderName": "Test-Server"
-                },
-                {
-                    "name": "Test Cases Manager",
-                    "propertyName": "testCasesManager",
-                    "functionName": "newTestCasesManager",
-                    "fileName": "TestCasesManager.js",
-                    "folderName": "Test-Server"
-                },
-                {
-                    "name": "Test Clients Manager",
-                    "propertyName": "testClientsManager",
-                    "functionName": "newTestClientsManager",
-                    "fileName": "TestClientsManager.js",
-                    "folderName": "Test-Server"
-                },
-                {
-                    "name": "Forecast Cases Manager",
-                    "propertyName": "forecastCasesManager",
-                    "functionName": "newForecastCasesManager",
-                    "fileName": "ForecastCasesManager.js",
-                    "folderName": "Test-Server"
-                },
-                {
-                    "name": "Forecast Clients Manager",
-                    "propertyName": "forecastClientsManager",
-                    "functionName": "newForecastClientsManager",
-                    "fileName": "ForecastClientsManager.js",
-                    "folderName": "Test-Server"
-                }
-            ],
-            "utilities": [
-                {
-                    "name": "Miscellaneous",
-                    "propertyName": "miscellaneous",
-                    "functionName": "newBitcoinFactoryUtilitiesMiscellaneous",
-                    "fileName": "Miscellaneous.js",
-                    "folderName": ""
-                }
-            ]
-        },
-        "NT": {
-            "modules": [
-                {
-                    "name": "Machine Learning Network Service",
-                    "propertyName": "machineLearningNetworkService",
-                    "functionName": "newBitcoinFactoryModulesMachineLearningNetworkService",
-                    "fileName": "MachineLearningNetworkService.js"
-                },
-                {
-                    "name": "Client Interface",
-                    "propertyName": "clientInterface",
-                    "functionName": "newBitcoinFactoryModulesClientInterface",
-                    "fileName": "ClientInterface.js"
-                },
-                {
-                    "name": "Server Interface",
-                    "propertyName": "serverInterface",
-                    "functionName": "newBitcoinFactoryModulesServerInterface",
-                    "fileName": "ServerInterface.js"
-                }
-            ]
-        },
-        "plugins": []
     }
 ]

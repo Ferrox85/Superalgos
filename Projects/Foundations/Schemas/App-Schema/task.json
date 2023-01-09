@@ -67,16 +67,6 @@
                     "action": "Add UI Object",
                     "disableIfPropertyIsDefined": true,
                     "propertyToCheckFor": "bot",
-                    "label": "Add Study Bot Instance",
-                    "relatedUiObject": "Study Bot Instance",
-                    "actionFunction": "payload.executeAction",
-                    "actionProject": "Visual-Scripting",
-                    "relatedUiObjectProject": "Foundations"
-                },
-                {
-                    "action": "Add UI Object",
-                    "disableIfPropertyIsDefined": true,
-                    "propertyToCheckFor": "bot",
                     "label": "Add Trading Bot Instance",
                     "relatedUiObject": "Trading Bot Instance",
                     "actionFunction": "payload.executeAction",
@@ -91,7 +81,7 @@
                     "relatedUiObject": "Portfolio Bot Instance",
                     "actionFunction": "payload.executeAction",
                     "actionProject": "Visual-Scripting",
-                    "relatedUiObjectProject": "Portfolio-Management"
+                    "relatedUiObjectProject": "Foundations"
                 },
                 {
                     "action": "Add UI Object",
@@ -133,17 +123,7 @@
             "relatedUiObject": "Task Server App Reference",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "User-Apps"
-        },
-        {
-            "action": "Add UI Object",
-            "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "p2pNetworkClient",
-            "label": "Add P2P Network Client",
-            "relatedUiObject": "P2P Network Client",
-            "actionFunction": "payload.executeAction",
-            "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Network"
+            "relatedUiObjectProject": "Governance"
         },
         {
             "action": "Delete UI Object",
@@ -191,11 +171,6 @@
         {
             "name": "bot",
             "type": "node",
-            "childType": "Study Bot Instance"
-        },
-        {
-            "name": "bot",
-            "type": "node",
             "childType": "Learning Bot Instance"
         },
         {
@@ -204,23 +179,16 @@
             "childType": "Key Reference"
         },
         {
-            "name": "managedTasks",
-            "type": "node",
-            "childType": "Managed Tasks"
+          "name": "managedTasks",
+          "type": "node",
+          "childType": "Managed Tasks"
         },
         {
             "name": "taskServerAppReference",
             "type": "node",
             "childType": "Task Server App Reference",
-            "project": "User-Apps"
-        },
-        {
-            "name": "p2pNetworkClient",
-            "type": "node",
-            "childType": "P2P Network Client",
-            "project": "Network"
+            "project": "Governance"
         }
     ],
-    "propertyNameAtParent": "tasks",
-    "project": "Foundations"
+    "propertyNameAtParent": "tasks"
 }

@@ -16,13 +16,8 @@
             },
             {
                 "language": "TR",
-                "text": "Tetikleme koşulları, alt kanalın yönünün aşağı (Down) olmasını ve mevcut 24 saatlik mumdaki eğimin yan (Side) olmamasıdır!",
-                "updated": 1669670760532
-            },
-            {
-                "language": "RU",
-                "text": "Условия срабатывания требуют, чтобы направление субканала было Down, а наклон не был Side на текущей свече 24H!",
-                "updated": 1642664058898
+                "text": "Tetikleme koşulları, alt kanalın yönünün aşağı olmasını ve mevcut 24 saatlik mumdaki eğimin yan olmamasını gerektirir!",
+                "updated": 1641666063759
             }
         ]
     },
@@ -40,11 +35,6 @@
                     "language": "TR",
                     "text": "28 Şubat'ta sabah 9 ile akşam 2 arasında 1H mumlarına bakıyoruz. Bunlar stratejinin tetiklendiği ve pozisyon aldığı mumlardır. Sizde kontrol edin!",
                     "updated": 1641666075509
-                },
-                {
-                    "language": "RU",
-                    "text": "Мы рассматриваем свечи 1H между 9 и 14 часами, 28 февраля. Это свечи, на которых срабатывает стратегия и занимает позицию. Проверьте сами!",
-                    "updated": 1642664080825
                 }
             ]
         },
@@ -59,13 +49,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Mevcut gün mumu nedir? Kapalı mumları değerlendirme hakkında daha önce öğrendiklerinizi hatırlayın!",
-                    "updated": 1669670868101
-                },
-                {
-                    "language": "RU",
-                    "text": "Какова текущая дневная свеча? Вспомните, что вы узнали ранее об оценке закрытых свечей!",
-                    "updated": 1642664107552
+                    "text": "Mevcut gün mumu nedir? Kapalı mumları derecelendirme hakkında daha önce öğrendiklerinizi hatırlayın!",
+                    "updated": 1641666085346
                 }
             ]
         },
@@ -80,13 +65,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Günün mevcut mumu en son kapatılan mumdur: 27 Şubat mumu. Çünkü 28 Şubat mumu henüz kapanmamıştır! 24 saatlik grafiğe baktığınızda 27 Şubat'ta alt kanalın yan (Side) değil aşağıyı (Down) gösterdiğini göreceksiniz!",
-                    "updated": 1669670994254
-                },
-                {
-                    "language": "RU",
-                    "text": "Текущей дневной свечой является та, которая закрылась последней: свеча 27 февраля, потому что свеча 28 февраля еще не закрылась! Перейдите на график 24H и убедитесь, что 27 февраля субканал был Down, а не Side!",
-                    "updated": 1642664144104
+                    "text": "Günün mevcut mumu en son kapatılan mumdur: 27 Şubat mumu, çünkü 28 Şubat mumu henüz kapanmamıştır! 24 saatlik grafiğe gidin ve 27 Şubat'ta alt kanalın yan tarafı değil aşağıyı gösterdiğini onaylayın!",
+                    "updated": 1641666096125
                 }
             ]
         }

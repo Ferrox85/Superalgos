@@ -16,13 +16,8 @@
             },
             {
                 "language": "TR",
-                "text": "İfadenin her iki tarafındaki her bir özelliği değiştirmek için \"previous\" özelliğini kullanacağımızı belirtmiştim...",
-                "updated": 1669666340789
-            },
-            {
-                "language": "RU",
-                "text": "Я упомянул, что мы будем использовать свойства previous (предыдущий) для изменения каждого свойства с обеих сторон выражения...",
-                "updated": 1642661496564
+                "text": "Özet: İfadenin her iki tarafındaki her bir özelliği değiştirmek için önceki özelliği kullanacağımızı belirtmiştim...",
+                "updated": 1641663804030
             }
         ]
     },
@@ -39,13 +34,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Ancak, bu kullanım kesinlikle gerekli değildir!\"previous\" özelliğini istediğiniz gibi kullanabilirsiniz. Mumun kapanışını hareketli ortalama ve aynı mumun sapması ile karşılaştırmamız gerekiyordu! Bu nedenle, bunu tüm ifadelere uyguladık!",
-                    "updated": 1669666400654
-                },
-                {
-                    "language": "RU",
-                    "text": "Но такое использование не является обязательным! Вы можете использовать свойство previous по своему усмотрению. Нам нужно сравнить закрытие свечи со скользящей средней и отклонение этой же свечи! Поэтому мы применяем его ко всем условным выражениям!",
-                    "updated": 1642661848699
+                    "text": "Not: Ancak, bu kullanım kesinlikle gerekli değildir! Önceki özelliği istediğiniz gibi kullanabilirsiniz. Mumun kapanışını hareketli ortalama ve aynı mumun sapması ile karşılaştırmamız gerekiyor! Bu nedenle, bunu tüm ifadelere uyguluyoruz!",
+                    "updated": 1641663814097
                 }
             ]
         },
@@ -61,13 +51,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Mesela mevcut mumun kapanışını önceki mumun kapanışıyla karşılaştırmak isteyebilirsiniz. O zaman koşulumuz şu şekilde olacaktı:",
-                    "updated": 1669666454467
-                },
-                {
-                    "language": "RU",
-                    "text": "Но вы можете, например, захотеть сравнить закрытие текущей свечи с закрытием предыдущей свечи:",
-                    "updated": 1642661864141
+                    "text": "Ama örneğin mevcut mumun kapanışını önceki mumun kapanışıyla karşılaştırabilirsiniz:",
+                    "updated": 1641663824425
                 }
             ]
         },

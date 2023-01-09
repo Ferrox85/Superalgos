@@ -11,9 +11,10 @@
 
     return thisObject
 
-    async function start(statusDependenciesModule, dataDependenciesModule, callBackFunction) {
+    async function start(statusDependencies, dataDependenciesModule, callBackFunction) {
         try {
 
+            let dataFiles = new Map()
             let multiTimeFrameDataFiles = new Map()
             TS.projects.foundations.globals.processModuleObjects.MODULE_OBJECTS_BY_PROCESS_INDEX_MAP.get(processIndex).ENGINE_MODULE_OBJECT = TS.projects.algorithmicTrading.botModules.tradingEngine.newAlgorithmicTradingBotModulesTradingEngine(processIndex)
             let tradingOutputModuleObject = TS.projects.algorithmicTrading.botModules.tradingOutput.newAlgorithmicTradingBotModulesTradingOutput(processIndex)
@@ -31,7 +32,7 @@
                 TS.projects.foundations.functionLibraries.processFilesFunctions.getContextVariables(
                     processIndex,
                     contextVariables,
-                    statusDependenciesModule,
+                    statusDependencies,
                     TS.projects.foundations.globals.processConstants.CONSTANTS_BY_PROCESS_INDEX_MAP.get(processIndex).SESSION_NODE.tradingParameters.timeRange.config.initialDatetime,
                     callBackFunction
                 ) !== true) { return }
@@ -74,6 +75,7 @@
             if (
                 await TS.projects.foundations.functionLibraries.dataDependenciesFunctions.processSingleFiles(
                     processIndex,
+                    dataFiles,
                     multiTimeFrameDataFiles,
                     dataDependenciesModule
                 ) === false) {
@@ -84,6 +86,7 @@
 
             if (await TS.projects.foundations.functionLibraries.dataDependenciesFunctions.processMarketFiles(
                 processIndex,
+                dataFiles,
                 multiTimeFrameDataFiles,
                 dataDependenciesModule,
                 currentTimeFrame,
@@ -130,7 +133,7 @@
                     TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Running')
                     await outputManagement()
                     TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Saving')
-                    await TS.projects.foundations.functionLibraries.processFilesFunctions.writeProcessFiles(processIndex, contextVariables, currentTimeFrame, tradingProcessDate, statusDependenciesModule)
+                    await TS.projects.foundations.functionLibraries.processFilesFunctions.writeProcessFiles(processIndex, contextVariables, currentTimeFrame, tradingProcessDate, statusDependencies)
                     TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Sleeping')
                 } else {
                     TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Waiting for Data Mining to be up to date. No candles found.')
@@ -157,6 +160,7 @@
                     if (
                         await TS.projects.foundations.functionLibraries.dataDependenciesFunctions.processDailyFiles(
                             processIndex,
+                            dataFiles,
                             multiTimeFrameDataFiles,
                             dataDependenciesModule,
                             currentTimeFrame,
@@ -188,7 +192,7 @@
                         TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Running')
                         await outputManagement()
                         TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Saving')
-                        await TS.projects.foundations.functionLibraries.processFilesFunctions.writeProcessFiles(processIndex, contextVariables, currentTimeFrame, tradingProcessDate, statusDependenciesModule)
+                        await TS.projects.foundations.functionLibraries.processFilesFunctions.writeProcessFiles(processIndex, contextVariables, currentTimeFrame, tradingProcessDate, statusDependencies)
                         TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Sleeping')
                     } else {
                         TS.projects.foundations.functionLibraries.sessionFunctions.sessionHeartBeat(processIndex, undefined, undefined, 'Waiting for Data Mining to be up to date')

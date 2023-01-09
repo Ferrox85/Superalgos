@@ -13,31 +13,8 @@
     let fileStorage = TS.projects.foundations.taskModules.fileStorage.newFileStorage(processIndex);
     let statusDependencies
 
-    let MAX_OHLCVs_PER_EXECUTION = 10000000
-
-/*  CCXT and its unifiedAPI require a different way to find the pair because now not only spot is supported
-    but swaps and futures too.
-    Form CCXT
-    BTC/USD         -> Could be spot
-    BTC/USDT:USDT   -> Swap Linear
-    BTC/USDT:BTC    -> Swap Inverse
-
-    This is an issue in SA at the moment, since when saving data there is no distinction in folders
-
-    -> Old code left below for a quick reverse in case of issues
-
-    let baseAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName
-    let quotedAsset = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-    const symbol = baseAsset + '/' + quotedAsset
- */
-   
-    // Following line is left for history purposes 
-    // const symbol = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
-       
-    // Here the pair is passed to ccxt using the full codeName of the Market under Exchnage Markets
-    const symbol = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.config.codeName
-
-
+    const MAX_OHLCVs_PER_EXECUTION = 10000000
+    const symbol = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.baseAsset.referenceParent.config.codeName + '/' + TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.quotedAsset.referenceParent.config.codeName
     const ccxt = SA.nodeModules.ccxt
     /*
     This next is required when using an exchange that uses fetchTrades in place of fetchOHLCVs
@@ -62,9 +39,6 @@
     let limit = 1000 // This is the default value
     let hostname
     let lastCandleOfTheDay
-    let sandBox
-    let maxRate
-    
     /*
     The following variables are used for exchanges that do not provide any method in their API to retrieve OHLCV data.
     In the CCTX library, such exchanges have the fetchOHLCV method as being "emulated", and as such, you can only
@@ -90,7 +64,7 @@
     function initialize(pStatusDependencies, callBackFunction) {
         let exchangeClass
         /*
-        This is what we are going to do here
+        This is what we are going to do hereL
 
         1. Parameters set by SA user at the Crypto Exchange node are extracted. There might be parameters for each supported method at the CCXT library.
         2. The CCXT class for the configured exchange is instantiated, with whatever options where configured.
@@ -99,39 +73,15 @@
         */
         try {
             statusDependencies = pStatusDependencies;
-            
-    		/*
-	    	maxRate - sets the  maximum number of OHCLV that is pulled before the data is saved.
-    		This is only to be used when the exchange is kicking out the data-mine randomly and alows the user to
-		    save the data more often allowing for the data mining to move forward.
-    		*/
 
-            let exchangeConfig = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config
-        
-            // Take the codeName and check if sandBox mode is to enable
-            exchangeId = exchangeConfig.codeName        
-            sandBox = exchangeConfig.sandBox || false   // true for sandBox mode if available
-            // Check options to pass to the exchange constructor
-            if (exchangeConfig.options !== undefined) {
-                options = exchangeConfig.options
-            }
-            if (exchangeConfig.maxRate !== undefined) {
-                maxRate = exchangeConfig.maxRate            // Max number of fetched candles before saving
-            }                                           
-            if (exchangeConfig.limit !== undefined) {
-                limit = exchangeConfig.limit                // Some exchanges need this parameter -> Bybit
-            }
-            if (exchangeConfig.rateLimit !== undefined) {
-                rateLimit = exchangeConfig.rateLimit        // Custom rateLimit
-            }
-            if (exchangeConfig.hostname !== undefined) {
-                hostname = exchangeConfig.hostname          // Custom hostname
-            }
+            exchangeId = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.codeName
+		/*
+		maxRate - sets the  maximum number of OHCLV that is pulled before the data is saved.
+		This is only to be used when the exchange is kicking out the data-mine randomly and alows the user to
+		save the data more often allowing for the data mining to move forward.
+		*/
+		maxRate = TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.maxRate
 
-        
-
-		
-            // ***** The next IF-FOR block of code is left for backward-compatibility *****
             /* Applying the parameters defined by the user at the Exchange Node Config */
             if (TS.projects.foundations.globals.taskConstants.TASK_NODE.parentNode.parentNode.parentNode.referenceParent.parentNode.parentNode.config.API !== undefined) {
                 /*
@@ -177,7 +127,7 @@
 
             let key
             let secret
-            
+
             exchangeClass = ccxt[exchangeId]
             const exchangeConstructorParams = {
                 'apiKey': key,
@@ -187,8 +137,6 @@
                 verbose: false,
                 options: options
             }
-            
-            // This code is left for retro-compatibility with the code above "API"
             if (rateLimit !== undefined) {
                 exchangeConstructorParams.rateLimit = rateLimit
             }
@@ -196,23 +144,7 @@
                 exchangeConstructorParams.hostname = hostname
             }
 
-            // Exchange instantiation
             exchange = new exchangeClass(exchangeConstructorParams)
-            
-            if (sandBox) {                
-                exchange.setSandboxMode(sandBox)
-                /* Uncomment to log
-                TS.logger.info('Exchange HistoricOHLCVs connection starting.... ')
-                TS.logger.info('Sandbox mode is: ' + sandBox)
-                TS.logger.info(exchange.urls.api)
-                TS.logger.info('')
-                TS.logger.info('exchangeConstructorParams:')
-                TS.logger.info(exchangeConstructorParams)
-                TS.logger.info('')
-                TS.logger.info('limit is: ' + limit)
-                */
-            }
-            
 
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_OK_RESPONSE);
 
@@ -221,13 +153,13 @@
             TS.projects.foundations.globals.loggerVariables.VARIABLES_BY_PROCESS_INDEX_MAP.get(processIndex).BOT_MAIN_LOOP_LOGGER_MODULE_OBJECT.write(MODULE_NAME, "[ERROR] initialize -> err = " + err.stack);
 
             /* CCXT Supported Exchanges */
-            TS.logger.error('CCXT Library current supported exchanges:')
+            console.log('CCXT Library current supported exchanges:')
             for (const property in ccxt) {
-                TS.logger.error(`${property}`);
+                console.log(`${property}`);
             }
-            TS.logger.error('For more info please check: https://github.com/ccxt/ccxt/wiki/Manual')
-            TS.logger.error('Exchange Class ' + exchangeId)
-            TS.logger.error(exchangeClass)
+            console.log('For more info please check: https://github.com/ccxt/ccxt/wiki/Manual')
+            console.log('Exchange Class ' + exchangeId)
+            console.log(exchangeClass)
 
             callBackFunction(TS.projects.foundations.globals.standardResponses.DEFAULT_FAIL_RESPONSE);
         }
@@ -658,8 +590,8 @@
 			save the data more often allowing for the data mining to move forward.
                         Check if we don't have a maxRate parameter and use global parameter instead
                         */
-                        if (maxRate) {
-                            MAX_OHLCVs_PER_EXECUTION = maxRate
+                        if (!maxRate) {
+                            maxRate = MAX_OHLCVs_PER_EXECUTION
                         }
 
                         /*

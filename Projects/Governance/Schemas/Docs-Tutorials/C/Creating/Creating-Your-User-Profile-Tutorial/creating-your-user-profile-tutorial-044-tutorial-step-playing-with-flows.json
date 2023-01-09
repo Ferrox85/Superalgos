@@ -24,24 +24,14 @@
                 "language": "DE",
                 "text": "Fast vergessen! Bevor Sie gehen, gebe ich Ihnen einen Crashkurs, damit Sie ein bisschen mit echter Token Power spielen können!",
                 "updated": 1640082755036
-            },
-            {
-                "language": "TR",
-                "text": "Neredeyse unuttum! Gitmeden önce, biraz gerçek Jeton Gücü (Token Power) ile oynaman için sana hızlandırılmış bir kurs vereceğim!",
-                "updated": 1645168190446
-            },
-            {
-                "language": "ID",
-                "text": "Hampir lupa! Sebelum kamu pergi, aku akan memberi kamu kursus kilat sehingga kamu dapat bermain sedikit dengan Token Power nyata!",
-                "updated": 1671546856606
             }
         ]
     },
     "paragraphs": [
         {
             "style": "Text",
-            "text": "We're sneaking into Julian's User Profile, particularly in his Delegation Program! Your mission: delegate yourself some Token Power so that you can play with the flows within your own profile!",
-            "updated": 1660648678459,
+            "text": "We're sneaking into the lead developer's User Profile, particularly in his Delegation Program! Your mission: delegate yourself some Token Power so that you can play with the flows within your own profile!",
+            "updated": 1630931293437,
             "translations": [
                 {
                     "language": "ES",
@@ -57,22 +47,12 @@
                     "language": "DE",
                     "text": "Wir schleichen uns in das Benutzerprofil des Hauptentwicklers, insbesondere in sein Delegation Program! Ihre Aufgabe: Delegieren Sie sich selbst etwas Token Power, damit Sie mit den Abläufen in Ihrem eigenen Profil spielen können!",
                     "updated": 1640082784254
-                },
-                {
-                    "language": "TR",
-                    "text": "Baş geliştiricinin Kullanıcı Profiline gizlice giriyoruz, özellikle Delegasyon Programında (Delegation Program)! Göreviniz: Kendi profilinizdeki token gücünüz ile oynayabilmeniz için kendinize biraz Jeton Gücü devredin!",
-                    "updated": 1645168252108
-                },
-                {
-                    "language": "ID",
-                    "text": "Kita menyelinap ke User Profile Julian, khususnya dalam  Delegation Program miliknya! Misi kamu: delegasikan beberapa Token Power kepada dirimu sendiri sehingga dapat bermain dengan arus dalam profilmu sendiri!",
-                    "updated": 1671546863582
                 }
             ]
         },
         {
             "style": "Callout",
-            "text": "Use the Delegate Power Switch to add a User Delegate node and reference your profile!",
+            "text": "Use the User Delegate node on the right to reference your own User Profile!",
             "translations": [
                 {
                     "language": "ES",
@@ -88,24 +68,13 @@
                     "language": "DE",
                     "text": "Verwenden Sie den Knoten User Delegate auf der rechten Seite, um auf Ihr eigenes Benutzerprofil zu verweisen!",
                     "updated": 1640082804692
-                },
-                {
-                    "language": "TR",
-                    "text": "Kendi Kullanıcı Profilinize başvurmak için sağdaki User Delegate düğümünü kullanın!",
-                    "updated": 1645173721560
-                },
-                {
-                    "language": "ID",
-                    "text": "Gunakan Delegate Power Switch untuk menambahkan node User Delegate dan referensikan profilmu!",
-                    "updated": 1671546869932
                 }
-            ],
-            "updated": 1660648850165
+            ]
         },
         {
             "style": "List",
-            "text": "You can freely play with other User Profiles as they don't save with your workspace.",
-            "updated": 1660648883074,
+            "text": "You can freely play with other User Profiles.",
+            "updated": 1630931454654,
             "translations": [
                 {
                     "language": "ES",
@@ -121,16 +90,28 @@
                     "language": "DE",
                     "text": "Du kannst mit anderen Benutzerprofilen frei spielen.",
                     "updated": 1640082813232
+                }
+            ]
+        },
+        {
+            "style": "List",
+            "text": "Those profiles don't save with the workspace.",
+            "updated": 1630931469032,
+            "translations": [
+                {
+                    "language": "ES",
+                    "text": "Esos profiles no se graban en el workspace.",
+                    "updated": 1633298215317
                 },
                 {
-                    "language": "TR",
-                    "text": "Diğer Kullanıcı Profilleri ile özgürce oynayabilirsiniz.",
-                    "updated": 1645168379111
+                    "language": "RU",
+                    "text": "Эти профили не сохраняются в рабочем пространстве.",
+                    "updated": 1639054467286
                 },
                 {
-                    "language": "ID",
-                    "text": "Kamu dapat dengan bebas bermain dengan User Profiles lain karena tidak tersimpan dengan workspace milikmu.",
-                    "updated": 1671546878235
+                    "language": "DE",
+                    "text": "Diese Profile werden nicht mit dem Workspace gespeichert.",
+                    "updated": 1640082827690
                 }
             ]
         },
@@ -152,16 +133,6 @@
                     "language": "DE",
                     "text": "Selbst wenn Sie sie in das Repo einreichen würden, würden sie von unserem Bot abgelehnt werden, der kontrolliert, dass Profile nur von ihren Besitzern hochgeladen werden.",
                     "updated": 1640082839390
-                },
-                {
-                    "language": "TR",
-                    "text": "Bunları depoya göndermiş olsanız bile, profillerin yalnızca sahipleri tarafından yüklendiğini kontrol eden botumuz tarafından reddedilirler.",
-                    "updated": 1645168447442
-                },
-                {
-                    "language": "ID",
-                    "text": "Bahkan jika kamu mengirimkannya ke repo, itu  akan ditolak oleh bot kami yang mengontrol bahwa profil hanya diunggah oleh pemiliknya sendiri.",
-                    "updated": 1671546884882
                 }
             ]
         }

@@ -13,7 +13,7 @@ async function runRoot() {
   */
   global.PL = {}
   /*
-  The SA object is accessible everywhere at the Superalgos Platform App.
+  The SA object is accessible everywhere at the Superalgos Desktop App.
   It provides access to all modules built for Superalgos in general.
   */
   global.SA = {}
@@ -33,7 +33,6 @@ async function runRoot() {
   let MULTI_PROJECT_MODULE = MULTI_PROJECT.newMultiProject()
   MULTI_PROJECT_MODULE.initialize(PL, 'PL')
   MULTI_PROJECT_MODULE.initialize(SA, 'SA')
-
   /*
   Setting up external dependencies.
   */
@@ -61,19 +60,8 @@ async function runRoot() {
     discordjs: require('discord.js'),
     discordRest: require('@discordjs/rest'),
     discordTypes: require('discord-api-types/v9'),
-    axios: require('axios'),
-    hyperquest: require('hyperquest'),
-    ndjson: require('ndjson'),
-    pako: require('pako')
+    axios: require('axios')
   }
-
-  const saLogsPath = SA.nodeModules.path.join(global.env.PATH_TO_LOG_FILES, 'SA')
-  SA.logger = require('./loggerFactory').loggerFactory(saLogsPath)
-
-  const plLogsPath = SA.nodeModules.path.join(global.env.PATH_TO_LOG_FILES, 'PL')
-  PL.logger = require('./loggerFactory').loggerFactory(plLogsPath)
-
-
   /* 
   Setting up the App Schema Memory Map. 
   */
@@ -115,7 +103,7 @@ async function runRoot() {
   async function run(initialWorkspace) {
     PL.app = require('./Platform/PlatformApp.js').newPlatformApp()
     await PL.app.run(initialWorkspace)
-    SA.logger.info('Superalgos Platform App is Running!')
+    console.log('Superalgos Platform App is Running!')
     if (process.send) {
       process.send('Running')
     }

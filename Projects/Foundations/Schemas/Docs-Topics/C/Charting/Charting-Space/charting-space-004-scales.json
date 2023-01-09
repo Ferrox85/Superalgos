@@ -46,14 +46,7 @@
         },
         {
             "style": "Title",
-            "text": "Rate Scale",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Oran Ölçeği (Rate Scale)",
-                    "updated": 1644590289835
-                }
-            ]
+            "text": "Rate Scale"
         },
         {
             "style": "Include",
@@ -72,14 +65,7 @@
         },
         {
             "style": "Title",
-            "text": "Time Frame Scale",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Zaman Çerçevesi Ölçeği (Time Frame Scale)",
-                    "updated": 1644590332551
-                }
-            ]
+            "text": "Time Frame Scale"
         },
         {
             "style": "Include",

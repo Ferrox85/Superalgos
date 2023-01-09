@@ -35,21 +35,18 @@ exports.newTaskServer = function newTaskServer() {
                     TS.projects.foundations.globals.taskConstants.EVENT_SERVER_CLIENT_MODULE_OBJECT.raiseEvent('Task Manager - ' + taskId, 'Nodejs Process Ready for Task')
                     function eventReceived(message) {
                         try {
-                            TS.projects.foundations.globals.taskConstants.TASK_NODE = JSON.parse(message.event.taskDefinition)
-                            TS.projects.foundations.globals.taskConstants.NETWORK_NODE = JSON.parse(message.event.networkDefinition)
-                            TS.projects.foundations.globals.taskConstants.MANAGED_TASKS = JSON.parse(message.event.managedTasksDefinition)
-                            if (message.event.dependencyFilters !== undefined) {
-                                TS.projects.foundations.globals.taskConstants.DEPENDENCY_FILTERS = JSON.parse(message.event.dependencyFilters)
-                            }
+                            TS.projects.foundations.globals.taskConstants.TASK_NODE = JSON.parse(message.event.taskDefinition);
+                            TS.projects.foundations.globals.taskConstants.NETWORK_NODE = JSON.parse(message.event.networkDefinition);
+                            TS.projects.foundations.globals.taskConstants.MANAGED_TASKS = JSON.parse(message.event.managedTasksDefinition);
                             TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES = SA.projects.visualScripting.utilities.nodeFunctions.nodeBranchToArray(TS.projects.foundations.globals.taskConstants.TASK_NODE, 'Session Reference')
                             bootingProcess();
                         } catch (err) {
-                            TS.logger.error('Task Server -> Task -> preLoader -> eventReceived -> ' + err.stack)
+                            console.log('[ERROR] Task Server -> Task -> preLoader -> eventReceived -> ' + err.stack)
                         }
                     }
                 } catch (err) {
-                    TS.logger.error('Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE -> ' + err.stack)
-                    TS.logger.error('Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE = ' + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE).substring(0, 1000))
+                    console.log('[ERROR] Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE -> ' + err.stack)
+                    console.log('[ERROR] Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE = ' + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE).substring(0, 1000))
                 }
             }
             else {
@@ -63,20 +60,17 @@ exports.newTaskServer = function newTaskServer() {
                         try {
                             TS.projects.foundations.globals.taskConstants.TASK_NODE = JSON.parse(message.event.taskDefinition)
                             TS.projects.foundations.globals.taskConstants.NETWORK_NODE = JSON.parse(message.event.networkDefinition)
-                            TS.projects.foundations.globals.taskConstants.MANAGED_TASKS = JSON.parse(message.event.managedTasksDefinition)
-                            if (message.event.dependencyFilters !== undefined) {
-                                TS.projects.foundations.globals.taskConstants.DEPENDENCY_FILTERS = JSON.parse(message.event.dependencyFilters)
-                            }
+                            TS.projects.foundations.globals.taskConstants.MANAGED_TASKS = JSON.parse(message.event.managedTasksDefinition);
                             TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES = SA.projects.visualScripting.utilities.nodeFunctions.nodeBranchToArray(TS.projects.foundations.globals.taskConstants.TASK_NODE, 'Session Reference')
                             bootingProcess()
 
                         } catch (err) {
-                            TS.logger.error('Task Server -> Task -> preLoader -> startDebugging -> ' + err.stack)
+                            console.log('[ERROR] Task Server -> Task -> preLoader -> startDebugging -> ' + err.stack)
                         }
                     }
                 } catch (err) {
-                    TS.logger.error('Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE -> ' + err.stack)
-                    TS.logger.error('Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE = ' + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE).substring(0, 1000))
+                    console.log('[ERROR] Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE -> ' + err.stack)
+                    console.log('[ERROR] Task Server -> Task -> preLoader -> TS.projects.foundations.globals.taskConstants.TASK_NODE = ' + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE).substring(0, 1000))
                 }
             }
         }
@@ -85,27 +79,27 @@ exports.newTaskServer = function newTaskServer() {
             try {
                 initializeProjectDefinitionNode()
                 setupTradingSignals()
-                setupTaskHeartbeats()
                 await setupOpenStorage()
-                await setupP2PNetworkClient()
+                await setupP2PNetwork()
+                setupTaskHeartbeats()
                 startProcesses()
 
                 function initializeProjectDefinitionNode() {
                     TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE = SA.projects.visualScripting.utilities.nodeFunctions.findNodeInNodeMesh(TS.projects.foundations.globals.taskConstants.TASK_NODE, 'Project Definition')
                     if (TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE === undefined) {
-                        TS.logger.error('Task Server -> Task -> bootingProcess -> Project Definition not found. ')
+                        console.log("[ERROR] Task Server -> Task -> bootingProcess -> Project Definition not found. ")
                         TS.projects.foundations.globals.taskVariables.FATAL_ERROR_MESSAGE = 'Project Definition not found. Fatal Error, can not continue. Fix the problem and try again.'
                         TS.projects.foundations.functionLibraries.nodeJSFunctions.exitProcess
                         throw ('Fatal Error')
                     }
                     if (TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName === undefined) {
-                        TS.logger.error('Task Server -> Task -> bootingProcess -> Project Definition with codeName undefined. ')
+                        console.log("[ERROR] Task Server -> Task -> bootingProcess -> Project Definition with codeName undefined. ")
                         TS.projects.foundations.globals.taskVariables.FATAL_ERROR_MESSAGE = 'Project Definition with codeName undefined. Fatal Error, can not continue. Fix the problem and try again.'
                         TS.projects.foundations.functionLibraries.nodeJSFunctions.exitProcess
                         throw ('Fatal Error')
                     }
                     if (TS.projects.foundations.globals.taskConstants.PROJECT_DEFINITION_NODE.config.codeName === '') {
-                        TS.logger.error('Task Server -> Task -> bootingProcess -> Project Definition without codeName. ')
+                        console.log("[ERROR] Task Server -> Task -> bootingProcess -> Project Definition without codeName. ")
                         TS.projects.foundations.globals.taskVariables.FATAL_ERROR_MESSAGE = 'Project Definition without codeName. Fatal Error, can not continue. Fix the problem and try again.'
                         TS.projects.foundations.functionLibraries.nodeJSFunctions.exitProcess
                         throw ('Fatal Error')
@@ -141,76 +135,84 @@ exports.newTaskServer = function newTaskServer() {
                     if (
                         TS.projects.foundations.globals.taskConstants.TASK_NODE.bot === undefined ||
                         TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.socialTradingBotReference === undefined ||
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.socialTradingBotReference.referenceParent === undefined
+                        TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.socialTradingBotReference.referenceParent === undefined 
                     ) {
                         return
                     }
                     TS.projects.foundations.globals.taskConstants.OPEN_STORAGE_CLIENT =
                         SA.projects.openStorage.modules.openStorageClient.newOpenStorageModulesOpenStorageClient()
                     TS.projects.foundations.globals.taskConstants.OPEN_STORAGE_CLIENT.initialize()
+
+                    //TEST IT FROM HERE.
+
+                    //let data = "This is the File Content, test 1 file per second."
+
+                    //TS.projects.foundations.globals.taskConstants.OPEN_STORAGE_CLIENT.persit(data)
+
+                    //let receivedFileContent = await TS.projects.foundations.globals.taskConstants.OPEN_STORAGE_CLIENT.loadFile(fileName, filePath)
+                    //console.log(receivedFileContent)
                 }
 
-                async function setupP2PNetworkClient() {
+                async function setupP2PNetwork() {
                     /*
-                    A Network Client will be setup only if the Task node has a P2P Network Client node.                    
-                    */
-                    if (
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient === undefined
-                    ) {
-                        return
-                    }
-                    /*
-                    The Task needs to Identify itself against the P2P Network with a Signing Account, and for that it needs to 
-                    reference to an App Server. If we don't find that, then we can not continue.
+                    If we received a App Server Reference Node and a Signing Account, then we will connect to the P2P Network
                     */
                     if (
                         TS.projects.foundations.globals.taskConstants.TASK_NODE.taskServerAppReference === undefined ||
                         TS.projects.foundations.globals.taskConstants.TASK_NODE.taskServerAppReference.referenceParent === undefined ||
                         TS.projects.foundations.globals.taskConstants.TASK_NODE.taskServerAppReference.referenceParent.signingAccount === undefined
                     ) {
-                        TS.logger.error('Task Server -> Task -> bootingProcess -> setupP2PNetworkClient -> The Task needs to have a taskServerAppReference referencing an App Server with a Signing Account in order for this task to be able to connect to the P2P Network. ')
-                        throw ('Fatal Error')
-                    }
-                    /*
-                    The Network Client needs to know which type of network and which specific network to connect to. In order to do that. 
-                    a P2P Network Reference must be present and pointing to a P2P Network. If we don't find that, then we can not continue.
-                    */
-                    if (
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient.p2pNetworkReference === undefined ||
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient.p2pNetworkReference.referenceParent === undefined ||
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient.p2pNetworkReference.referenceParent.config.codeName === undefined
-                    ) {
-                        TS.logger.error('Task Server -> Task -> bootingProcess -> setupP2PNetworkClient -> The Task needs to have a p2pNetworkReference referencing a P2P Network or Permissioned P2P Network with a codeName config property in order for this task to be able to connect to the P2P Network. ')
-                        throw ('Fatal Error')
+                        return
                     }
                     TS.projects.foundations.globals.taskConstants.P2P_NETWORK = {}
                     /*
-                    We set up the P2P Network Client.
+                    We set up the object that will hold our p2p network client identity, meaning the identity we will present to the network.
                     */
-                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClient = SA.projects.network.modules.p2pNetworkClient.newNetworkModulesP2PNetworkClient()
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClientIdentity =
+                        SA.projects.network.modules.p2pNetworkClientIdentity.newNetworkModulesP2PNetworkClientIdentity()                    
                     /*
-                    We setup the callback function for the circunstances that we receive a message comming from the P2P Network that is not the response to a request sent, but a notification.
+                    We will read all user profiles plugins, store them in memory and get from there our own network client identity.
                     */
-                    let eventReceivedCallbackFunction
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.appBootstrapingProcess = SA.projects.network.modules.appBootstrapingProcess.newNetworkModulesAppBootstrapingProcess()
+                    await TS.projects.foundations.globals.taskConstants.P2P_NETWORK.appBootstrapingProcess.run(
+                        TS.projects.foundations.globals.taskConstants.TASK_NODE.taskServerAppReference.referenceParent.config.codeName,
+                        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClientIdentity
+                    )
                     /*
-                    For now, if Trading Signals is activated, then we will assume that the incoming notifications are in fact Signals. In the future this assumption should be removed once we have another use case for notifications and this should be generalized. 
+                    We set up the P2P Network, meaning the array of nodes we will be able to connect to.
                     */
-                    if (TS.projects.foundations.globals.taskConstants.TRADING_SIGNALS !== undefined) {
-                        eventReceivedCallbackFunction = TS.projects.foundations.globals.taskConstants.TRADING_SIGNALS.incomingCandleSignals.signalReceived
-                    }
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes = SA.projects.network.modules.p2pNetworkReachableNodes.newNetworkModulesP2PNetworkReachableNodes()
+                    await TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes.initialize(
+                        'Network Client',
+                        global.env.TASK_SERVER_TARGET_NETWORK_CODENAME,
+                        global.env.TASK_SERVER_TARGET_NETWORK_TYPE
+                    )
                     /*
-                    Here is where we do initialize the Network Client.
+                    This is where we will process all the events comming from the p2p network.
                     */
-                    TS.projects.foundations.functionLibraries.taskFunctions.taskHearBeat("Synchronising User Profiles", false)
-
-                    await TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClient.initialize(
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.taskServerAppReference.referenceParent.signingAccount.config.codeName,
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient.p2pNetworkReference.referenceParent.type,
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient.p2pNetworkReference.referenceParent.config.codeName,
-                        global.env.TASK_SERVER_APP_MAX_OUTGOING_PEERS,
-                        global.env.TASK_SERVER_APP_MAX_OUTGOING_START_PEERS,
-                        eventReceivedCallbackFunction,
-                        TS.projects.foundations.globals.taskConstants.TASK_NODE.p2pNetworkClient // This parameter is sent only when initialized by a Tast Server. 
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes.p2pNetworkInterface = SA.projects.socialTrading.modules.p2pNetworkInterface.newSocialTradingModulesP2PNetworkInterface()
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes.p2pNetworkInterface.initialize()
+                    /*
+                    Set up the connections to network peers nodes. These connections will be used to consume signals.
+                    In this context peers means network nodes with a similar ranking that our network client identity.
+                    */
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkNodesConnectedTo = SA.projects.network.modules.p2pNetworkNodesConnectedTo.newNetworkModulesP2PNetworkNodesConnectedTo()
+                    await TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkNodesConnectedTo.initialize(
+                        'Network Client',
+                        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClientIdentity,
+                        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes,
+                        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes.p2pNetworkInterface,
+                        global.env.TASK_SERVER_APP_MAX_OUTGOING_PEERS
+                    )
+                    /*
+                    Set up the connections to network start nodes. These connections will be used to send signals.
+                    */
+                    TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkStart = SA.projects.network.modules.p2pNetworkStart.newNetworkModulesP2PNetworkStart()
+                    await TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkStart.initialize(
+                        'Network Client',
+                        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClientIdentity,
+                        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkReachableNodes,
+                        global.env.TASK_SERVER_APP_MAX_OUTGOING_HEADS
                     )
                 }
 
@@ -241,32 +243,32 @@ exports.newTaskServer = function newTaskServer() {
                         and that nodes in the middle have whatever config is mandatory.
                         */
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent === undefined) {
-                            TS.logger.error("Task Server -> Task -> bootingProcess -> Process Instance without a Reference Parent. This process will not be executed. -> Process Instance = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex]));
+                            console.log("[ERROR] Task Server -> Task -> bootingProcess -> Process Instance without a Reference Parent. This process will not be executed. -> Process Instance = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex]));
                             continue
                         }
 
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode === undefined) {
-                            TS.logger.error("Task Server -> Task -> bootingProcess -> Process Definition without parent Bot Definition. -> Process Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent));
+                            console.log("[ERROR] Task Server -> Task -> bootingProcess -> Process Definition without parent Bot Definition. -> Process Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent));
                             continue
                         }
 
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode === undefined) {
-                            TS.logger.error("Task Server -> Task -> bootingProcess -> Bot Definition without parent Mine. -> Bot Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode));
+                            console.log("[ERROR] Task Server -> Task -> bootingProcess -> Bot Definition without parent Mine. -> Bot Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode));
                             continue
                         }
 
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.config.codeName === undefined) {
-                            TS.logger.error("Task Server -> Task -> bootingProcess -> Process Definition without a codeName defined. -> Process Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent));
+                            console.log("[ERROR] Task Server -> Task -> bootingProcess -> Process Definition without a codeName defined. -> Process Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent));
                             continue
                         }
 
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.config.codeName === undefined) {
-                            TS.logger.error("Task Server -> Task -> bootingProcess -> Bot Definition without a codeName defined. -> Bot Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode));
+                            console.log("[ERROR] Task Server -> Task -> bootingProcess -> Bot Definition without a codeName defined. -> Bot Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode));
                             continue
                         }
 
                         if (TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode.config.codeName === undefined) {
-                            TS.logger.error("Task Server -> Task -> bootingProcess -> Mine without a codeName defined. -> Mine Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode));
+                            console.log("[ERROR] Task Server -> Task -> bootingProcess -> Mine without a codeName defined. -> Mine Definition = " + JSON.stringify(TS.projects.foundations.globals.taskConstants.TASK_NODE.bot.processes[processIndex].referenceParent.parentNode.parentNode));
                             continue
                         }
 
@@ -274,7 +276,7 @@ exports.newTaskServer = function newTaskServer() {
                     }
                 }
             } catch (err) {
-                TS.logger.error('Task Server -> Task -> bootingProcess -> Fatal Error. Can not run this task. -> err = ' + err + ' -> err.message = ' + err.message + ' -> err.stack = ' + err.stack + '.')
+                console.log('[ERROR] Task Server -> Task -> bootingProcess -> Fatal Error. Can not run this task. -> ' + err.stack)
             }
         }
 

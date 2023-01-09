@@ -5,8 +5,7 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
     Trading Bot Simulation.
     */
     let thisObject = {
-        moveTradingEnginesIntoPortfolioEngine: moveTradingEnginesIntoPortfolioEngine,
-        waitForManagedTradingBotsToAskTheirQuestions: waitForManagedTradingBotsToAskTheirQuestions,
+        run: run,
         checkInCandle: checkInCandle,
         checkOutCandle: checkOutCandle,
         initialize: initialize,
@@ -14,8 +13,7 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
     }
     let portfolioEngine
     let isRunning
-    let tradingBotsCheckInCheckOutStatusMap
-    let tradingBotsTradingEngineMap
+    let tradingBotsCheckInStatusMap
 
     return thisObject
 
@@ -26,32 +24,14 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
 
     function finalize() {
         portfolioEngine = undefined
-        tradingBotsCheckInCheckOutStatusMap = undefined
-        tradingBotsTradingEngineMap = undefined
+        tradingBotsCheckInStatusMap = undefined
     }
 
-    function moveTradingEnginesIntoPortfolioEngine() {
-
-        for (let i = 0; i < TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES.length; i++) {
-
-            let SESSION_KEY = TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES[i].referenceParent.name +
-                '-' + TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES[i].referenceParent.type +
-                '-' + TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES[i].referenceParent.id
-
-            let tradingEngine = tradingBotsTradingEngineMap.get(SESSION_KEY)
-            let managedTradingBotEngine = portfolioEngine.managedTradingBots.managedTradingBots[i].managedTradingBotEngine
-
-            TS.projects.foundations.globals.processModuleObjects.MODULE_OBJECTS_BY_PROCESS_INDEX_MAP.get(processIndex).ENGINE_MODULE_OBJECT.cloneValues(tradingEngine, managedTradingBotEngine)
-
-        }
-    }
-
-    async function waitForManagedTradingBotsToAskTheirQuestions() {
+    async function run() {
         let promise = new Promise((resolve, reject) => {
             isRunning = true
 
-            tradingBotsCheckInCheckOutStatusMap = new Map()
-            tradingBotsTradingEngineMap = new Map()
+            tradingBotsCheckInStatusMap = new Map()
             let intervalId = setInterval(checkTradingBotsStatus, 10)
 
             function checkTradingBotsStatus() {
@@ -65,7 +45,7 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
                         '-' + TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES[i].referenceParent.type +
                         '-' + TS.projects.foundations.globals.taskConstants.MANAGED_SESSIONS_REFERENCES[i].referenceParent.id
 
-                    let status = tradingBotsCheckInCheckOutStatusMap.get(SESSION_KEY)
+                    let status = tradingBotsCheckInStatusMap.get(SESSION_KEY)
 
                     switch (status) {
                         case 'Checked In': {
@@ -117,43 +97,16 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
             /*
             Remember that this Trading Bot Checked In.
             */
-            tradingBotsCheckInCheckOutStatusMap.set(SESSION_KEY, 'Checked In')
-            return response
-        }
+            tradingBotsCheckInStatusMap.set(SESSION_KEY, 'Checked In')
 
-        if (
-            candle.end - candle.begin !== portfolioEngine.portfolioCurrent.portfolioEpisode.candle.end.value - portfolioEngine.portfolioCurrent.portfolioEpisode.candle.begin.value
-        ) {
+        } else {
             response = {
                 status: 'Not Ok',
-                reason: "Time Frame of the Trading Bot and Portfolio Bot are Different."
-            }
-            return response
-        }
-
-        if (candle.begin > portfolioEngine.portfolioCurrent.portfolioEpisode.candle.begin.value) {
-            response = {
-                status: 'Not Ok',
-                reason: "Portfolio Manager Is Behind Trading Bot.",
+                reason: "Portfolio Manager Is At This Candle",
                 candle: {
                     begin: portfolioEngine.portfolioCurrent.portfolioEpisode.candle.begin.value,
                     end: portfolioEngine.portfolioCurrent.portfolioEpisode.candle.end.value
                 }
-            }            
-            /*
-            The trading Bot is ahead of time relative to the Portfolio Bot, so in order to allow the Portfolio Bot to 
-            move fordward, we will consider that this tradinb bot has made a Checked Out.
-            */
-            tradingBotsCheckInCheckOutStatusMap.set(SESSION_KEY, 'Checked Out')
-            return response
-        }
-
-        response = {
-            status: 'Not Ok',
-            reason: "Portfolio Manager Is Ahead of Trading Bot.",
-            candle: {
-                begin: portfolioEngine.portfolioCurrent.portfolioEpisode.candle.begin.value,
-                end: portfolioEngine.portfolioCurrent.portfolioEpisode.candle.end.value
             }
         }
         return response
@@ -161,8 +114,7 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
 
     function checkOutCandle(
         SESSION_KEY,
-        candle,
-        tradingEngine
+        candle
     ) {
         let response
         if (isRunning === false) {
@@ -186,13 +138,10 @@ exports.newPortfolioManagementBotModulesPortfolioManagedTradingBots = function (
                 reason: "Acknowledged"
             }
             /*
-            Remember that this Trading Bot Checked Out.
+            Remember that this Trading Bot Checked In.
             */
-            tradingBotsCheckInCheckOutStatusMap.set(SESSION_KEY, 'Checked Out')
-            /*
-            Remember that this Trading Bot's Trading Engine.
-            */
-            tradingBotsTradingEngineMap.set(SESSION_KEY, tradingEngine)
+            tradingBotsCheckInStatusMap.set(SESSION_KEY, 'Checked Out')
+
         } else {
             response = {
                 status: 'Not Ok',

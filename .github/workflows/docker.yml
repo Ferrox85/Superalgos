@@ -13,7 +13,6 @@ on:
 
 jobs:
   publish:
-    if: github.repository == 'superalgos/superalgos'
     name: Publish Image
     runs-on: ubuntu-latest
     steps:

@@ -16,7 +16,7 @@ exports.newFoundationsUtilitiesHttpResponses = function () {
     function respondWithFile(fileName, httpResponse) {
         let fs = SA.nodeModules.fs
         if (fileName.indexOf('undefined') > 0) {
-            SA.logger.warn('respondWithFile -> Received httpRequest for undefined file. ')
+            console.log('[WRN] respondWithFile -> Received httpRequest for undefined file. ')
             respondWithContent(undefined, httpResponse)
         } else {
             try {
@@ -26,7 +26,7 @@ exports.newFoundationsUtilitiesHttpResponses = function () {
                     if (!err) {
                         respondWithContent(file.toString(), httpResponse)
                     } else {
-                        //SA.logger.info('File requested not found: ' + fileName)
+                        //console.log('File requested not found: ' + fileName)
                         respondWithContent(undefined, httpResponse)
                     }
                 }
@@ -66,7 +66,7 @@ exports.newFoundationsUtilitiesHttpResponses = function () {
 
         function onFileRead(err, file) {
             if (err) {
-                SA.logger.error('respondWithImage -> Image Not Found: ' + fileName + ' or Error = ' + err.stack)
+                console.log('[ERROR] respondWithImage -> Image Not Found: ' + fileName + ' or Error = ' + err.stack)
                 return
             }
 
@@ -86,7 +86,7 @@ exports.newFoundationsUtilitiesHttpResponses = function () {
 
         function onFileRead(err, file) {
             if (err) {
-                SA.logger.error('respondWithFont -> File Not Found: ' + fileName + ' or Error = ' + err.stack)
+                console.log('[ERROR] respondWithFont -> File Not Found: ' + fileName + ' or Error = ' + err.stack)
                 return
             }
             httpResponse.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate') // HTTP 1.1.
@@ -124,7 +124,7 @@ exports.newFoundationsUtilitiesHttpResponses = function () {
 
                 SA.projects.foundations.utilities.httpResponses.respondWithContent(fileContent, httpResponse, 'text/css')
             } catch (err) {
-                SA.logger.error('respondWithStyleSheet -> File Not Found: ' + fileName + ' or Error = ' + err.stack)
+                console.log('[ERROR] respondWithStyleSheet -> File Not Found: ' + fileName + ' or Error = ' + err.stack)
             }
         }
     }
@@ -163,8 +163,8 @@ exports.newFoundationsUtilitiesHttpResponses = function () {
                         }
                     }
                 } catch (err) {
-                    SA.logger.error('returnProjectFolderFileList -> Error reading a directory content. filePath = ' + dirPath)
-                    SA.logger.error('returnProjectFolderFileList -> err.stack = ' + err.stack)
+                    console.log('[ERROR] returnProjectFolderFileList -> Error reading a directory content. filePath = ' + dirPath)
+                    console.log('[ERROR] returnProjectFolderFileList -> err.stack = ' + err.stack)
 
                     SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(global.DEFAULT_FAIL_RESPONSE), httpResponse)
                     return

@@ -36,16 +36,6 @@
                 "language": "RU",
                 "text": "Таким образом, расстояние до родительского узла относительно расстояния родительского узла до его родителя позволяет воздействовать на длинные структуры узлов!",
                 "updated": 1640866787529
-            },
-            {
-                "language": "ID",
-                "text": "Alasan kenapa jarak ke node parent-nya relatif ke jarak antara parent dengan parent agar kamu bisa mempengaruhi struktur panjang dari node!",
-                "updated": 1643354222281
-            },
-            {
-                "language": "NL",
-                "text": "De reden waarom de afstand tot het bovenliggende knooppunt relatief is ten opzichte van de afstand van het bovenliggende knooppunt tot zijn bovenliggende knooppunt, is dat u lange structuren van knooppunten kunt beïnvloeden!",
-                "updated": 1668336339323
             }
         ]
     },
@@ -81,16 +71,6 @@
                     "language": "RU",
                     "text": "Нажмите один раз на кнопку Distance to Parent  узла Network!",
                     "updated": 1640866845765
-                },
-                {
-                    "language": "ID",
-                    "text": "Klik sekali pada tombol Distance to Parent dari node Network!",
-                    "updated": 1643354241738
-                },
-                {
-                    "language": "NL",
-                    "text": "Klik eenmaal op de knop Distance to Parent van de Network node!",
-                    "updated": 1668336360348
                 }
             ]
         },
@@ -125,16 +105,6 @@
                     "language": "RU",
                     "text": "Ух ты! Видите? Эти инструменты позволяют вам полностью контролировать то, как вы визуально организуете иерархии!",
                     "updated": 1640866862862
-                },
-                {
-                    "language": "ID",
-                    "text": "Wow! Lihat? alat ini memperbolehkan kamu untuk mengontrol penuh atas bagaimana kamu mengatur visualisasi hirarki!",
-                    "updated": 1643473999623
-                },
-                {
-                    "language": "NL",
-                    "text": "Wauw! Zie je het? Met deze tools heb je volledige controle over hoe je hiërarchieën visueel organiseert!",
-                    "updated": 1668336392595
                 }
             ]
         },
@@ -169,16 +139,6 @@
                     "language": "RU",
                     "text": "Попробуйте отменить настройку Distance to Parent в узле Testing Trading Tasks! Как видите, вы можете задать любое произвольное расстояние до родительского узла, но угол к нему остается фиксированным.",
                     "updated": 1640866885334
-                },
-                {
-                    "language": "ID",
-                    "text": "Coba batalkan aturan Distance to Parent di node Testing Trading Tasks! Seperti yang terlihat, kamu bisa leluasa mengatur jarak dari node parent-nya. Tetapi sudut ke parent-nya tetap.",
-                    "updated": 1643354269938
-                },
-                {
-                    "language": "NL",
-                    "text": "Probeer de instelling Distance to Parent op het knooppunt Testing Trading Tasks te annuleren! Zoals u kunt zien, kunt u elke willekeurige afstand tot het bovenliggende knooppunt instellen, maar de hoek naar het bovenliggende knooppunt blijft vast.",
-                    "updated": 1668336442363
                 }
             ]
         }

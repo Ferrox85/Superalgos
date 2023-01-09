@@ -33,7 +33,7 @@
         "config": true
     },
     "initialValues": {
-        "config": "{\n\"asset\": \"BTCB\",\n\"exchange\": \"PANCAKE\"\n}"    },
+        "config": "{\n\"asset\": \"BTCB\"\n}"    },
     "attachingRules": {
         "compatibleTypes": "->Liquidity Programs->"
     },

@@ -45,7 +45,7 @@
             "actionFunction": "payload.executeAction"
         }
     ],
-    "isTitleAllwaysVisible": false,
+    "isTitleAllwaysVisible": true,
     "addLeftIcons": true,
     "editors": {
         "config": true

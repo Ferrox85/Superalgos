@@ -23,7 +23,7 @@
     "addLeftIcons": true,
     "level": 3,
     "attachingRules": {
-        "compatibleTypes": "->Trading Engine->Managed Trading Bot Engine->"
+        "compatibleTypes": "->Trading Engine->"
     },
     "propertyNameAtParent": "tradingLast",
     "childrenNodesProperties": [

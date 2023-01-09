@@ -7,16 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program on Linux",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}/../TaskServerRoot.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program on Windows",
+            "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],

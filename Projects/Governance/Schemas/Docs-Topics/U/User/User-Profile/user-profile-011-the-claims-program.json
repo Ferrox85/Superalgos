@@ -10,11 +10,6 @@
                 "language": "ES",
                 "text": "Díganos que ha hecho por el proyecto y como deberíamos recompensarlo!",
                 "updated": 1636281513982
-            },
-            {
-                "language": "TR",
-                "text": "Özet: Proje için ne yaptığınızı ve sizi nasıl ödüllendirmemiz gerektiğini bize anlatın!",
-                "updated": 1646303492815
             }
         ]
     },
@@ -37,11 +32,6 @@
                     "language": "RU",
                     "text": "Три типа Claim Folders",
                     "updated": 1639133107079
-                },
-                {
-                    "language": "TR",
-                    "text": "Üç Tür Talep Dosyası",
-                    "updated": 1646303523734
                 }
             ]
         },
@@ -53,14 +43,7 @@
         {
             "style": "Subtitle",
             "text": "Asset Claims Folder",
-            "updated": 1630496355821,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Varlık Talepleri Klasörü",
-                    "updated": 1646303551025
-                }
-            ]
+            "updated": 1630496355821
         },
         {
             "style": "Include",
@@ -69,14 +52,7 @@
         {
             "style": "Subtitle",
             "text": "Feature Claims Folder",
-            "updated": 1630496368526,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Özellik Talepleri Klasörü",
-                    "updated": 1646303569401
-                }
-            ]
+            "updated": 1630496368526
         },
         {
             "style": "Include",
@@ -84,14 +60,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Position Claims Folder",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Pozisyon Talepleri Klasörü",
-                    "updated": 1646303587260
-                }
-            ]
+            "text": "Position Claims Folder"
         },
         {
             "style": "Include",
@@ -106,11 +75,6 @@
                     "language": "RU",
                     "text": "Три типа Contribution Claims",
                     "updated": 1639133414363
-                },
-                {
-                    "language": "TR",
-                    "text": "Üç Tür Katkı Talebi",
-                    "updated": 1646303616071
                 }
             ]
         },
@@ -121,14 +85,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Asset Contribution Claim",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Varlık Katkı Talebi",
-                    "updated": 1646303638711
-                }
-            ]
+            "text": "Asset Contribution Claim"
         },
         {
             "style": "Include",
@@ -136,14 +93,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Feature Contribution Claim",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Özellik Katkı Talebi",
-                    "updated": 1646303653368
-                }
-            ]
+            "text": "Feature Contribution Claim"
         },
         {
             "style": "Include",
@@ -151,14 +101,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Position Contribution Claim",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Pozisyon Katkısı Talebi",
-                    "updated": 1646303664306
-                }
-            ]
+            "text": "Position Contribution Claim"
         },
         {
             "style": "Include",

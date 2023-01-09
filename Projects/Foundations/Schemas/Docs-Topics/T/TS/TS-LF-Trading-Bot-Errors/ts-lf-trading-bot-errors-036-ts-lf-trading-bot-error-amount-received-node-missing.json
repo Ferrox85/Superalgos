@@ -4,27 +4,13 @@
     "type": "TS LF Trading Bot Error - Amount Received Node Missing",
     "definition": {
         "text": "An Amount Received node was expected but not found at the node where the error originated.",
-        "updated": 1611942625082,
-        "translations": [
-            {
-                "language": "TR",
-                "text": "Alınan Tutar düğümü ( Amount Received ) bekleniyordu ancak hatanın kaynaklandığı düğümde bulunamadı. ",
-                "updated": 1649104489474
-            }
-        ]
+        "updated": 1611942625082
     },
     "paragraphs": [
         {
             "style": "Error",
             "text": "Amount Received Node Missing",
-            "updated": 1611650872000,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Alınan Düğüm Tutarı Eksik. ( Amount Received Node Missing )",
-                    "updated": 1649104552445
-                }
-            ]
+            "updated": 1611650872000
         },
         {
             "style": "Success",

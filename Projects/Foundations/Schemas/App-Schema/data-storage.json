@@ -29,7 +29,7 @@
             "relatedUiObject": "Portfolio Mines Data",
             "actionFunction": "payload.executeAction",
             "actionProject": "Visual-Scripting",
-            "relatedUiObjectProject": "Portfolio-Management"
+            "relatedUiObjectProject": "Foundations"
         },
         {
             "action": "Add UI Object",
@@ -75,7 +75,6 @@
             "name": "portfolioMinesData",
             "type": "node",
             "childType": "Portfolio Mines Data",
-            "project": "Portfolio-Management",
             "autoAdd": true
         },
         {

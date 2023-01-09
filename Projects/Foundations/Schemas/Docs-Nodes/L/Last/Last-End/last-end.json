@@ -1,14 +1,7 @@
 {
     "type": "Last End",
     "definition": {
-        "text": "Right click and Edit to enter edit mode and change this text.",
-        "translations": [
-            {
-                "language": "RU",
-                "text": "Щелкните правой кнопкой мыши и выберите Edit, чтобы войти в режим редактирования и изменить этот текст.",
-                "updated": 1645167058923
-            }
-        ]
+        "text": "Right click and Edit to enter edit mode and change this text."
     },
     "paragraphs": [
         {
@@ -17,14 +10,7 @@
         },
         {
             "style": "Text",
-            "text": "Right click and Edit to enter edit mode and change this text.",
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Щелкните правой кнопкой мыши и выберите Edit, чтобы войти в режим редактирования и изменить этот текст.",
-                    "updated": 1645167067863
-                }
-            ]
+            "text": "Right click and Edit to enter edit mode and change this text."
         },
         {
             "style": "Block",
@@ -34,38 +20,17 @@
         {
             "style": "Title",
             "text": "Last End Configuration",
-            "updated": 1609873971454,
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Конфигурация Last End",
-                    "updated": 1645167085104
-                }
-            ]
+            "updated": 1609873971454
         },
         {
             "style": "Subtitle",
             "text": "Properties",
-            "updated": 1609873980538,
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Свойства",
-                    "updated": 1645167092130
-                }
-            ]
+            "updated": 1609873980538
         },
         {
             "style": "List",
             "text": "initialValue allows resetting the initial state of the node to an arbitrary value.",
-            "updated": 1609875415147,
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "initialValue позволяет сбросить начальное состояние узла на произвольное значение.",
-                    "updated": 1645167103129
-                }
-            ]
+            "updated": 1609875415147
         }
     ]
 }

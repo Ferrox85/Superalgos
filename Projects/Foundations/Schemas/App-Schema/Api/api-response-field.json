@@ -31,7 +31,7 @@
         "config": true
     },
     "initialValues": {
-        "config": "{\"codeName\": \"\", \"fieldType\": \"\", \"description\": \"\"}"
+        "config": "{\"codeName\": \"\", \"fieldType\": \"\", \"descrption\": \"\"}"
     },
     "addLeftIcons": true,
     "level": 4,

@@ -17,9 +17,5 @@
     "attachingRules": {
         "compatibleTypes": "->Process Definition->"
     },
-    "propertyNameAtParent": "statusReport",
-    "title": [
-        "Use Parent Parent",
-        "Use Parent"
-    ]
+    "propertyNameAtParent": "statusReport"
 }

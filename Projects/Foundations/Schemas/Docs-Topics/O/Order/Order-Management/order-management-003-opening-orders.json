@@ -275,14 +275,7 @@
         },
         {
             "style": "Title",
-            "text": "Not Passing Target Size Validation",
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Не прохождение проверки целевого размера",
-                    "updated": 1645631196275
-                }
-            ]
+            "text": "Not Passing Target Size Validation"
         },
         {
             "style": "Text",

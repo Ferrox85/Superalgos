@@ -22,16 +22,13 @@ exports.newNetworkModulesP2PNetworkNodesConnectedTo = function newNetworkModules
     }
 
     const RECONNECT_DELAY = 10 * 1000
-    const HEALTH_CHECK_DELAY = 1 * 1000
     let intervalIdConnectToPeers
-    let intervalIdCheckConnectedToPeers
 
     return thisObject
 
     function finalize() {
         thisObject.peers = undefined
-        clearTimeout(intervalIdConnectToPeers)
-        clearInterval(intervalIdCheckConnectedToPeers)
+        clearInterval(intervalIdConnectToPeers)
     }
 
     async function initialize(
@@ -43,13 +40,13 @@ exports.newNetworkModulesP2PNetworkNodesConnectedTo = function newNetworkModules
     ) {
 
         thisObject.peers = []
+
         connectToPeers()
-        intervalIdCheckConnectedToPeers = setInterval(checkConnectedPeers, HEALTH_CHECK_DELAY)
+        intervalIdConnectToPeers = setInterval(connectToPeers, RECONNECT_DELAY);
 
         async function connectToPeers() {
 
             if (thisObject.peers.length >= maxOutgoingPeers) {
-                intervalIdConnectToPeers = setTimeout(connectToPeers, RECONNECT_DELAY)
                 return
             }
 
@@ -64,17 +61,14 @@ exports.newNetworkModulesP2PNetworkNodesConnectedTo = function newNetworkModules
                 }
 
                 peer.p2pNetworkNode = p2pNetwork.p2pNodesToConnect[i]
-                if (peer.p2pNetworkNode.node.networkInterfaces === undefined) {
-                    continue
-                }
                 if (isPeerConnected(peer) === true) {
                     continue
                 }
                 peer.webSocketsClient = SA.projects.network.modules.webSocketsNetworkClient.newNetworkModulesWebSocketsNetworkClient()
                 await peer.webSocketsClient.initialize(
-                    callerRole,
-                    p2pNetworkClientIdentity,
-                    peer.p2pNetworkNode,
+                    callerRole, 
+                    p2pNetworkClientIdentity, 
+                    peer.p2pNetworkNode, 
                     p2pNetworkClient,
                     onConnectionClosed
                 )
@@ -87,14 +81,9 @@ exports.newNetworkModulesP2PNetworkNodesConnectedTo = function newNetworkModules
 
                 function onError(err) {
                     if (err !== undefined) {
-                        SA.logger.error('P2P Network Peers -> onError -> While connecting to node -> ' + peer.p2pNetworkNode.userProfile.config.codeName + ' -> ' + peer.p2pNetworkNode.node.name + ' -> ' + err.message)
+                        console.log('[ERROR] P2P Network Peers -> onError -> While connecting to node -> ' + peer.p2pNetworkNode.userProfile.config.codeName + ' -> ' + peer.p2pNetworkNode.node.name + ' -> ' + err.message)
                     } else {
-                        /*
-                        DEBUG NOTE: If you are having trouble undestanding why you can not connect to a certain network node, then you can activate the following Console Logs, otherwise you keep them commented out.
-                        */      
-                        /*                  
-                        SA.logger.warn('P2P Network Peers -> onError -> Peer Not Available at the Moment -> ' + peer.p2pNetworkNode.userProfile.config.codeName + ' -> ' + peer.p2pNetworkNode.node.name)
-                        */
+                        console.log('[WARN] P2P Network Peers -> onError -> Peer Not Available at the Moment -> ' + peer.p2pNetworkNode.userProfile.config.codeName + ' -> ' + peer.p2pNetworkNode.node.name)
                     }
                 }
 
@@ -117,76 +106,16 @@ exports.newNetworkModulesP2PNetworkNodesConnectedTo = function newNetworkModules
                     }
                 }
             }
-
-            /* Reschedule execution after connectToPeers() execution finalizes. Not using intervals here to avoid duplicate connections. */
-            intervalIdConnectToPeers = setTimeout(connectToPeers, RECONNECT_DELAY)
-        }
-
-        function checkConnectedPeers() {
-            for (let i = 0; i < thisObject.peers.length; i++) {
-                let peer = thisObject.peers[i]
-                if (peer.webSocketsClient.socketNetworkClients.isConnected !== true) {
-                    thisObject.peers.splice(i, 1)
-                    return
-                }
-            }
         }
     }
 
-    async function sendMessage(message, networkNodeUserProfile) {
-        if (thisObject.peers.length === 0) {
-            SA.logger.warn('There are no network nodes available to process this message. Please try again later.')
-            let response = {
-                result: 'Error',
-                message: 'No Network Node Available.'
-            }
-            return response
-        }
+    async function sendMessage(message) {
         /*
-        If an specific user profile was provided, we will use a Network Node belonging to this User Profile,
-        otherwise we will use a random chosen network node.
+        This function will send the message from a random picked network node
+        selected from the array of already connected peers.
         */
-        let peer
-        if (networkNodeUserProfile === undefined) {
-            /*    
-            We will send the message to a random picked network node
-            selected from the array of already connected peers.
-            */
-            let peerIndex = Math.max(Math.round(Math.random() * thisObject.peers.length) - 1, 0)
-            peer = thisObject.peers[peerIndex]
-            if (peer === undefined) {
-                SA.logger.error('Ramdomly Selected Peer Undefined. Please try again later.')
-                let response = {
-                    result: 'Error',
-                    message: 'Peer Undefined.'
-                }
-                return response
-            }
-        } else {
-            /*   p2pNetworkNode.userProfile.name 
-            We will find a network node belonging to the provided user profile
-            */
-            for (let i = 0; i < thisObject.peers.length; i++) {
-                let nextPeer = thisObject.peers[i]
-                if (nextPeer.p2pNetworkNode.userProfile.name === networkNodeUserProfile) {
-                    peer = nextPeer
-                    break
-                }
-            }
-            if (peer === undefined) {
-                SA.logger.error('No Network Node belonging to User Profile = ' + networkNodeUserProfile + ' available at the moment. Please try again later.')
-                let response = {
-                    result: 'Error',
-                    message: 'Peer Undefined.'
-                }
-                return response
-            }
-        }
-
-        let response = await peer.webSocketsClient.socketNetworkClients.sendMessage(message)
-        if (response.result === 'Error' && response.message === 'Websockets Connection Not Ready.') {
-            thisObject.peers.splice(peerIndex, 1)
-        }
-        return response
+        let peerIndex = Math.max(Math.round(Math.random() * thisObject.peers.length) - 1, 0)
+        let peer = thisObject.peers[peerIndex]
+        return await peer.webSocketsClient.sendMessage(message)
     }
 }

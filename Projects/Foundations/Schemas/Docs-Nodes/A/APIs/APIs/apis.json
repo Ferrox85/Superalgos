@@ -1,26 +1,12 @@
 {
     "type": "APIs",
     "definition": {
-        "text": "Write the definition for this Node.",
-        "translations": [
-            {
-                "language": "TR",
-                "text": "Bu Düğümün tanımını yazın.",
-                "updated": 1652023176820
-            }
-        ]
+        "text": "Write the definition for this Node."
     },
     "paragraphs": [
         {
             "style": "Text",
-            "text": "Right click and select the pencil button to enter edit mode.",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Düzenleme moduna girmek için sağ tıklayın ve kalem düğmesini seçin.",
-                    "updated": 1652023185626
-                }
-            ]
+            "text": "Right click and select the pencil button to enter edit mode."
         }
     ]
 }

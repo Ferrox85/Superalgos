@@ -12,11 +12,6 @@
                 "language": "DE",
                 "text": "Die JavaScript Code Node kann einen beliebigen Ausschnitt eines gültigen JavaScript Skripts enthalten.",
                 "updated": 1639913649455
-            },
-            {
-                "language": "TR",
-                "text": "JavaScript kod düğümü, geçerli JavaScript'in herhangi bir parçacığını içerebilir.",
-                "updated": 1656053914347
             }
         ]
     },
@@ -38,11 +33,6 @@
                     "language": "DE",
                     "text": "Das System bietet Entwicklern große Flexibilität, da jeder gültige JavaScript-Code zulässig ist.",
                     "updated": 1639913683475
-                },
-                {
-                    "language": "TR",
-                    "text": "Sistem, tüm geçerli JavaScript kodlarına izin verildiğinden geliştiricilere büyük esneklik sağlar.",
-                    "updated": 1656053938680
                 }
             ]
         }

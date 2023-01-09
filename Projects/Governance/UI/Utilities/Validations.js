@@ -1,8 +1,7 @@
 function newGovernanceUtilitiesValidations() {
     let thisObject = {
         onlyOneProgram: onlyOneProgram,
-        onlyOneProgramBasedOnConfigProperty: onlyOneProgramBasedOnConfigProperty,
-        onlyOneProgramBasedOnMultipleConfigProperties: onlyOneProgramBasedOnMultipleConfigProperties
+        onlyOneProgramBasedOnConfigProperty: onlyOneProgramBasedOnConfigProperty
     }
 
     return thisObject
@@ -36,30 +35,6 @@ function newGovernanceUtilitiesValidations() {
                 let program = programs[i]
                 let propertyValue = UI.projects.visualScripting.utilities.nodeConfig.loadConfigProperty(program.payload, configProperetyName)
                 if (propertyValue === configProperetyValue) {
-                    return program
-                }
-            }
-        }
-    }
-
-    function onlyOneProgramBasedOnMultipleConfigProperties(userProfile, programNodeType, configPropertyObject) {
-        /*
-         Find all the nodes representing the current program. All parameters passed in the configPropertyObject must be configured.
-         */
-        let programs = UI.projects.visualScripting.utilities.branches.nodeBranchToArray(userProfile, programNodeType)
-        if (programs !== undefined) {
-            for (let i = 0; i < programs.length; i++) {
-                let program = programs[i]
-                let valid = true
-                for (let configPropertyName in configPropertyObject) {
-                    let configPropertyValue = configPropertyObject[configPropertyName]
-                    let propertyValue = UI.projects.visualScripting.utilities.nodeConfig.loadConfigProperty(program.payload, configPropertyName)
-                    if ((propertyValue === undefined || propertyValue === '') && configPropertyValue === null) { continue }
-                    if (propertyValue !== configPropertyValue) { 
-                        valid = false
-                    }
-                }
-                if (valid === true) {
                     return program
                 }
             }

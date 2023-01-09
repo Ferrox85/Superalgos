@@ -1,4 +1,4 @@
-exports.newTradingSignalsModulesOutgoingCandleSignals = function () {
+exports.newTradingSignalsModulesOutgoingCandleSignals = function (processIndex) {
 
     let thisObject = {
         broadcastSignal: broadcastSignal,
@@ -8,14 +8,17 @@ exports.newTradingSignalsModulesOutgoingCandleSignals = function () {
     }
 
     let socialTradingBotsMap
+    let web3
     return thisObject
 
     function initialize() {
         socialTradingBotsMap = new Map()
+        web3 = new SA.nodeModules.web3()
     }
 
     function finalize() {
         socialTradingBotsMap = undefined
+        web3 = undefined
     }
 
     function broadcastSignal(tradingSignalMessage, socialTradingBot) {
@@ -46,23 +49,18 @@ exports.newTradingSignalsModulesOutgoingCandleSignals = function () {
 
         if (socialTradingBot === undefined) { return }
         if (socialTradingBot.config === undefined) { return }
+        let socialTradingBotCodeName = socialTradingBot.config.codeName
         if (socialTradingBot.signingAccount === undefined) { return }
 
-        let signalMessage = {
-            signalId: SA.projects.foundations.utilities.miscellaneousFunctions.genereteUniqueId(), 
-            originSocialTradingBotId: socialTradingBot.id,
-            fileKey: fileKey
-        }
-
-        let messageHeader = {
-            requestType: 'Signal',
-            networkService: 'Trading Signals',
-            signalMessage: JSON.stringify(signalMessage)
+        let signature = await web3.eth.accounts.sign(JSON.stringify(fileKey), SA.secrets.signingAccountSecrets.map.get(socialTradingBotCodeName).privateKey)
+        let signal = {
+            fileKey: fileKey,
+            socialTradingBot: {
+                id: socialTradingBot.id
+            },
+            signature: signature
         }
  
-        let response = await TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClient.tradingSignalsNetworkServiceClient.sendMessage(messageHeader)
-        if (response.result !== 'Ok') {
-            TS.logger.error('broadcastFileKey -> Failed to send a Signal to the P2P Network -> response.message = ' + response.message)
-        }
+        TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkStart.sendMessage(signal, "Trading Signals")
     }
 }

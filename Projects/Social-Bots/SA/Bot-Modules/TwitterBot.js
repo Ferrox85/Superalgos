@@ -103,10 +103,10 @@ exports.newSocialBotsBotModulesTwitterBot = function (processIndex) {
     }
 
     function logInfo(message) {
-        SA.logger.info(message)
+        console.log('[INFO]', message)
     }
 
     function logError(message) {
-        SA.logger.error(message)
+        console.error('[ERROR]', message)
     }
 }

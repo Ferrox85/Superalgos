@@ -83,7 +83,7 @@ function newWorkspace() {
                         let nodeActionSwitch = eval('new' + project.replaceAll('-', '') + 'NodeActionSwitch()')
                         nodeActionSwitchesByProject.set(project, nodeActionSwitch)
                     } catch (err) {
-                        console.log((new Date()).toISOString(), '[WARN] Action Switch for project ' + project + ' not found.')
+                        console.log('[WARN] Action Switch for project ' + project + ' not found.')
                     }
                 }
                 /* … and the system action switches map */
@@ -93,7 +93,7 @@ function newWorkspace() {
                         let systemActionSwitch = eval('new' + project.replaceAll('-', '') + 'SystemActionSwitch()')
                         systemActionSwitchesByProject.set(project, systemActionSwitch)
                     } catch (err) {
-                        console.log((new Date()).toISOString(), '[WARN] System Action Switch for project ' + project + ' not found.')
+                        console.log('[WARN] System Action Switch for project ' + project + ' not found.')
                     }
                 }
 
@@ -231,7 +231,7 @@ function newWorkspace() {
                             systemActionSwitch = systemActionSwitchesByProject.get(project.name)
                         }
                         if (systemActionSwitch === undefined) {
-                            console.log((new Date()).toISOString(), '[ERROR] System Action Switch for project ' + project.name + ' could not be found.')
+                            console.log('[ERROR] System Action Switch for project ' + project.name + ' could not be found.')
                             continue
                         }
                         /* for a menu item that has an action: {"label": "…", "action": {…}} */
@@ -314,10 +314,10 @@ function newWorkspace() {
 
         let url = 'SaveWorkspace/' + workspace.name
         if (textToSave.indexOf('null,null,null,null,null,null,null,null,null') >= 0) {
-            console.log((new Date()).toISOString(), '[WARN] The system tried to save an empty workspace. Saving cancelled.')
+            console.log('[WARN] The system tried to save an empty workspace. Saving cancelled.')
             return
         }
-        httpCompressedRequest(textToSave, url, onResponse)
+        httpRequest(textToSave, url, onResponse)
         savePlugins()
         return true
 
@@ -457,9 +457,9 @@ function newWorkspace() {
 
                             let result = await executeAction({ node: thisObject.workspaceNode, name: 'Delete Workspace', project: 'Visual-Scripting', callBackFunction: onDeleted })
                             if (result === false) {
-                                console.log((new Date()).toISOString(), '[ERROR] Could not replace the current workspace because there was a problem removing one node from memory.')
-                                console.log((new Date()).toISOString(), '[ERROR] The system is at an inconsistent state and your workspace is partially deleted. Saving has been disabled to prevent data loss.')
-                                console.log((new Date()).toISOString(), '[ERROR] The only thing you can do now is to fix the APP SCHEMA and refresh the page to reload the previously saved workspace again.')
+                                console.log('[ERROR] Could not replace the current workspace because there was a problem removing one node from memory.')
+                                console.log('[ERROR] The system is at an inconsistent state and your workspace is partially deleted. Saving has been disabled to prevent data loss.')
+                                console.log('[ERROR] The only thing you can do now is to fix the APP SCHEMA and refresh the page to reload the previously saved workspace again.')
                                 workingAtTask = 0
                                 return
                             }
@@ -547,7 +547,6 @@ function newWorkspace() {
                         thisObject.isInitialized = true
 
                         UI.projects.governance.spaces.reportsSpace.reset()
-                        UI.projects.contributions.spaces.contributionsSpace.reset()
                         UI.projects.governance.spaces.userProfileSpace.reset()
                         UI.projects.foundations.spaces.codeEditorSpace.reset()
                         await UI.projects.education.spaces.docsSpace.reset()
@@ -812,7 +811,7 @@ function newWorkspace() {
             }
 
             thisObject.workspaceNode.rootNodes.push(droppedNode)
-            executeAction({ isInternal: false, node: droppedNode, name: 'Create UI Object', project: 'Visual-Scripting', extraParameter: positionOffset })
+            executeAction({ node: droppedNode, name: 'Create UI Object', project: 'Visual-Scripting', extraParameter: positionOffset })
             executeAction({ name: 'Connect Children to Reference Parents', project: 'Visual-Scripting' })
 
             // Recreate autocomplete models
@@ -841,7 +840,7 @@ function newWorkspace() {
 
         let nodeActionSwitch = nodeActionSwitchesByProject.get(action.project)
         if (nodeActionSwitch === undefined) {
-            console.log((new Date()).toISOString(), '[ERROR] Action Switch for project ' + action.project + ' could not be found.')
+            console.log('[ERROR] Action Switch for project ' + action.project + ' could not be found.')
             return
         }
         return nodeActionSwitch.executeAction(action)

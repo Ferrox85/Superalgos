@@ -14,6 +14,7 @@
     async function start(statusDependencies, dataDependenciesModule, callBackFunction) {
         try {
 
+            let dataFiles = new Map()
             let multiTimeFrameDataFiles = new Map()
             TS.projects.foundations.globals.processModuleObjects.MODULE_OBJECTS_BY_PROCESS_INDEX_MAP.get(processIndex).ENGINE_MODULE_OBJECT = TS.projects.portfolioManagement.botModules.portfolioEngine.newPortfolioManagementBotModulesPortfolioEngine(processIndex)
             let portfolioOutputModuleObject = TS.projects.portfolioManagement.botModules.portfolioOutput.newPortfolioManagementBotModulesPortfolioOutput(processIndex)
@@ -74,6 +75,7 @@
             if (
                 await TS.projects.foundations.functionLibraries.dataDependenciesFunctions.processSingleFiles(
                     processIndex,
+                    dataFiles,
                     multiTimeFrameDataFiles,
                     dataDependenciesModule
                 ) === false) {
@@ -84,6 +86,7 @@
 
             if (await TS.projects.foundations.functionLibraries.dataDependenciesFunctions.processMarketFiles(
                 processIndex,
+                dataFiles,
                 multiTimeFrameDataFiles,
                 dataDependenciesModule,
                 currentTimeFrame,
@@ -157,6 +160,7 @@
                     if (
                         await TS.projects.foundations.functionLibraries.dataDependenciesFunctions.processDailyFiles(
                             processIndex,
+                            dataFiles,
                             multiTimeFrameDataFiles,
                             dataDependenciesModule,
                             currentTimeFrame,
@@ -275,7 +279,7 @@
 
             function checkIfSessionMustStop() {
 
-                if (TS.projects.foundations.globals.processConstants.CONSTANTS_BY_PROCESS_INDEX_MAP.get(processIndex).SESSION_NODE.type === 'Backtesting Portfolio Session') {
+                if (TS.projects.foundations.globals.processConstants.CONSTANTS_BY_PROCESS_INDEX_MAP.get(processIndex).SESSION_NODE.type === 'Backtesting Session') {
                     /*
                     Backtests needs only one execution of this process to complete.
                     */

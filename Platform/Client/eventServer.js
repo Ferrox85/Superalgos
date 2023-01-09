@@ -1,15 +1,14 @@
 ﻿exports.newEventServer = function newEventServer() {
 
-    let eventHandlers = new Map()
-    let counter = 0
-
     let thisObject = {
         initialize: initialize,
         finalize: finalize,
         run: run,
-        onMessage: onMessage,
-        eventHandlers: eventHandlers
+        onMessage: onMessage
     }
+
+    let eventHandlers = new Map()
+    let counter = 0
 
     return thisObject
 
@@ -134,14 +133,14 @@
                         /* No matter if it is the listener or the Origin Social Entity the one that acts first, if an event handler does not exist we just create it and keep it there. */
 
                     }
-                    //PL.logger.info("Client -> Events Server -> Raising Event " + command.eventHandlerName + " " + command.eventType)
+                    //console.log("[INFO] Client -> Events Server -> Raising Event " + command.eventHandlerName + " " + command.eventType)
                     eventHandler.raiseEvent(command.eventType, command.event)
                     sendResponse(global.DEFAULT_OK_RESPONSE)
                     return
                 }
             }
 
-            PL.logger.warn("Client -> Events Server -> onMessage -> Unknown Command Received:" + data)
+            console.log("[WARN] Client -> Events Server -> onMessage -> Unknown Command Received:" + data)
 
             function sendResponse(message) {
                 if (command.callerId !== undefined) {
@@ -152,8 +151,8 @@
             }
 
         } catch (err) {
-            PL.logger.error('Client -> Events Server -> onMessage -> Bad Command Received:' + data)
-            PL.logger.error('Client -> Events Server -> onMessage -> An Error Happened:' + err.stack)
+            console.log("[ERROR] Client -> Events Server -> onMessage -> Bad Command Received:" + data)
+            console.log("[ERROR] Client -> Events Server -> onMessage -> An Error Happened:" + err.stack)
         }
     }
 

@@ -23,9 +23,9 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
     let portfolioSessionsFoundAtWorkspace
     let learningSessionsFoundAtWorkspace
     let tutorialsToPlay
-
+    
     return thisObject
-
+    
     function getNodeById(nodeId) {
         return mapOfNodes.get(nodeId)
     }
@@ -37,7 +37,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
     function deleteNodeFromMap(nodeId) {
         mapOfNodes.delete(nodeId)
     }
-
+    
     function recreateWorkspace(node, callBackFunction) {
         mapOfNodes = new Map()
         mapOfReferenceChildren = new Map()
@@ -199,7 +199,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                     function onFileReceived(err, text, response) {
 
                         if (err && err.result !== GLOBAL.DEFAULT_OK_RESPONSE.result) {
-                            console.log((new Date()).toISOString(), '[WARN] Cannot load plugin ' + pluginFolder + ' ' + name + '. The Workspace will be loaded with this plugin file missing.')
+                            console.log('[WARN] Cannot load plugin ' + pluginFolder + ' ' + name + '. The Workspace will be loaded with this plugin file missing.')
                         } else {
 
                             let receivedNode
@@ -207,9 +207,9 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                             try {
                                 receivedNode = JSON.parse(text)
                             } catch (err) {
-                                console.log((new Date()).toISOString(), '[ERROR] pluginAllTheseFiles -> Cannot load plugin ' + pluginFolder + ' ' + name + '. Received an invalid JSON object from the client.')
-                                console.log((new Date()).toISOString(), '[ERROR] pluginAllTheseFiles -> text = ' + text)
-                                console.log((new Date()).toISOString(), '[ERROR] pluginAllTheseFiles -> err.stack = ' + err.stack)
+                                console.log('[ERROR] pluginAllTheseFiles -> Cannot load plugin ' + pluginFolder + ' ' + name + '. Received an invalid JSON object from the client.')
+                                console.log('[ERROR] pluginAllTheseFiles -> text = ' + text)
+                                console.log('[ERROR] pluginAllTheseFiles -> err.stack = ' + err.stack)
                                 return
                             }
 
@@ -220,7 +220,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                             for (let i = 0; i < node.rootNodes.length; i++) {
                                 let rootNode = node.rootNodes[i]
                                 if (rootNode.id === receivedNode.id) {
-                                    console.log((new Date()).toISOString(), '[WARN] The node with name "' + rootNode.name + '" and type "' + rootNode.type + '" will be replaced by the node with name "' + receivedNode.name + '" and type "' + receivedNode.type + '" because they both have the same node.id')
+                                    console.log('[WARN] The node with name "' + rootNode.name + '" and type "' + rootNode.type + '" will be replaced by the node with name "' + receivedNode.name + '" and type "' + receivedNode.type + '" because they both have the same node.id')
                                     node.rootNodes.splice(i, 1)
                                     break
                                 }
@@ -286,8 +286,8 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                     }
                 }
             }
-            async function endLoop() {
-                await tryToConnectChildrenWithReferenceParents()
+            function endLoop() {
+                tryToConnectChildrenWithReferenceParents()
 
                 if (callBackFunction !== undefined) {
                     callBackFunction() // The recreation of the workspace is complete
@@ -354,7 +354,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                     //node.payload.referenceParent = mapOfNodes.get(node.payload.referenceParent.id)
                     referenceParent = await mapOfNodes.get(node.payload.referenceParent.id)
                     if (node.payload.referenceParent === undefined) {
-                        //console.log((new Date()).toISOString(), '[WARN]' + node.type + ' ' + node.name + ' reference parent lost during re-binding phase.')
+                        //console.log('[WARN]' + node.type + ' ' + node.name + ' reference parent lost during re-binding phase.')
                     }
                     continue  // We were referencing a deleted node, so we replace it potentially with a newly created one.
                 } else {
@@ -370,7 +370,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                     // Reestablish based on Id
                     //node.payload.referenceParent = mapOfNodes.get(node.savedPayload.referenceParent.id)
                     let referenceParent = await mapOfNodes.get(node.savedPayload.referenceParent.id)
-
+                    
                     if (referenceParent !== undefined) {
                         if (referenceParent.cleaned !== true) {
                             UI.projects.visualScripting.nodeActionFunctions.attachDetach.referenceAttachNode(node, referenceParent)
@@ -422,7 +422,6 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                             function getNextNodeFromPath(node, pathName, pathType) {
                                 let schemaDocument = getSchemaDocument(node)
                                 if (schemaDocument === undefined) { return }
-                                if (schemaDocument.childrenNodesProperties === undefined) { return }
                                 let nextNode = undefined
                                 for (let i = 0; i < schemaDocument.childrenNodesProperties.length; i++) {
 
@@ -453,6 +452,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                                             break
                                         }
                                     }
+
                                 }
                             }
                         }
@@ -670,11 +670,6 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
 
         let parentSchemaDocument
         /* Resolve Initial Values */
-        if ((object.type === 'Task Manager' || object.type === 'Task') && project == 'Portfolio-Management') {
-            object.project = 'Foundations';
-        } else if (object.type === 'Portfolio Bot Instance') {
-            object.project = 'Portfolio-Management';
-        }
         let schemaDocument = getSchemaDocument(object, project)
 
         if (schemaDocument === undefined) {
@@ -934,9 +929,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
                 payload.referenceChildren = new Map()
                 for (let referenceChild of node.savedPayload.referenceChildren) {
                     referenceChild = mapOfNodes.get(referenceChild.id)
-                    if (referenceChild !== undefined) {
-                        payload.referenceChildren.set(referenceChild.id, referenceChild)
-                    }
+                    payload.referenceChildren.set(referenceChild.id, referenceChild)
                 }
             }
         }
@@ -1060,7 +1053,7 @@ function newVisualScritingFunctionLibraryUiObjectsFromNodes() {
         } else {
             nodes = UI.projects.visualScripting.utilities.branches.nodeBranchToArray(topNode)
         }
-
+        
         for (const node of nodes) {
             if (node.payload !== undefined) {
                 if (node.payload.referenceChildren !== undefined) {

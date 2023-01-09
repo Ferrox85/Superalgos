@@ -15,11 +15,6 @@
                 "language": "RU",
                 "text": "В целом, Claim Votes позволяет вам поддерживать претензии других пользователей. Термин «Claim Votes» является обобщением, относящимся к одному или ко всем существующим типам узлов: Position Claim Vote, Feature Claim Vote и Asset Claim Vote.",
                 "updated": 1639136670173
-            },
-            {
-                "language": "TR",
-                "text": "Superalgos'taki Akışkan Demokrasi biçimi, doğrudan ve temsili demokrasinin unsurlarını kullanır. Kullanıcılar, doğrudan demokraside olduğu gibi doğrudan oy kullanma hakkına sahiptir, ancak aynı zamanda temsili bir demokraside olduğu gibi, Oylama Yetkilerini kendi adlarına oy kullanması için başka birine devretme seçeneğine de sahiptir.",
-                "updated": 1646304750199
             }
         ]
     },
@@ -42,11 +37,6 @@
                     "language": "RU",
                     "text": "Узел Votes Switch",
                     "updated": 1639136936174
-                },
-                {
-                    "language": "TR",
-                    "text": "Oy Düğümü Anahtarı",
-                    "updated": 1646303761243
                 }
             ]
         },
@@ -69,11 +59,6 @@
                     "language": "RU",
                     "text": "Понятие Claim Votes",
                     "updated": 1639137831201
-                },
-                {
-                    "language": "TR",
-                    "text": "Talep Oyları Hakkında",
-                    "updated": 1646303800110
                 }
             ]
         },
@@ -84,14 +69,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Claim Votes Switch",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Oy Anahtarını Talep Et",
-                    "updated": 1646303944530
-                }
-            ]
+            "text": "Claim Votes Switch"
         },
         {
             "style": "Include",
@@ -112,11 +90,6 @@
                     "language": "RU",
                     "text": "Три типа Claim Votes",
                     "updated": 1639138280004
-                },
-                {
-                    "language": "TR",
-                    "text": "Üç Tür Hak Talebi Oyu",
-                    "updated": 1646303975165
                 }
             ]
         },
@@ -126,14 +99,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Asset Claim Vote",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Varlık Talebi Oyu",
-                    "updated": 1646303991609
-                }
-            ]
+            "text": "Asset Claim Vote"
         },
         {
             "style": "Include",
@@ -141,14 +107,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Feature Claim Vote",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Özellik Talep Oyu",
-                    "updated": 1646304023821
-                }
-            ]
+            "text": "Feature Claim Vote"
         },
         {
             "style": "Include",
@@ -156,14 +115,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Position Claim Vote",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Pozisyon Talep Oyu",
-                    "updated": 1646304040155
-                }
-            ]
+            "text": "Position Claim Vote"
         },
         {
             "style": "Include",
@@ -178,11 +130,6 @@
                     "language": "RU",
                     "text": "Понятие Weight Votes",
                     "updated": 1639137817799
-                },
-                {
-                    "language": "TR",
-                    "text": "Ağırlık Oyları Hakkında",
-                    "updated": 1646304052184
                 }
             ]
         },
@@ -197,14 +144,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Weight Votes Switch",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Ağırlık Oy Anahtarı",
-                    "updated": 1646304562609
-                }
-            ]
+            "text": "Weight Votes Switch"
         },
         {
             "style": "Include",
@@ -225,11 +165,6 @@
                     "language": "RU",
                     "text": "Три типа Weight Votes",
                     "updated": 1639138306003
-                },
-                {
-                    "language": "TR",
-                    "text": "Üç Tür Ağırlık Oyu",
-                    "updated": 1646304601355
                 }
             ]
         },
@@ -243,14 +178,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Asset Weight Vote",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Varlık Ağırlığı Oy",
-                    "updated": 1646304618261
-                }
-            ]
+            "text": "Asset Weight Vote"
         },
         {
             "style": "Include",
@@ -258,14 +186,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Feature Weight Vote",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Özellik Ağırlık Oy",
-                    "updated": 1646304638675
-                }
-            ]
+            "text": "Feature Weight Vote"
         },
         {
             "style": "Include",
@@ -273,14 +194,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "Position Weight Vote",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Pozisyon Ağırlık Oy",
-                    "updated": 1646304653257
-                }
-            ]
+            "text": "Position Weight Vote"
         },
         {
             "style": "Include",
@@ -295,11 +209,6 @@
                     "language": "RU",
                     "text": "Понятие Profile Votes",
                     "updated": 1639139573996
-                },
-                {
-                    "language": "TR",
-                    "text": "Kullanıcı Profili Oyları Hakkında",
-                    "updated": 1646304665634
                 }
             ]
         },
@@ -310,14 +219,7 @@
         },
         {
             "style": "Subtitle",
-            "text": "User Profile Switch",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Kullanıcı Profili Anahtarı",
-                    "updated": 1646304763092
-                }
-            ]
+            "text": "User Profile Switch"
         },
         {
             "style": "Include",
@@ -331,14 +233,7 @@
         {
             "style": "Title",
             "text": "User Profile Vote Node",
-            "updated": 1624735333779,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Kullanıcı Profili Oy Düğümü",
-                    "updated": 1646304783055
-                }
-            ]
+            "updated": 1624735333779
         },
         {
             "style": "Include",

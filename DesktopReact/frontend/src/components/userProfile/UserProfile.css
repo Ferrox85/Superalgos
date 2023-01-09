@@ -1,0 +1,6 @@
+.middleSection {
+    min-width: 20rem;
+    max-width: 40rem;
+    padding: 0.5rem;
+    overflow-y: auto;
+}

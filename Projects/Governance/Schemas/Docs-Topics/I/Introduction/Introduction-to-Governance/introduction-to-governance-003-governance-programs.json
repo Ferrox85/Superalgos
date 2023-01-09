@@ -15,11 +15,6 @@
                 "language": "RU",
                 "text": "Сообщество может участвовать в нескольких программах управления, каждая из которых предназначена для достижения определенной цели. Программы сгруппированы по следующим доменам: Onboarding Programs, Community Building Programs, Votes and Claims Programs и Financial Programs.",
                 "updated": 1638979242897
-            },
-            {
-                "language": "TR",
-                "text": "Topluluk üyelerinin her biri belirli bir hedefi gerçekleştirmek için tasarlanmış birden fazla Yönetim Programına katılabilir. Programlar şu alanlarda gruplandırılmıştır: Oryantasyon Programları (Onboarding Programs), Topluluk Oluşturma Programları (Community Building Programs), Oylar ve Talep Programları (Votes and Claims Programs) ve Mali Programlar (Financial Programs).\n\n, , Votes and Claims Programs, and Financial Programs.",
-                "updated": 1642709599368
             }
         ]
     },
@@ -27,323 +22,115 @@
         {
             "style": "Title",
             "text": "Onboarding Programs",
-            "updated": 1630425562962,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "İşe Alım Programları",
-                    "updated": 1654395498855,
-                    "style": "Title"
-                }
-            ]
+            "updated": 1630425562962
         },
         {
             "style": "Include",
             "text": "Governance->Node->Onboarding Programs->Definition",
-            "updated": 1630425699135,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Düğüm->İşe Alım Programları->Tanım",
-                    "updated": 1654395505823,
-                    "style": "Include"
-                }
-            ]
+            "updated": 1630425699135
         },
         {
             "style": "Subtitle",
             "text": "Airdrop Program",
-            "updated": 1630425792121,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Airdrop Programı",
-                    "updated": 1654395512141,
-                    "style": "Subtitle"
-                }
-            ]
+            "updated": 1630425792121
         },
         {
             "style": "Include",
             "text": "Governance->Node->Airdrop Program->Definition",
-            "updated": 1630425814203,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetim->Düğüm->Airdrop Programı->Tanım",
-                    "updated": 1654395518081,
-                    "style": "Include"
-                }
-            ]
+            "updated": 1630425814203
         },
         {
             "style": "Subtitle",
-            "text": "Github Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Github Programı",
-                    "updated": 1654395525089,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Github Program"
         },
         {
             "style": "Include",
             "text": "Governance->Node->Github Program->Definition",
-            "updated": 1630425836224,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Node->Github Programı->Tanımlama",
-                    "updated": 1654395532283,
-                    "style": "Include"
-                }
-            ]
+            "updated": 1630425836224
         },
         {
             "style": "Title",
-            "text": "Community Building Programs",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Topluluk Oluşturma Programları",
-                    "updated": 1654395538413,
-                    "style": "Title"
-                }
-            ]
+            "text": "Community Building Programs"
         },
         {
             "style": "Include",
             "text": "Governance->Node->Community Building Programs->Definition",
-            "updated": 1630425759750,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Node->Topluluk Oluşturma Programları->Tanım",
-                    "updated": 1654395544878,
-                    "style": "Include"
-                }
-            ]
+            "updated": 1630425759750
         },
         {
             "style": "Subtitle",
-            "text": "Referral Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönlendirme Programı",
-                    "updated": 1654395551073,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Referral Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Referral Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetim->Düğüm->Yönlendirme Programı->Tanım",
-                    "updated": 1654395556863,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Referral Program->Definition"
         },
         {
             "style": "Subtitle",
-            "text": "Support Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Destek Programı",
-                    "updated": 1654395562606,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Support Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Support Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Düğüm->Destek Programı->Tanım",
-                    "updated": 1654395569327,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Support Program->Definition"
         },
         {
             "style": "Subtitle",
-            "text": "Mentorship Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Mentorluk Programı",
-                    "updated": 1654395575683,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Mentorship Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Mentorship Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Node->Mentorluk Programı->Tanım",
-                    "updated": 1654395581388,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Mentorship Program->Definition"
         },
         {
             "style": "Title",
             "text": "Votes And Claims Programs",
-            "updated": 1630425627375,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Oylar ve Hasar Programları",
-                    "updated": 1654395586707,
-                    "style": "Title"
-                }
-            ]
+            "updated": 1630425627375
         },
         {
             "style": "Include",
             "text": "Governance->Node->Votes And Claims Programs->Definition",
-            "updated": 1630425763995,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetim->Düğüm->Oylar ve Talep Programları->Tanım",
-                    "updated": 1654395593036,
-                    "style": "Include"
-                }
-            ]
+            "updated": 1630425763995
         },
         {
             "style": "Subtitle",
-            "text": "Claims Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Tazminat Programı",
-                    "updated": 1654395598988,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Claims Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Claims Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetim->Düğüm->Hak Talepleri Programı->Tanım",
-                    "updated": 1654395604847,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Claims Program->Definition"
         },
         {
             "style": "Subtitle",
-            "text": "Voting Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Oylama Programı",
-                    "updated": 1654395611570,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Voting Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Voting Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Düğüm->Oylama Programı->Tanım",
-                    "updated": 1654395618384,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Voting Program->Definition"
         },
         {
             "style": "Title",
-            "text": "Financial Programs",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Finansal Programlar",
-                    "updated": 1654395624581,
-                    "style": "Title"
-                }
-            ]
+            "text": "Financial Programs"
         },
         {
             "style": "Include",
             "text": "Governance->Node->Financial Programs->Definition",
-            "updated": 1630425768655,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Düğüm->Mali Programlar->Tanım",
-                    "updated": 1654395630354,
-                    "style": "Include"
-                }
-            ]
+            "updated": 1630425768655
         },
         {
             "style": "Subtitle",
-            "text": "Staking Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Staking Programı",
-                    "updated": 1654395637185,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Staking Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Staking Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Düğüm->Staking Programı->Tanım",
-                    "updated": 1654395643079,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Staking Program->Definition"
         },
         {
             "style": "Subtitle",
-            "text": "Delegation Program",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Delegasyon Programı",
-                    "updated": 1654395648925,
-                    "style": "Subtitle"
-                }
-            ]
+            "text": "Delegation Program"
         },
         {
             "style": "Include",
-            "text": "Governance->Node->Delegation Program->Definition",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Yönetişim->Düğüm->Delegasyon Programı->Tanım",
-                    "updated": 1654395654925,
-                    "style": "Include"
-                }
-            ]
+            "text": "Governance->Node->Delegation Program->Definition"
         }
     ]
 }

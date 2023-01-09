@@ -14,11 +14,6 @@
                 "language": "RU",
                 "text": "Используйте этот стиль, чтобы дать читателю совет или сообщить что-то важное.",
                 "updated": 1638533253070
-            },
-            {
-                "language": "TR",
-                "text": "Okuyucuya bir ipucu veya önemli bir şey iletmek için bu stili kullanın.",
-                "updated": 1652384588817
             }
         ]
     },
@@ -36,11 +31,6 @@
                     "language": "RU",
                     "text": "Все, что вы наберете во время редактирования, будет отображаться в поле \"Important\".",
                     "updated": 1638533338902
-                },
-                {
-                    "language": "TR",
-                    "text": "Düzenleme sırasında yazdığınız her şey önemli kutunun içinde işlenecektir.",
-                    "updated": 1652384631995
                 }
             ]
         },
@@ -57,11 +47,6 @@
                     "language": "RU",
                     "text": "Пример:",
                     "updated": 1638533753968
-                },
-                {
-                    "language": "TR",
-                    "text": "Misal:",
-                    "updated": 1652384642645
                 }
             ]
         },
@@ -78,11 +63,6 @@
                     "language": "RU",
                     "text": "Это пример абзаца в важном стиле.",
                     "updated": 1638533381338
-                },
-                {
-                    "language": "TR",
-                    "text": "Bu, önemli tarzda bir paragraf örneğidir.",
-                    "updated": 1652384671694
                 }
             ]
         }

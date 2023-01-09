@@ -18,6 +18,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
 
     async function processSingleFiles(
         processIndex,
+        dataFiles,
         multiTimeFrameDataFiles,
         dataDependenciesModule
     ) {
@@ -33,7 +34,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
             for (let m = 0; m < marketList.length; m++) {
                 let currentMarket = marketList[m]
 
-                let dataFiles = new Map()
+                dataFiles = new Map()
 
                 for (let dependencyIndex = 0; dependencyIndex < dataDependenciesModule.curatedDependencyNodeArray.length; dependencyIndex++) {
                     let dependency = dataDependenciesModule.curatedDependencyNodeArray[dependencyIndex]
@@ -91,6 +92,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
 
     async function processMarketFiles(
         processIndex,
+        dataFiles,
         multiTimeFrameDataFiles,
         dataDependenciesModule,
         currentTimeFrame,
@@ -120,7 +122,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
                     const timeFrame = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][0]
                     const timeFrameLabel = TS.projects.foundations.globals.timeFrames.marketTimeFramesArray()[n][1]
 
-                    let dataFiles = new Map()
+                    dataFiles = new Map()
 
                     /* Current Time Frame detection */
                     if (userDefinedTimeFrame === timeFrameLabel) {
@@ -180,13 +182,8 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
                         }
 
                         let dataFile = JSON.parse(response.text)
-
-                        if(initialDatetime !== undefined && finalDatetime !== undefined  ) {
-                            let trimmedDataFile = trimDataFile(dataFile, datasetModule.node.parentNode.record)
-                            dataFiles.set(dependency.id, trimmedDataFile)
-                        } else {
-                            dataFiles.set(dependency.id, dataFile)
-                        }
+                        let trimmedDataFile = trimDataFile(dataFile, datasetModule.node.parentNode.record)
+                        dataFiles.set(dependency.id, trimmedDataFile)
 
                         function trimDataFile(dataFile, recordDefinition) {
                             /* 
@@ -236,6 +233,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
 
     async function processDailyFiles(
         processIndex,
+        dataFiles,
         multiTimeFrameDataFiles,
         dataDependenciesModule,
         currentTimeFrame,
@@ -278,7 +276,7 @@ exports.newFoundationsFunctionLibrariesDataDependenciesFunctions = function () {
                         currentTimeFrame.label = TS.projects.foundations.globals.timeFrames.dailyTimeFramesArray()[n][1]
                     }
 
-                    let dataFiles = new Map()
+                    dataFiles = new Map()
 
                     /*
                     We will iterate through all dependencies, in order to load the

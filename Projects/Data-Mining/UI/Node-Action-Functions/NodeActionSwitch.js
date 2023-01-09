@@ -22,7 +22,7 @@ function newDataMiningNodeActionSwitch() {
                 {
                     let newUiObjects = await UI.projects.dataMining.nodeActionFunctions.mineFunctions.addAllOutputDatasets(action.node)
 
-                    if (action.isInternal === false && newUiObjects !== undefined && newUiObjects.length > 0) {
+                    if (newUiObjects !== undefined && newUiObjects.length > 0) {
                         let historyObject = {
                             action: action,
                             newUiObjects: newUiObjects,
@@ -38,7 +38,7 @@ function newDataMiningNodeActionSwitch() {
                 {
                     let newUiObjects = await UI.projects.dataMining.nodeActionFunctions.mineFunctions.addAllDataDependencies(action.node)
 
-                    if (action.isInternal === false && newUiObjects !== undefined && newUiObjects.length > 0) {
+                    if (newUiObjects !== undefined && newUiObjects.length > 0) {
                         let historyObject = {
                             action: action,
                             newUiObjects: newUiObjects,
@@ -54,7 +54,7 @@ function newDataMiningNodeActionSwitch() {
                 {
                     let newUiObjects = await UI.projects.dataMining.nodeActionFunctions.mineFunctions.addAllDataMineDataDependencies(action.node, action.rootNodes)
 
-                    if (action.isInternal === false && newUiObjects !== undefined && newUiObjects.length > 0) {
+                    if (newUiObjects !== undefined && newUiObjects.length > 0) {
                         let historyObject = {
                             action: action,
                             newUiObjects: newUiObjects,
@@ -66,13 +66,6 @@ function newDataMiningNodeActionSwitch() {
                     }
                 }
                 break
-
-            case 'Install API Response Field Refs':
-                {
-                  UI.projects.dataMining.nodeActionFunctions.apiMaintenanceFunctions.installAPIResponseFieldRefs(action.node, action.rootNodes)
-                }
-                break
-    
 
             default: {
                 console.log("[WARN] Action sent to Data-Mining Action Switch does not belong here. Verify at the App Schema file of the node that triggered this action that the actionProject is pointing to the right project. -> Action = " + action.name + " -> Action Node Name = " + action.node.name)

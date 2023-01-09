@@ -18,16 +18,6 @@
             "relatedUiObjectProject": "Foundations"
         },
         {
-            "action": "Add UI Object",
-            "actionProject": "Visual-Scripting",
-            "disableIfPropertyIsDefined": true,
-            "propertyToCheckFor": "socialTradingBotReference",
-            "actionFunction": "payload.executeAction",
-            "label": "Add Social Trading Bot Reference",
-            "relatedUiObject": "Social Trading Bot Reference",
-            "relatedUiObjectProject": "Social-Trading"
-        },
-        {
             "action": "Delete UI Object",
             "actionProject": "Visual-Scripting",
             "askConfirmation": true,
@@ -44,7 +34,7 @@
         "config": true
     },
     "initialValues": {
-        "config": "{ \n\"startDate\": \"2021-01-01\", \n\"waitForSignalsToRunNextLoop\": false \n}"
+        "config": "{ \n\"startDate\": \"2021-01-01\"\n}"
     },
     "level": 3,
     "attachingRules": {
@@ -55,13 +45,6 @@
             "name": "processes",
             "type": "array",
             "childType": "Sensor Process Instance",
-            "autoAdd": false
-        },
-        {
-            "name": "socialTradingBotReference",
-            "type": "node",
-            "childType": "Social Trading Bot Reference",
-            "project": "Social-Trading",
             "autoAdd": false
         }
     ],

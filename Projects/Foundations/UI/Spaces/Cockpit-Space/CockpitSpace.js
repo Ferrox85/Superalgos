@@ -365,7 +365,6 @@ function newFoundationsCockpitSpace() {
         browserCanvasContext.lineTo(point6.x, point6.y)
 
         browserCanvasContext.lineWidth = LINE_WIDTH
-        // This below controls the color of the arrow in the pull down bar to open the charting space.
         browserCanvasContext.strokeStyle = 'rgba(' + UI_COLOR.WHITE + ', ' + OPACITY + ')'
         browserCanvasContext.stroke()
     }

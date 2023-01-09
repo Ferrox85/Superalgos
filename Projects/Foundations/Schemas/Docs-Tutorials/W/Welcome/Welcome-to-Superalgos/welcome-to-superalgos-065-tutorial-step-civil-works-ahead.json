@@ -40,11 +40,6 @@
                 "language": "ID",
                 "text": "Jangan heran jika kamu menemukan tanda under construction di sana-sini...",
                 "updated": 1639746541722
-            },
-            {
-                "language": "NL",
-                "text": "Wees niet verbaasd als je hier en daar een bord 'in aanbouw' vindt...",
-                "updated": 1666874868777
             }
         ],
         "updated": 1622200773527
@@ -85,11 +80,6 @@
                     "language": "ID",
                     "text": "Seperti yang aku sebutkan sebelumnya, Superalgos terus berkembang, dan infrastruktur yang dirancang untuk versi mendatang terkadang dapat digabungkan ke versi saat ini dalam paket layanan, bersama dengan perbaikan yang diperlukan dan peningkatan kecil.",
                     "updated": 1639747370491
-                },
-                {
-                    "language": "NL",
-                    "text": "Zoals ik eerder al zei, groeit Superalgos voortdurend, en de infrastructuur die voor de komende versie is ontworpen, kan af en toe worden samengevoegd met de huidige versie in een servicepack, samen met de nodige reparaties en kleine verbeteringen.",
-                    "updated": 1666874908192
                 }
             ]
         },
@@ -111,13 +101,13 @@
                 },
                 {
                     "language": "DE",
-                    "text": "Wenn ihr neugierig seid, was für die kommende Superalgos-Version geplant ist, tretet der Superalgos Develop Telegram-Gruppe bei. https://t.me/superalgosdevelop",
-                    "updated": 1641740323865
+                    "text": "Wenn Sie neugierig sind, was für die kommende Superalgos Version geplant ist, treten Sie der <a href='https://t.me/superalgosdevelop' target='_blank' style='color:blue;'>Superalgos Develop</a> Telegram Gruppe bei. ",
+                    "updated": 1634220334096
                 },
                 {
                     "language": "TR",
-                    "text": "Bir sonraki sürüm içeriğini öğrenebilmek için Telegram Grubumuza Katılın. https://t.me/superalgosdevelop  ",
-                    "updated": 1669921299922
+                    "text": "Bir sonraki sürüm içeriğini öğrenebilmek için Telegram Grubumuza Katılın. https://t.me/superalgosdevelop",
+                    "updated": 1636119227691
                 },
                 {
                     "language": "RU",
@@ -128,11 +118,6 @@
                     "language": "ID",
                     "text": "Jika kamu ingin tahu tentang apa yang sedang dikerjakan untuk perilisan Superalgos yang akan datang, bergabunglah dengan grup Superalgos Develop Telegram.",
                     "updated": 1639746959028
-                },
-                {
-                    "language": "NL",
-                    "text": "Als je nieuwsgierig bent naar wat er staat te gebeuren voor de aanstaande Superalgos release, sluit je dan aan bij de Superalgos Develop Telegram groep.",
-                    "updated": 1666874947105
                 }
             ],
             "updated": 1636750158168

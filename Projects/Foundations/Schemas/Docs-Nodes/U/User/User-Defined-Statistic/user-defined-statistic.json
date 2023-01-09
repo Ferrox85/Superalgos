@@ -1,14 +1,7 @@
 {
     "type": "User Defined Statistic",
     "definition": {
-        "text": "A user defined statistic allows users to create custom metrics by defining the corresponding calculation in a formula, in the context of the parent node.",
-        "translations": [
-            {
-                "language": "RU",
-                "text": "User Defined Statistic позволяет пользователям создавать пользовательские показатели, определяя соответствующий расчет в формуле, в контексте родительского узла.",
-                "updated": 1645180201707
-            }
-        ]
+        "text": "A user defined statistic allows users to create custom metrics by defining the corresponding calculation in a formula, in the context of the parent node."
     },
     "paragraphs": [
         {
@@ -17,14 +10,7 @@
         },
         {
             "style": "Text",
-            "text": "The current contexts in which custom statistics may be defined are episodes, positions, and orders.",
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Текущими контекстами, в которых может быть определена пользовательская статистика, являются эпизоды, позиции и ордера.",
-                    "updated": 1645180220319
-                }
-            ]
+            "text": "The current contexts in which custom statistics may be defined are episodes, positions, and orders."
         },
         {
             "style": "Block",
@@ -34,38 +20,17 @@
         {
             "style": "Title",
             "text": "User Defined Statistic Configuration",
-            "updated": 1609925377015,
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Конфигурация User Defined Statistic",
-                    "updated": 1645180235277
-                }
-            ]
+            "updated": 1609925377015
         },
         {
             "style": "Subtitle",
             "text": "Properties",
-            "updated": 1609925382331,
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "Свойства",
-                    "updated": 1645180248803
-                }
-            ]
+            "updated": 1609925382331
         },
         {
             "style": "List",
             "text": "initialValue allows resetting the initial state of the node to an arbitrary value.",
-            "updated": 1609925358740,
-            "translations": [
-                {
-                    "language": "RU",
-                    "text": "initialValue позволяет сбросить начальное состояние узла на произвольное значение.",
-                    "updated": 1645180254910
-                }
-            ]
+            "updated": 1609925358740
         }
     ]
 }

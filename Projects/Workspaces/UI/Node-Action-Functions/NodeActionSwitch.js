@@ -34,7 +34,7 @@ function newWorkspacesNodeActionSwitch() {
                     }
                 }
                 break
-            case 'Add Specified Project':
+            case 'Add Specified Workspace Project':
                 {
                     let historyObject = {
                         action: action,

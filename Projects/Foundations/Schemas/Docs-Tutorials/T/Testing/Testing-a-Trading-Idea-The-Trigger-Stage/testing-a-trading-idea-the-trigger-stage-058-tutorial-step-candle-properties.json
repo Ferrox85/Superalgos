@@ -16,13 +16,8 @@
             },
             {
                 "language": "TR",
-                "text": "Mumların özelliklerine doğrudan erişimimiz vardır ve kapanışın değeri kapanış özelliğinde ( close property ) mevcuttur.",
-                "updated": 1669663786236
-            },
-            {
-                "language": "RU",
-                "text": "У нас есть прямой доступ к свойствам свечей, и значение закрытия доступно в свойстве close.",
-                "updated": 1642660404628
+                "text": "Özet: Mumların özelliklerine doğrudan erişimimiz var ve kapanış fiyatının değeri, yakın mülk aracılığıyla öğrenilebilir.",
+                "updated": 1641662770987
             }
         ]
     },
@@ -40,11 +35,6 @@
                     "language": "TR",
                     "text": "Bu, mumun Kapat değerine erişmesini oldukça kolaylaştırır:",
                     "updated": 1641662797344
-                },
-                {
-                    "language": "RU",
-                    "text": "Это делает доступ к значению закрытия свечи довольно простым:",
-                    "updated": 1642660429881
                 }
             ]
         },
@@ -59,13 +49,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Zaman çerçevesini tanımlayın:  chart.at01hs.",
-                    "updated": 1669663814572
-                },
-                {
-                    "language": "RU",
-                    "text": "Объявите таймфрейм: chart.at01hs.",
-                    "updated": 1642660465538
+                    "text": "Zaman çerçevesini tanımla: <br/> chart.at01hs.",
+                    "updated": 1641662830617
                 }
             ]
         },
@@ -80,13 +65,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Ardından ürün ve özellik: candle.close",
-                    "updated": 1669663826429
-                },
-                {
-                    "language": "RU",
-                    "text": "Далее следуют продукт и свойство: candle.close",
-                    "updated": 1642660509921
+                    "text": "Ardından ürün ve özellik:<br/>candle.close",
+                    "updated": 1641662867018
                 }
             ]
         },
@@ -101,13 +81,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Bu işin kolay kısmıydı! Şimdi sıra Bollinger Bantlarında!",
-                    "updated": 1669663838122
-                },
-                {
-                    "language": "RU",
-                    "text": "Это было легко! Давайте займемся полосами Боллинджера!",
-                    "updated": 1642660522543
+                    "text": "İpucu: Bu işin kolay kısmıydı! Şimdi sıra Bollinger Bantlarında!",
+                    "updated": 1641662891171
                 }
             ]
         }

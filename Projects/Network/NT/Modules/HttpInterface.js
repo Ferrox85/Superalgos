@@ -21,7 +21,7 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
         */
         web3 = new SA.nodeModules.web3()
 
-        let port = NT.networkApp.p2pNetworkNode.node.networkInterfaces.httpNetworkInterface.config.httpPort
+        let port = NT.networkApp.p2pNetworkNode.node.config.webPort
         /*
         We will create an HTTP Server and leave it running forever.
         */
@@ -52,11 +52,11 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                                 if (bodyString === undefined) {
                                     return
                                 }
-                                let socketMessage = JSON.parse(bodyString)
+                                let messageHeader = JSON.parse(bodyString)
                                 /*
                                 Validate the User App Signature
                                 */
-                                let userAppBlockchainAccount = web3.eth.accounts.recover(socketMessage.signature)
+                                let userAppBlockchainAccount = web3.eth.accounts.recover(messageHeader.signature)
 
                                 if (userAppBlockchainAccount === undefined) {
                                     let response = {
@@ -77,26 +77,6 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                                     SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
                                     return
                                 }
-                                let payload
-                                try {
-                                    payload = JSON.parse(socketMessage.payload)
-                                } catch (err) {
-                                    let response = {
-                                        result: 'Error',
-                                        message: 'Payload Not Correct JSON Format.'
-                                    }
-                                    SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
-                                    return
-                                }
-
-                                if (payload.networkService === undefined) {
-                                    let response = {
-                                        result: 'Error',
-                                        message: 'Network Service Undifined.'
-                                    }
-                                    SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
-                                    return
-                                }
                                 /*
                                 We will check that if we are a node of a Permissioned Network, that whoever
                                 is connecting to us, has the permission to do so.
@@ -113,12 +93,12 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                                     }
                                 }
 
-                                switch (socketMessage.callerRole) {
+                                switch (messageHeader.callerRole) {
                                     case 'Network Client': {
-                                        switch (socketMessage.networkService) {
+                                        switch (messageHeader.networkService) {
                                             case 'Trading Signals': {
                                                 if (NT.networkApp.tradingSignalsNetworkService !== undefined) {
-                                                    response = await NT.networkApp.tradingSignalsNetworkService.clientInterface.messageReceived(payload, socketMessage)
+                                                    response = await NT.networkApp.tradingSignalsNetworkService.clientInterface.messageReceived(messageHeader.payload, caller.userProfile)
                                                     SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
                                                 } else {
                                                     let response = {
@@ -134,10 +114,10 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                                         break
                                     }
                                     case 'Network Peer': {
-                                        switch (socketMessage.networkService) {
+                                        switch (messageHeader.networkService) {
                                             case 'Trading Signals': {
                                                 if (NT.networkApp.tradingSignalsNetworkService !== undefined) {
-                                                    response = await NT.networkApp.tradingSignalsNetworkService.peerInterface.messageReceived(socketMessage.payload, caller.userProfile)
+                                                    response = await NT.networkApp.tradingSignalsNetworkService.peerInterface.messageReceived(messageHeader.payload, caller.userProfile)
                                                     SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
                                                 } else {
                                                     let response = {
@@ -155,9 +135,9 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                                 }
 
                             } catch (err) {
-                                NT.logger.error('P2P Node -> httpInterface -> Method call produced an error.')
-                                NT.logger.error('P2P Node -> httpInterface -> err.stack = ' + err.stack)
-                                NT.logger.error('P2P Node -> httpInterface -> Body Received = ' + bodyString)
+                                console.log('[ERROR] P2P Node -> httpInterface -> Method call produced an error.')
+                                console.log('[ERROR] P2P Node -> httpInterface -> err.stack = ' + err.stack)
+                                console.log('[ERROR] P2P Node -> httpInterface -> Body Received = ' + bodyString)
 
                                 let error = {
                                     result: 'Fail Because',
@@ -180,7 +160,7 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                         switch (networkService) {
                             case 'Trading Signals': {
                                 if (NT.networkApp.tradingSignalsNetworkService !== undefined) {
-                                    SA.projects.foundations.utilities.httpResponses.respondWithContent("Pong" + "/"  + NT.networkApp.p2pNetworkNode.userProfile.config.codeName + "/" + NT.networkApp.p2pNetworkNode.node.config.codeName  , httpResponse)
+                                    SA.projects.foundations.utilities.httpResponses.respondWithContent("Pong", httpResponse)
                                 } else {
                                     let response = {
                                         result: 'Error',
@@ -196,24 +176,7 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                     break
                 case 'Stats':
                     {
-                        let networkService = unescape(requestPath[2])
-
-                        switch (networkService) {
-                            case 'Machine Learning': {
-                                if (NT.networkApp.machineLearningNetworkService !== undefined) {
-                                    response = await NT.networkApp.machineLearningNetworkService.clientInterface.getStats()
-                                    SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
-                                } else {
-                                    let response = {
-                                        result: 'Error',
-                                        message: 'Trading Signals Network Service Not Running.'
-                                    }
-                                    SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify(response), httpResponse)
-                                    return
-                                }
-                                break
-                            }
-                        }
+                        SA.projects.foundations.utilities.httpResponses.respondWithContent(JSON.stringify([]), httpResponse)
                     }
                     break
                 default:
@@ -221,7 +184,7 @@ exports.newNetworkModulesHttpInterface = function newNetworkModulesHttpInterface
                     }
             }
         } catch (err) {
-            NT.logger.error(err.stack)
+            console.log(err.stack)
         }
     }
 }

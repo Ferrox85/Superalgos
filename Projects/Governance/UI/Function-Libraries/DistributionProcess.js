@@ -110,19 +110,28 @@ function newGovernanceFunctionLibraryDistributionProcess() {
             userProfiles
         )
         /*
-        Run the Bitcoin Factory Computing Program
-        */
-        UI.projects.governance.functionLibraries.computingProgram.calculate(
-            pools,
-            userProfiles
-        )
-        /*
-        Run the Liquidity Program: One per SA Token Market and Exchange if contract address defined in SaToken.js
+        Run the Liquidity Program: One per SA Token Market
         */
         UI.projects.governance.functionLibraries.liquidityProgram.calculate(
             pools,
-            userProfiles
-        )                    
+            userProfiles,
+            'BTCB'
+        )
+        UI.projects.governance.functionLibraries.liquidityProgram.calculate(
+            pools,
+            userProfiles,
+            'BNB'
+        )
+        UI.projects.governance.functionLibraries.liquidityProgram.calculate(
+            pools,
+            userProfiles,
+            'BUSD'
+        )
+        UI.projects.governance.functionLibraries.liquidityProgram.calculate(
+            pools,
+            userProfiles,
+            'ETH'
+        )
         /*
         Run the Claims Program
         */

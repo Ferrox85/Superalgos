@@ -54,6 +54,5 @@
             "monitorChildrenRunning": true
         }
     ],
-    "propertyNameAtParent": "taskManagers",
-    "project": "Foundations"
+    "propertyNameAtParent": "taskManagers"
 }

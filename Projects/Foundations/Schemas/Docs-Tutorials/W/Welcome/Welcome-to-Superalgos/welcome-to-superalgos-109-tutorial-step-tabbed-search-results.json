@@ -36,16 +36,6 @@
                 "language": "ID",
                 "text": "Hasil disusun dalam beberapa kategori, dan setiap kategori diwakili oleh hasil pengelompokan tab yang cocok dengan kategori tersebut...",
                 "updated": 1640599617096
-            },
-            {
-                "language": "RU",
-                "text": "Результаты организованы в несколько категорий, и каждая категория представлена вкладкой, группирующей результаты, соответствующие категории...",
-                "updated": 1642773776354
-            },
-            {
-                "language": "NL",
-                "text": "Resultaten zijn georganiseerd in verschillende categorieën en elke categorie wordt weergegeven door een tabblad waarin de resultaten worden gegroepeerd die overeenkomen met de categorie...",
-                "updated": 1667137704069
             }
         ]
     },
@@ -81,16 +71,6 @@
                     "language": "ID",
                     "text": "Aku akan menjelaskan masing-masing secara singkat dan membebaskan kamu untuk melihat-lihat :",
                     "updated": 1640599649961
-                },
-                {
-                    "language": "RU",
-                    "text": "Я кратко расскажу о каждом из них и предоставлю вам возможность осмотреться:",
-                    "updated": 1642773787219
-                },
-                {
-                    "language": "NL",
-                    "text": "Ik zal ze kort uitleggen en je vrij laten om rond te kijken:",
-                    "updated": 1667137718552
                 }
             ]
         },
@@ -124,16 +104,6 @@
                     "language": "ID",
                     "text": "All: semua fitur dari all categories.",
                     "updated": 1640599673560
-                },
-                {
-                    "language": "RU",
-                    "text": "All:  показывает результаты из всех категорий.",
-                    "updated": 1642773813152
-                },
-                {
-                    "language": "NL",
-                    "text": "All: bevat resultaten uit alle categorieën.",
-                    "updated": 1667137732623
                 }
             ]
         },
@@ -168,16 +138,6 @@
                     "language": "ID",
                     "text": "Nodes: Node Type mengandung frasa yang cocok.",
                     "updated": 1640599774344
-                },
-                {
-                    "language": "RU",
-                    "text": "Nodes: типы узлов, содержащие фразу.",
-                    "updated": 1642773950391
-                },
-                {
-                    "language": "NL",
-                    "text": "Nodes: Node Type overeenkomsten die de zin bevatten.",
-                    "updated": 1667137748371
                 }
             ]
         },
@@ -212,16 +172,6 @@
                     "language": "ID",
                     "text": "Concepts: termasuk gagasan seperti References.",
                     "updated": 1640599711150
-                },
-                {
-                    "language": "RU",
-                    "text": "Concepts: содержит такие понятия, как ссылки.",
-                    "updated": 1642774013725
-                },
-                {
-                    "language": "NL",
-                    "text": "Concepts: bevat begrippen als References.",
-                    "updated": 1667137791891
                 }
             ]
         },
@@ -256,16 +206,6 @@
                     "language": "ID",
                     "text": "Topics: tema besar tercakup dalam halaman berurutan.",
                     "updated": 1640599802958
-                },
-                {
-                    "language": "RU",
-                    "text": "Topics: большие темы, освещаемые на последовательных страницах.",
-                    "updated": 1642774029117
-                },
-                {
-                    "language": "NL",
-                    "text": "Topics: grote thema's die in opeenvolgende pagina's worden behandeld.",
-                    "updated": 1667137810365
                 }
             ]
         },
@@ -300,16 +240,6 @@
                     "language": "ID",
                     "text": "Tutorials: fitur halaman yang membentuk tutorial.",
                     "updated": 1640599821810
-                },
-                {
-                    "language": "RU",
-                    "text": "Tutorials: содержит страницы, составляющие учебные пособия.",
-                    "updated": 1642774041253
-                },
-                {
-                    "language": "NL",
-                    "text": "Tutorials: bevat de pagina's die deel uitmaken van zelfstudies/handleidingen.",
-                    "updated": 1667137841437
                 }
             ]
         },
@@ -344,16 +274,6 @@
                     "language": "ID",
                     "text": "Reviews: fitur user review pada plugin, dll...",
                     "updated": 1640599847355
-                },
-                {
-                    "language": "RU",
-                    "text": "Reviews: особенности отзывов пользователей о плагинах и т.д....",
-                    "updated": 1642774060029
-                },
-                {
-                    "language": "NL",
-                    "text": "Reviews: bevat gebruikersrecensies over plug-ins, enz...",
-                    "updated": 1667137866870
                 }
             ]
         },
@@ -388,16 +308,6 @@
                     "language": "ID",
                     "text": "Books: koleksi topik yang disusun dalam bab-bab yang mencakup seluruh domain aplikasi, untuk dibaca dengan tertib.",
                     "updated": 1640599872210
-                },
-                {
-                    "language": "RU",
-                    "text": "Books: сборники тем, организованные в главы, охватывающие целые области приложения, для упорядоченного чтения.",
-                    "updated": 1642774085004
-                },
-                {
-                    "language": "NL",
-                    "text": "Books: verzamelingen van onderwerpen georganiseerd in hoofdstukken die hele app-domeinen bestrijken, voor een ordelijke lezing.",
-                    "updated": 1667137892245
                 }
             ]
         },
@@ -432,16 +342,6 @@
                     "language": "ID",
                     "text": "Workspace: mengembalikan node yang ada di ruang kerja aktif... klik untuk pergi ke mereka!",
                     "updated": 1640599896894
-                },
-                {
-                    "language": "RU",
-                    "text": "Workspace: возвращает узлы, которые присутствуют в активной рабочем пространстве... щелкните, чтобы перейти к ним!",
-                    "updated": 1642774113477
-                },
-                {
-                    "language": "NL",
-                    "text": "Workspace: geeft nodes terug die aanwezig zijn in de actieve werkruimte... klik om ernaartoe te gaan!",
-                    "updated": 1667137919281
                 }
             ]
         },

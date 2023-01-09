@@ -1,4 +1,4 @@
-﻿exports.newDataMiningIndicatorMultiTimeFrameMarket = function (processIndex) {
+﻿exports.newDataMiningBotModulesMultiTimeFrameMarket = function (processIndex) {
     const MODULE_NAME = "Multi Time Frame Market"
     /*
     This module deals with Market Files, that are data files for Time Frames of 1 hour and above.
@@ -19,10 +19,10 @@
 
     return thisObject;
 
-    function initialize(pStatusDependencies, pDataDependenciesModule, callBackFunction) {
+    function initialize(pStatusDependencies, pStatusDependenciesModule, callBackFunction) {
 
         statusDependenciesModule = pStatusDependencies
-        dataDependenciesModule = pDataDependenciesModule
+        dataDependenciesModule = pStatusDependenciesModule
 
         indicatorOutputModule = TS.projects.dataMining.botModules.indicatorOutput.newDataMiningBotModulesIndicatorOutput(processIndex)
         indicatorOutputModule.initialize(callBackFunction)

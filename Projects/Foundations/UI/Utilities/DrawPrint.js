@@ -1,5 +1,4 @@
 function newFoundationsUtilitiesDrawPrint() {
-    let configStyle
     let thisObject = {
         roundedCornersBackground: roundedCornersBackground,
         drawLabel: drawLabel,
@@ -210,26 +209,7 @@ function newFoundationsUtilitiesDrawPrint() {
         let label = labelToPrint
 
         if (labelToPrint === undefined) { return }
-
-        // This controls the default color for the text inside the indicator frame.
-        let chartingSpaceNode = UI.projects.workspaces.spaces.designSpace.workspace.getHierarchyHeadByNodeType('Charting Space')
-        if (chartingSpaceNode !== undefined) {
-            if (chartingSpaceNode.spaceStyle !== undefined) {
-                configStyle = JSON.parse(chartingSpaceNode.spaceStyle.config)
-            } else {
-                configStyle = undefined
-            }
-        } else {
-            configStyle = undefined
-        }
-
-        if (configStyle === undefined || configStyle.indicatorFrameTextColor === undefined) {
-            if (color === undefined) { color = UI_COLOR.DARK }
-        } else{
-            let textColor = eval(configStyle.indicatorFrameTextColor)
-            if (color === undefined) { color = textColor }
-        }
-        
+        if (color === undefined) { color = UI_COLOR.DARK }
         if (fontSize === undefined) { fontSize = 10 }
         if (isNaN(label) === false && label !== '') { isItANumber = true }
 

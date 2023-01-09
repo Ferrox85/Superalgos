@@ -10,7 +10,6 @@ on:
 
 jobs:
   build-release:
-    if: github.repository == 'superalgos/superalgos'
     runs-on: ${{ matrix.os }}
     strategy:
         matrix:

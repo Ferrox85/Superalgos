@@ -1,6 +1,6 @@
 {
     "tutorial": "Testing a Trading Idea - The Other Stages",
-    "pageNumber": "1",
+    "pageNumber": 1,
     "type": "Testing a Trading Idea - The Other Stages Tutorial",
     "definition": {
         "text": "This tutorial completes the implementation of the trading idea formulated in the previous tutorials, covering the definitions of the Open Stage, Manage Stage, and Close Stage.",
@@ -18,8 +18,8 @@
             },
             {
                 "language": "TR",
-                "text": "Bu öğretici, önceki öğreticilerde formüle edilen ticaret fikrinin uygulanmasını tamamlar ve Açık Aşama (Open Stage), Aşamayı Yönet (Manage Stage) ve Aşamayı Kapat (Close Stage) tanımlarını kapsar.",
-                "updated": 1669800520540
+                "text": "Özet: Bu öğretici, önceki öğreticilerde formüle edilen ticaret fikrinin uygulanmasını tamamlar ve Açık Aşama ( Open Stage ), Aşamayı Yönet ( Manage Stage ) ve Aşamayı Kapat ( Close Stage ) tanımlarını kapsar.",
+                "updated": 1641667819787
             }
         ]
     },
@@ -27,39 +27,15 @@
         {
             "style": "Title",
             "text": "About This Tutorial",
-            "updated": 1617118953736,
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Bu Eğitim Hakkında",
-                    "updated": 1654394116146,
-                    "style": "Title"
-                }
-            ]
+            "updated": 1617118953736
         },
         {
             "style": "List",
-            "text": "Workspace: Trading System Design Tutorials Plugin Workspace.",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Çalışma alanı: Ticaret Sistemi Tasarımı Eğitimleri Eklenti Çalışma Alanı.",
-                    "updated": 1654394122065,
-                    "style": "List"
-                }
-            ]
+            "text": "Workspace: Trading System Design Tutorials Plugin Workspace."
         },
         {
             "style": "List",
-            "text": "Maintainer: @julianmolina (Telegram).",
-            "translations": [
-                {
-                    "language": "TR",
-                    "text": "Bakımcı: @julianmolina (Telegram).",
-                    "updated": 1654394128040,
-                    "style": "List"
-                }
-            ]
+            "text": "Maintainer: @julianmolina (Telegram)."
         }
     ]
 }

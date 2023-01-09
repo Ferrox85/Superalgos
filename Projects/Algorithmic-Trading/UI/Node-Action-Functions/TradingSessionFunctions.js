@@ -81,11 +81,7 @@ function newAlgorithmicTradingFunctionLibraryTradingSessionFunctions() {
             eventsServerClient.stopListening(eventHandlerKey, eventSubscriptionIdOnStatus, node.id)
 
             /* If Task is Not Running Display Error */
-            let task = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(node, 'Task', undefined, true, false, true, false)            
-            if (
-                message.event.status === 'Task Process Not Running' &&
-                task.payload.uiObject.isDebugging === undefined
-                ) {
+            if (message.event.status === 'Task Process Not Running') {
                 node.payload.uiObject.setErrorMessage('Parent Task Not Running.')
                 callBackFunction(GLOBAL.DEFAULT_FAIL_RESPONSE)
             } else {
@@ -128,7 +124,7 @@ function newAlgorithmicTradingFunctionLibraryTradingSessionFunctions() {
             'Outgoing Signals->Incoming Signals->Outgoing Signal Reference->Incoming Signal Reference->Signal Context Formula->' +
             'Trading System Signal->' +
             'Trigger On Signal->Trigger Off Signal->Take Position Signal->' +
-            'Close Stage Signal->Target Rate Signal->Target Size In Base Asset Signal->Target Size In Quoted Asset Signal->' +
+            'Target Rate Signal->Target Size In Base Asset Signal->Target Size In Quoted Asset Signal->' +
             'Create Order Signal->Cancel Order Signal->Order Rate Signal->' +
             'Limit Sell Order Signals->Limit Buy Order Signals->Market Sell Order Signals->Market Buy Order Signals->' +
             'Next Phase Signal->Move To Phase Signal->Phase Signal->Managed Take Profit Signals->Managed Stop Loss Signals->' +
@@ -197,17 +193,11 @@ function newAlgorithmicTradingFunctionLibraryTradingSessionFunctions() {
             '-' +
             UI.projects.visualScripting.utilities.nodeConfig.loadConfigProperty(validationsResult.market.quotedAsset.payload.referenceParent.payload, 'codeName')
 
-        let userDefinedParametersConfig
-
-        if (node.tradingParameters.userDefinedParameters !== undefined) {
-            userDefinedParametersConfig = node.tradingParameters.userDefinedParameters.config
-        }
-
         let dependencyFilter = UI.projects.foundations.nodeActionFunctions.dependenciesFilter.createDependencyFilter(
             defaultExchange,
             defaultMarket,
             node.tradingSystemReference.payload.referenceParent,
-            userDefinedParametersConfig
+            node.tradingParameters.userDefinedParameters.config
         )
 
         /* Raise event to run the session */
@@ -335,7 +325,7 @@ function newAlgorithmicTradingFunctionLibraryTradingSessionFunctions() {
         }
 
         if (result.taskManager.payload.parentNode.payload.parentNode.payload.referenceParent === undefined) {
-            node.payload.uiObject.setErrorMessage('Task needs to have a Default Market.')
+            node.payload.uiObject.setErrorMessage('Session needs to have a Default Market.')
             return
         }
 

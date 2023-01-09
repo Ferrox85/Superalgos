@@ -21,8 +21,8 @@ function newFoundationsFunctionLibraryProductFunctions() {
     ) {
 
         let product = node
-        let productParentBot = product.payload.parentNode
-        let productDataMineParent = productParentBot.payload.parentNode
+        let productIndicatorBot = product.payload.parentNode
+        let productDataMineParent = productIndicatorBot.payload.parentNode
         let dataMineProduct
         let dataProduct
 
@@ -98,60 +98,31 @@ function newFoundationsFunctionLibraryProductFunctions() {
                                 if (dataMineDependency.taskManagers.length > 0) {
                                     //We will add the task and indicator bot into first task manager we find
                                     let task = ceateTaskIfNotPresent(dataMineDependency.taskManagers[0])
+                                    let indicatorBot = createIndicatorBotIfNotPresent(task)
 
-                                    switch(productParentBot.type) {
-                                        case 'Indicator Bot': {
-                                            let indicatorBot = createIndicatorBotIfNotPresent(task)
-                                            createIndicatorProcessInstanceIfNotPresent(indicatorBot)
-                                            break
-                                        }
-                                        case 'API Data Fetcher Bot': {
-                                            let apiFetcherBot = createApiBotIfNotPresent(task)
-                                            createApiProcessInstanceIfNotPresent(apiFetcherBot)
-                                            break
-                                        }
-                                        case 'Study Bot': {
-                                            let studyBot = createStudyBotIfNotPresent(task)
-                                            createStudyProcessInstanceIfNotPresent(studyBot)
-                                            break
-                                        }
-                                    }
-
+                                    createIndicatorProcessInstanceIfNotPresent(indicatorBot)
                                 } else {
                                     //Let's create a new task manager as none exists
                                     let newTaskManager = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(dataMineDependency, 'Task Manager')
                                     newTaskManager.name = productDataMineParent.name
 
-                                    switch(productParentBot.type) {
-                                        case 'Indicator Bot': {
-                                            let task = ceateTaskIfNotPresent(newTaskManager)
-                                            let indicatorBot = createIndicatorBotIfNotPresent(task)        
-                                            createIndicatorProcessInstanceIfNotPresent(indicatorBot)
-                                            break
-                                        }
-                                        case 'API Data Fetcher Bot': {
-                                            let task = ceateTaskIfNotPresent(newTaskManager)
-                                            let apiFetcherBot = createApiBotIfNotPresent(task)
-                                            createApiProcessInstanceIfNotPresent(apiFetcherBot)
-                                            break
-                                        }
-                                        case 'Study Bot': {
-                                            let task = ceateTaskIfNotPresent(newTaskManager)
-                                            let studyBot = createStudyBotIfNotPresent(task)        
-                                            createStudyProcessInstanceIfNotPresent(studyBot)
-                                            break
-                                        }
-                                    }
+                                    let task = ceateTaskIfNotPresent(newTaskManager)
+                                    let indicatorBot = createIndicatorBotIfNotPresent(task)
+
+                                    createIndicatorProcessInstanceIfNotPresent(indicatorBot)
+
                                 }
+
                             }
                         }
                     }
 
+
                     function ceateTaskIfNotPresent(taskManager) {
-                        let task = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(taskManager, undefined, productParentBot.name, false, true, false, false)
+                        let task = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(taskManager, undefined, productIndicatorBot.name, false, true, false, false)
                         if (task === undefined) {
                             let newTask = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(taskManager, 'Task')
-                            newTask.name = productParentBot.name
+                            newTask.name = productIndicatorBot.name
 
                             return newTask
                         }
@@ -162,7 +133,7 @@ function newFoundationsFunctionLibraryProductFunctions() {
                         let botInstance = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(task, 'Indicator Bot Instance', undefined, false, true, false, false)
                         if (botInstance === undefined) {
                             let newBotInstance = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(task, 'Indicator Bot Instance')
-                            newBotInstance.name = productParentBot.name
+                            newBotInstance.name = productIndicatorBot.name
 
                             return newBotInstance
                         }
@@ -170,53 +141,9 @@ function newFoundationsFunctionLibraryProductFunctions() {
                     }
 
                     function createIndicatorProcessInstanceIfNotPresent(indicatorBot) {
-                        for (let m = 0; m < productParentBot.processes.length; m++) {
-                            let processDefinition = productParentBot.processes[m]
+                        for (let m = 0; m < productIndicatorBot.processes.length; m++) {
+                            let processDefinition = productIndicatorBot.processes[m]
                             UI.projects.visualScripting.utilities.nodeChildren.findOrCreateChildWithReference(indicatorBot, 'Indicator Process Instance', processDefinition)
-                        }
-                    }
-                    
-                    function createApiBotIfNotPresent(task) {
-                        let botInstance = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(task, 'API Data Fetcher Bot Instance', undefined, false, true, false, false)
-                        if (botInstance === undefined) {
-                            let newBotInstance = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(task, 'API Data Fetcher Bot Instance')
-                            newBotInstance.name = productParentBot.name
-
-                            return newBotInstance
-                        }
-                        return botInstance
-                    }
-
-                    function createApiProcessInstanceIfNotPresent(apiBot) {
-                        for (let m = 0; m < productParentBot.processes.length; m++) {
-                            let processDefinition = productParentBot.processes[m]
-                            let processInstance = UI.projects.visualScripting.utilities.nodeChildren.findOrCreateChildWithReference(apiBot, 'API Data Fetcher Process Instance', processDefinition)
-                            console.log('this is the product parent bot', productParentBot)
-
-                            // Attach reference to API Map
-                            for (let i = 0; i < rootNodes.length; i++) {
-                                if (rootNodes[i].type === 'API Map' && rootNodes[i].name === productParentBot.payload.chainParent.name) {
-                                    UI.projects.visualScripting.nodeActionFunctions.attachDetach.referenceAttachNode(processInstance.payload.node.apiMapReference, rootNodes[i])
-                                }
-                            }
-                        }
-                    }
-
-                    function createStudyBotIfNotPresent(task) {
-                        let botInstance = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(task, 'Study Bot Instance', undefined, false, true, false, false)
-                        if (botInstance === undefined) {
-                            let newBotInstance = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(task, 'Study Bot Instance')
-                            newBotInstance.name = productParentBot.name
-
-                            return newBotInstance
-                        }
-                        return botInstance
-                    }
-
-                    function createStudyProcessInstanceIfNotPresent(studyBot) {
-                        for (let m = 0; m < productParentBot.processes.length; m++) {
-                            let processDefinition = productParentBot.processes[m]
-                            UI.projects.visualScripting.utilities.nodeChildren.findOrCreateChildWithReference(studyBot, 'Study Process Instance', processDefinition)
                         }
                     }
 
@@ -243,7 +170,7 @@ function newFoundationsFunctionLibraryProductFunctions() {
                                 let marketDataProduct = exchangeDataProduct.marketDataProducts[l]
 
                                 dataMineProduct = UI.projects.visualScripting.utilities.nodeChildren.findOrCreateChildWithReference(marketDataProduct, 'Data Mine Products', productDataMineParent)
-                                let botProductDependencies = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(dataMineProduct, undefined, productParentBot.name, false, true, false, false)
+                                let botProductDependencies = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(dataMineProduct, undefined, productIndicatorBot.name, false, true, false, false)
 
                                 /**
                                  * If Bot Product Dependency exists add Data Product
@@ -252,8 +179,8 @@ function newFoundationsFunctionLibraryProductFunctions() {
                                 if (botProductDependencies !== undefined) {
                                     createDataProductIfNotPresent(botProductDependencies)
                                 } else {
-                                    let newBotProductDependencies = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(dataMineProduct, 'Bot Products', undefined, 'Foundations')
-                                    newBotProductDependencies.name = productParentBot.name
+                                    let newBotProductDependencies = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(dataMineProduct, 'Bot Products')
+                                    newBotProductDependencies.name = productIndicatorBot.name
                                     createDataProductIfNotPresent(newBotProductDependencies)
                                 }
 
@@ -283,7 +210,7 @@ function newFoundationsFunctionLibraryProductFunctions() {
 
                         let dataMineDependency = UI.projects.visualScripting.utilities.nodeChildren.findOrCreateChildWithReference(process.processDependencies, 'Data Mine Data Dependencies', productDataMineParent)
 
-                        let botDataDependencies = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(dataMineDependency, undefined, productParentBot.name, false, true, false, false)
+                        let botDataDependencies = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(dataMineDependency, undefined, productIndicatorBot.name, false, true, false, false)
 
                         /**
                          * If Bot Data Dependency exists add Data Dependencies
@@ -293,7 +220,7 @@ function newFoundationsFunctionLibraryProductFunctions() {
                             addAllDataDependenciesIfNotExists(botDataDependencies)
                         } else {
                             let newBotDataDependencies = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(dataMineDependency, 'Bot Data Dependencies')
-                            newBotDataDependencies.name = productParentBot.name
+                            newBotDataDependencies.name = productIndicatorBot.name
                             addAllDataDependenciesIfNotExists(newBotDataDependencies)
                         }
 
@@ -349,7 +276,7 @@ function newFoundationsFunctionLibraryProductFunctions() {
 
                         let dataMineDependency = UI.projects.visualScripting.utilities.nodeChildren.findOrCreateChildWithReference(process.processDependencies, 'Data Mine Data Dependencies', productDataMineParent)
 
-                        let botDataDependencies = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(dataMineDependency, undefined, productParentBot.name, false, true, false, false)
+                        let botDataDependencies = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(dataMineDependency, undefined, productIndicatorBot.name, false, true, false, false)
 
                         /**
                          * If Bot Data Dependency exists add Data Dependencies
@@ -359,7 +286,7 @@ function newFoundationsFunctionLibraryProductFunctions() {
                             addAllDataDependenciesIfNotExists(botDataDependencies)
                         } else {
                             let newBotDataDependencies = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(dataMineDependency, 'Bot Data Dependencies')
-                            newBotDataDependencies.name = productParentBot.name
+                            newBotDataDependencies.name = productIndicatorBot.name
                             addAllDataDependenciesIfNotExists(newBotDataDependencies)
                         }
 
@@ -457,11 +384,11 @@ function newFoundationsFunctionLibraryProductFunctions() {
                             }
 
                             function createBotLayerIfNotPresent(layerManager) {
-                                let botLayer = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(layerManager, undefined, productParentBot.name, false, true, false, false)
+                                let botLayer = UI.projects.visualScripting.utilities.meshes.findNodeInNodeMesh(layerManager, undefined, productIndicatorBot.name, false, true, false, false)
 
                                 if (botLayer === undefined) {
                                     let newBotLayer = UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.addUIObject(layerManager, 'Bot Layers')
-                                    newBotLayer.name = productParentBot.name
+                                    newBotLayer.name = productIndicatorBot.name
                                     return newBotLayer
                                 }
                                 return botLayer
@@ -473,9 +400,14 @@ function newFoundationsFunctionLibraryProductFunctions() {
                         }
                     }
                 }
+
             }
+
         }
+
+
     }
+
 }
 
 

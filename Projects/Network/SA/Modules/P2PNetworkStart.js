@@ -5,12 +5,10 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
 
     https://en.wikipedia.org/wiki/Directed_acyclic_graph
 
-    TODO: 
     This module will identify which are the Start Nodes of the DAG, and be ready to send
-    messages via the http interface of nodes to some of them. 
+    messages via the http interface of nodes to some of them.
     */
     let thisObject = {
-        p2pNetworkClientIdentity: undefined,
         sendMessage: sendMessage,
 
         /* Framework Functions */
@@ -28,8 +26,6 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
     return thisObject
 
     function finalize() {
-        thisObject.p2pNetworkClientIdentity = undefined
-
         web3 = undefined
         peersMap = undefined
         messagesToBeDelivered = undefined
@@ -49,28 +45,24 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
         p2pNetwork,
         maxOutgoingPeers
     ) {
-        thisObject.p2pNetworkClientIdentity = p2pNetworkClientIdentity
+
         web3 = new SA.nodeModules.web3()
 
         for (let i = 0; i < NETWORK_SERVICES.length; i++) {
-            let networkService = NETWORK_SERVICES[i]
+            let networkServide = NETWORK_SERVICES[i]
             let peers = []
-            peersMap.set(networkService, peers)
+            peersMap.set(networkServide, peers)
 
-            await initializeNetworkService(networkService)
+            await initializeNetworkService(networkServide)
         }
 
-        async function initializeNetworkService(networkService) {
+        async function initializeNetworkService(networkServide) {
             messagesToBeDelivered = []
-            let peers = peersMap.get(networkService)
+            let peers = peersMap.get(networkServide)
 
             await connectToPeers()
             let intervalId = setInterval(connectToPeers, RECONNECT_DELAY);
-            intervalIdConnectToPeers.set(networkService, intervalId)
-
-            /*
-            Here we will be retrying the connection to different hosts...
-            */
+            intervalIdConnectToPeers.set(networkServide, intervalId)
             async function connectToPeers() {
 
                 if (peers.length >= maxOutgoingPeers) { return }
@@ -83,25 +75,7 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
                         httpClient: undefined
                     }
 
-                    peer.p2pNetworkNode = p2pNetwork.p2pNodesToConnect[i] // peer.p2pNetworkNode.node.networkServices.tradingSignals
-                    switch (networkService) {
-                        case 'Trading Signals': {
-                            if (peer.p2pNetworkNode.node.networkServices === undefined || peer.p2pNetworkNode.node.networkServices.tradingSignals === undefined) {
-                                // We will ignore all the Network Nodes that don't have this service defined.
-                                continue
-                            }
-                            break
-                        }
-                        case 'Network Statistics': {
-                            continue // This is not yet implemented.
-                        }
-                    }
-                    /*
-                    DEBUG NOTE: If you are having trouble undestanding why you can not connect to a certain network node, then you can activate the following Console Logs, otherwise you keep them commented out.
-                    */
-                    /*
-                    SA.logger.info('Checking if the Network Node belonging to User Profile ' + peer.p2pNetworkNode.userProfile.name + ' is reachable via http to be ready to send a message to the ' + networkService + ' network service.')
-                    */
+                    peer.p2pNetworkNode = p2pNetwork.p2pNodesToConnect[i]
                     if (isPeerConnected(peer) === true) { continue }
 
                     await isPeerOnline(peer)
@@ -109,15 +83,10 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
                         .catch(isOffline)
 
                     function isOnline() {
-                        /*
-                        SA.logger.info('This node is reponding to PING messages via http. Network Node belonging to User Profile ' + peer.p2pNetworkNode.userProfile.name + ' it is reachable via http.')
-                        */
                         peers.push(peer)
                     }
                     function isOffline() {
-                        /*
-                        SA.logger.warn('Network Node belonging to User Profile ' + peer.p2pNetworkNode.userProfile.name + ' it is NOT reachable via http.')
-                        */
+
                     }
                 }
 
@@ -132,7 +101,7 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
 
                 async function isPeerOnline(peer) {
                     /*
-                    This function is to check if a network node is online and will 
+                    This function us to check if a network node is online and will 
                     receive an http request when needed.
                     */
                     let promise = new Promise(sendTestMessage)
@@ -145,10 +114,10 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
                         if (peer.httpClient !== undefined) { return }
 
                         peer.httpClient = SA.projects.network.modules.webHttpNetworkClient.newNetworkModulesHttpNetworkClient()
-                        peer.httpClient.initialize(callerRole, thisObject.p2pNetworkClientIdentity, peer.p2pNetworkNode)
+                        peer.httpClient.initialize(callerRole, p2pNetworkClientIdentity, peer.p2pNetworkNode)
 
 
-                        await peer.httpClient.sendTestMessage(networkService)
+                        await peer.httpClient.sendTestMessage(networkServide)
                             .then(isConnected)
                             .catch(isNotConnected)
 
@@ -164,9 +133,9 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
         }
     }
 
-    async function sendMessage(message) {
+    async function sendMessage(message, networkServide) {
 
-        let userApp = thisObject.p2pNetworkClientIdentity
+        let userApp = TS.projects.foundations.globals.taskConstants.P2P_NETWORK.p2pNetworkClientIdentity
         if (userApp === undefined) { return }
         if (userApp.node.config === undefined) { return }
         let userAppCodeName = userApp.node.config.codeName
@@ -174,21 +143,20 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
         let userAppCategory = userApp.node.parentNode
         if (userAppCategory === undefined) { return }
 
-        let payload = JSON.stringify(message)
-        let signature = await web3.eth.accounts.sign(JSON.stringify(payload), SA.secrets.signingAccountSecrets.map.get(userAppCodeName).privateKey)
+        let signature = await web3.eth.accounts.sign(JSON.stringify(userApp.node.id), SA.secrets.signingAccountSecrets.map.get(userAppCodeName).privateKey)
 
         let messageHeader = {
-            networkService: message.networkService,
+            networkService: networkServide,
             userApp: {
                 categoryType: userAppCategory.type,
                 appType: userApp.node.type,
                 appId: userApp.node.id
             },
             signature: signature,
-            payload: payload
+            payload: JSON.stringify(message)
         }
 
-        let peers = peersMap.get(messageHeader.networkService)
+        let peers = peersMap.get(networkServide)
         /*
         This function will send the messageHeader from a random picked network node
         selected from the array of already verified online peers.
@@ -201,7 +169,6 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
         messagesToBeDelivered.push(messageHeader)
 
         if (peer === undefined) {
-            SA.logger.error('Message can not be delivered to the P2P Network because the peer selected is undefined. Maybe there are no peers for the Network Service that wants to be accesed?')
             return
         }
         /*
@@ -219,29 +186,11 @@ exports.newNetworkModulesP2PNetworkStart = function newNetworkModulesP2PNetworkS
             function messageSent() {
 
             }
-            function messageNotSent(error) {
+            function messageNotSent() {
                 /*
-                Store in memory all the signals that could not be delivered, but only once per signal.
+                Store in memory all the signals that could not be delivered.
                 */
-                if (notDeliveredMessages.includes(messageHeader) === false) {
-                    notDeliveredMessages.push(messageHeader)
-                }
-            
-                if (error !== undefined && error.code === 'ECONNREFUSED') {
-                    /*
-                    This is not an HTTP error that can be retried at the same host. It is a disconnection from the host and we will need to reconnect to the same host or others.
-                    */
-                    for (let i = 0; i < peers.length; i++) {
-                        let connectedPeer = peers[i]
-                        if (connectedPeer.p2pNetworkNode.node.id === peer.p2pNetworkNode.node.id) {
-                            /*
-                            Remove this peer from the array so that we will reconnect to an available one.
-                            */
-                            peers.splice(i, 1)
-                            return
-                        }
-                    }
-                }
+                notDeliveredMessages.push(messageHeader)
             }
         }
         messagesToBeDelivered = notDeliveredMessages

@@ -50,7 +50,13 @@ function newVisualScriptingFunctionLibraryNodeDeleter() {
             if (node.payload.referenceParent.payload !== undefined && node.payload.referenceParent.payload.uiObject !== undefined) {
                 node.payload.referenceParent.payload.uiObject.isShowing = false
                 node.payload.referenceParent.payload.referenceChildren.delete(node.id)
+                //let referenceParent = await UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.getNodeById(node.payload.referenceParent.id)
+                //referenceParent.payload.uiObject.isShowing = false
             }
+            /* if (node.payload.referenceParent.payload !== undefined && node.payload.referenceParent.payload.referenceChildren !== undefined) {
+                referenceParent = await UI.projects.visualScripting.nodeActionFunctions.uiObjectsFromNodes.getNodeById(node.payload.referenceParent.id)
+                referenceParent.payload.referenceChildren.delete(node.id)
+            } */
         }
 
         let schemaDocument = getSchemaDocument(node)
@@ -130,7 +136,7 @@ function newVisualScriptingFunctionLibraryNodeDeleter() {
                             }
                         }
                         if (removedFromParent === false) {
-                            console.log((new Date()).toISOString(), '[ERROR] Deleting Node: ' + node.type + ' ' + node.name + '. This node could not be deleted from its parent node (' + node.payload.parentNode.type + ') because its configured propertyNameAtParent (' + schemaDocument.propertyNameAtParent + ') does not match any of the properties of its parent.')
+                            console.log('[ERROR] Deleting Node: ' + node.type + ' ' + node.name + '. This node could not be deleted from its parent node (' + node.payload.parentNode.type + ') because its configured propertyNameAtParent (' + schemaDocument.propertyNameAtParent + ') does not match any of the properties of its parent.')
                             return false
                         }
                     }

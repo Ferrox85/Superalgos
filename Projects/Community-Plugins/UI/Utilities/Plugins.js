@@ -157,7 +157,7 @@ function newPluginsUtilitiesPlugins() {
             undefined,
             4)
 
-        httpCompressedRequest(fileContent, 'SavePlugin' + '/' + project + '/' + folderName + '/' + fileName, onResponse)
+        httpRequest(fileContent, 'SavePlugin' + '/' + project + '/' + folderName + '/' + fileName, onResponse)
 
         function onResponse(err, data) {
             /* Lets check the result of the call through the http interface */
@@ -167,7 +167,7 @@ function newPluginsUtilitiesPlugins() {
                 pluginToSave.payload.uiObject.setInfoMessage('Plugin Saved.', 5)
                 return
             }
-            console.log((new Date()).toISOString(), '[ERROR] Saving Plugin File: ' + JSON.stringify(data))
+            console.log('[ERROR] Saving Plugin File: ' + JSON.stringify(data))
             pluginFile.payload.uiObject.setErrorMessage('This Plugin Could not be Saved. ' + JSON.stringify(data), 500)
         }
     }

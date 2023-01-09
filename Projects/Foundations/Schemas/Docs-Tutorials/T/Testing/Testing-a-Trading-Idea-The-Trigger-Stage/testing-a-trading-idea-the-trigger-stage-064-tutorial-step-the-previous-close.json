@@ -16,13 +16,8 @@
             },
             {
                 "language": "TR",
-                "text": "Ard arda iki kapanış, mevcut ve bir önceki mumun alt bandın altında kapandığı anlamına gelir!",
-                "updated": 1669666027695
-            },
-            {
-                "language": "RU",
-                "text": "Два последовательных закрытия означают, что текущая и предыдущая свечи закрываются ниже нижней полосы!",
-                "updated": 1642661289834
+                "text": "Ard arda iki kapanış, mevcut ve önceki mumların düşük bant genişliğinin altına yakın olduğu anlamına gelir!",
+                "updated": 1641663752763
             }
         ]
     },
@@ -39,13 +34,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Bir önceki mumun kapanışını tanımlamak için, ifadenin her iki tarafında \"previous\" özelliğini kullanmamız gerekir:",
-                    "updated": 1669666158209
-                },
-                {
-                    "language": "RU",
-                    "text": "Чтобы описать закрытие предыдущей свечи, нам нужно использовать свойство previous для изменения каждого свойства каждого индикатора, используемого по обе стороны выражения:",
-                    "updated": 1642661527711
+                    "text": "Bir önceki mumun kapanışını tanımlamak için, ifadenin her iki tarafında kullanılan her bir göstergenin her bir özelliğini değiştirmek için önceki özelliği kullanmamız gerekir:",
+                    "updated": 1641663765670
                 }
             ]
         },
@@ -66,13 +56,8 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Aynı durumda (Situation) yeni bir koşul (Condition) oluşturun ve yukarıdaki kodu kullanın!",
-                    "updated": 1669666216197
-                },
-                {
-                    "language": "RU",
-                    "text": "Создайте новое условие в той же ситуации и используйте приведенный выше код!",
-                    "updated": 1642661372482
+                    "text": "Aynı durumda yeni bir koşul oluşturun ve yukarıdaki kodu kullanın!",
+                    "updated": 1641663780922
                 }
             ]
         }

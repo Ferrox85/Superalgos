@@ -5,12 +5,12 @@ exports.newAlgorithmicTradingFunctionLibrariesTradingFunctions = function () {
     const MODULE_NAME = "Trading Functions"
 
     let thisObject = {
-        earlyCheckIfWeNeedToStopTheSimulation: earlyCheckIfWeNeedToStopTheSimulation
+        checkIfWeNeedToStopTheSimulation: checkIfWeNeedToStopTheSimulation
     }
 
     return thisObject
 
-    function earlyCheckIfWeNeedToStopTheSimulation(
+    function checkIfWeNeedToStopTheSimulation(
         episodeModuleObject,
         sessionParameters,
         tradingSystem,

@@ -2,7 +2,6 @@
 function newFrame() {
     const PANEL_CORNERS_RADIUS = 5
     const TITLE_BAR_HEIGHT = 15 // this must be grater than radius
-    let configStyle
 
     let thisObject = {
         type: 'Rectangle',
@@ -291,34 +290,7 @@ function newFrame() {
             fitFunction: fitFunction
         }
 
-        let chartingSpaceNode = UI.projects.workspaces.spaces.designSpace.workspace.getHierarchyHeadByNodeType('Charting Space')
-        if (chartingSpaceNode !== undefined) {
-            if (chartingSpaceNode.spaceStyle !== undefined) {
-                configStyle = JSON.parse(chartingSpaceNode.spaceStyle.config)
-            } else {
-                configStyle = undefined
-            }
-        } else {
-            configStyle = undefined
-        }
-
-        // This controls the opacity for the indicator frame background.
-        if (configStyle === undefined || configStyle.indicatorFrameBackgroundOpacity === undefined) {
-            params.opacity = 0.75
-        } else {
-            let thisOpacity = eval(configStyle.indicatorFrameBackgroundOpacity)
-            params.opacity = thisOpacity
-        }
-
-        // This controls the background color of the indicator frame inside the charts.
-        if (configStyle === undefined || configStyle.indicatorFrameBackgroundColor === undefined) {
-            UI.projects.foundations.utilities.drawPrint.roundedCornersBackground(params)
-        } else {
-            backgroundColor = eval(configStyle.indicatorFrameBackgroundColor)
-            params.backgroundColor = backgroundColor
-            UI.projects.foundations.utilities.drawPrint.roundedCornersBackground(params)
-        }
-
+        UI.projects.foundations.utilities.drawPrint.roundedCornersBackground(params)
 
         titleBarPoint1 = {
             x: 0,
@@ -341,19 +313,8 @@ function newFrame() {
         }
 
         /* We paint the title bar now */
-        // This controls the color of the indicator panel top bar.
-        if (configStyle === undefined || configStyle.indicatorPanelTopBarColor === undefined) {
-            browserCanvasContext.fillStyle = 'rgba(' + UI_COLOR.DARK + ', 1)'
-        } else {
-            let panelTopBarColor = eval(configStyle.indicatorPanelTopBarColor)
-            // This controls the opacity of the indicator panel top bar.
-            if (configStyle.indicatorPanelTopBarOpacity !== undefined) {
-                let thisOpacity = eval(configStyle.indicatorPanelTopBarOpacity) 
-                browserCanvasContext.fillStyle = 'rgba(' + panelTopBarColor + ', ' + thisOpacity + ')'
-                } else {
-                    browserCanvasContext.fillStyle = 'rgba(' + panelTopBarColor + ', 1)'
-            }
-        }
+
+        browserCanvasContext.fillStyle = 'rgba(' + UI_COLOR.DARK + ', 1)'
         browserCanvasContext.beginPath()
 
         browserCanvasContext.moveTo(titleBarPoint1.x, titleBarPoint1.y)
@@ -394,13 +355,7 @@ function newFrame() {
             labelPoint = fitFunction(labelPoint)
         }
 
-        // This controls the color of the title at the indicator frame panel top bar.
-        if (configStyle === undefined || configStyle.indicatorPanelTopBarTitleColor === undefined) {
-            browserCanvasContext.fillStyle = 'rgba(' + UI_COLOR.WHITE + ', 1)'
-        } else {
-            let titleColor = eval(configStyle.indicatorPanelTopBarTitleColor)
-            browserCanvasContext.fillStyle = 'rgba(' + titleColor + ', 1)'
-        }
+        browserCanvasContext.fillStyle = 'rgba(' + UI_COLOR.WHITE + ', 1)'
         browserCanvasContext.fillText(label, labelPoint.x, labelPoint.y)
     }
 

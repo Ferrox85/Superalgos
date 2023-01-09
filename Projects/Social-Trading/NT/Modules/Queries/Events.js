@@ -32,22 +32,22 @@ exports.newSocialTradingModulesQueriesEvents = function newSocialTradingModulesQ
                 for (let i = thisObject.initialIndex; i < thisObject.initialIndex + thisObject.amountRequested; i++) {
                     let event = SA.projects.socialTrading.globals.memory.arrays.EVENTS[i]
                     if (event === undefined) { break }
-                    checkEventContext(event, i)
+                    checkEventContext(event)
                 }
                 break
             }
             case SA.projects.socialTrading.globals.queryConstants.DIRECTION_PAST: {
-                for (let i = thisObject.initialIndex; i > thisObject.initialIndex - thisObject.amountRequested && i >= 0; i--) {
+                for (let i = thisObject.initialIndex; i > thisObject.initialIndex - thisObject.amountRequested; i--) {
                     let event = SA.projects.socialTrading.globals.memory.arrays.EVENTS[i]
                     if (event === undefined) { break }
-                    checkEventContext(event, i)
+                    checkEventContext(event)
                 }
                 break
             }
         }
         return response
 
-        function checkEventContext(event, index) {
+        function checkEventContext(event) {
             /*
             For an event to be returned at the response of this query, it needs to be related
             to the socialEntity making the query. How it can be related?
@@ -205,7 +205,6 @@ exports.newSocialTradingModulesQueriesEvents = function newSocialTradingModulesQ
             function addToResponse(event) {
 
                 let eventResponse = {
-                    index: index,
                     eventId: event.eventId,
                     eventType: event.eventType,
                     originSocialPersonaId: event.originSocialPersonaId,
