@@ -16,8 +16,13 @@
             },
             {
                 "language": "TR",
-                "text": "Özet: BB özelliklerine bir kez daha bakın! Varyans özelliği iki standart sapmadır!",
-                "updated": 1641662967312
+                "text": "BB özelliklerine bir kez daha bakın! Varyans özelliği iki standart sapmadır!",
+                "updated": 1669664542431
+            },
+            {
+                "language": "RU",
+                "text": "Посмотрите на свойства BB еще раз! Два стандартных отклонения - это свойство deviation (отклонение)!",
+                "updated": 1642660797938
             }
         ]
     },
@@ -33,8 +38,13 @@
                 },
                 {
                     "language": "TR",
-                    "text": "alt bant, MA eksi sapmadır!",
-                    "updated": 1641662978792
+                    "text": "alt bant, MA - sapma'dır!",
+                    "updated": 1669664557360
+                },
+                {
+                    "language": "RU",
+                    "text": "Таким образом, нижняя полоса - это МА минус deviation!",
+                    "updated": 1642660739361
                 }
             ]
         },
@@ -50,8 +60,13 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Bu bilgilerle durumu yazabilir misiniz? Bir metin düzenleyici başlatın ve deneyin!",
-                    "updated": 1641662989804
+                    "text": "Bu bilgilerle koşulu yazabilir misiniz? Bir metin düzenleyici açın ve deneyin!",
+                    "updated": 1669664601274
+                },
+                {
+                    "language": "RU",
+                    "text": "Можете ли вы написать условие, используя эту информацию? Запустите текстовый редактор и попробуйте!",
+                    "updated": 1642660753106
                 }
             ]
         },
@@ -66,8 +81,13 @@
                 },
                 {
                     "language": "TR",
-                    "text": "İpucu: 1H grafiğindeki mumun kapanışı, hareketli ortalama eksi sapmadan daha küçüktür!",
-                    "updated": 1641662999422
+                    "text": "Yacacağımız koşulda şunu ifade edeceğiz: 1H grafiğindeki mumun kapanışı, hareketli ortalama eksi sapmadan daha küçüktür!",
+                    "updated": 1669664650260
+                },
+                {
+                    "language": "RU",
+                    "text": "Закрытие свечи на графике 1H меньше, чем скользящая средняя минус отклонение!",
+                    "updated": 1642660783610
                 }
             ]
         }

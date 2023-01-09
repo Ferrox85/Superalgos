@@ -30,17 +30,17 @@ exports.newSocialTradingModulesP2PNetworkInterface = function newSocialTradingMo
         try {
             messageHeader = JSON.parse(message)
         } catch (err) {
-            console.log('[WARN] P2P Network Interface -> message Not Correct JSON Format.')
+            SA.logger.warn('P2P Network Interface -> message Not Correct JSON Format.')
             return
         }
 
         if (messageHeader.requestType === undefined) {
-            console.log('[WARN] P2P Network Interface -> requestType Not Provided.')
+            SA.logger.warn('P2P Network Interface -> requestType Not Provided.')
             return
         }
 
         if (messageHeader.requestType !== 'Event') {
-            console.log('[WARN] P2P Network Interface -> requestType Not Supported.')
+            SA.logger.warn('P2P Network Interface -> requestType Not Supported.')
             return
         }
 
@@ -52,14 +52,14 @@ exports.newSocialTradingModulesP2PNetworkInterface = function newSocialTradingMo
         function eventReceived(
             eventMessage,
             signature,
-    
+
         ) {
-    
+
             let eventReceived
             try {
                 eventReceived = JSON.parse(eventMessage)
             } catch (err) {
-                console.log('[WARN] P2P Network Interface -> eventMessage Not Correct JSON Format.')
+                SA.logger.warn('P2P Network Interface -> eventMessage Not Correct JSON Format.')
             }
             /*
             At the Client Interface, events need to be emitted by Social Entities that 
@@ -128,10 +128,11 @@ exports.newSocialTradingModulesP2PNetworkInterface = function newSocialTradingMo
             let response = SA.projects.socialTrading.utilities.eventSignatureValidations.signatureValidations(eventReceived, signature)
             if (response !== undefined) { return response }
             /*
-            Add this event to the local map of events processed.
+            Add the timestamp of when this Event was received to the local map of events processed.
             */
-            SA.projects.socialTrading.globals.memory.maps.EVENTS.set(eventReceived.eventId, true)
+            let timestamp = (new Date()).valueOf
+            SA.projects.socialTrading.globals.memory.maps.EVENTS.set(eventReceived.eventId, timestamp)
             eventReceivedCallbackFunction(eventReceived)
-        }        
+        }
     }
 }

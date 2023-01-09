@@ -36,6 +36,16 @@
                 "language": "ID",
                 "text": "Bukan untuk menyombongkan diri, tetapi aku tidak bisa cukup menekankan betapa pentingnya kamu membuat semua tutorial tersedia sebelum menjelajah sendiri!",
                 "updated": 1640600653713
+            },
+            {
+                "language": "RU",
+                "text": "Не хочу хвастаться, но я не могу не подчеркнуть, как важно, чтобы все учебники были доступны, прежде чем вы решитесь на самостоятельную работу!",
+                "updated": 1642774629261
+            },
+            {
+                "language": "NL",
+                "text": "Niet om op te scheppen, maar ik kan niet genoeg benadrukken hoe belangrijk het is dat je alle handleidingen je eigen maakt voordat je er alleen voor gaat!",
+                "updated": 1667139097400
             }
         ]
     },
@@ -64,13 +74,23 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Sistem çok geniştir ve karmaşık konuları kapsar. Superalgos ile ilk günlerinizde yalnız başınıza gitmek, yalnızca kafalarını duvara vurmaktan hoşlanan kişiler için önerilir :-) !",
-                    "updated": 1636663300533
+                    "text": "Sistem çok geniştir ve karmaşık konuları kapsar. Superalgos ile ilk günlerinizde yalnız başınıza ilerlemeye çalışmak, yalnızca kafalarını duvara vurmaktan hoşlanan kişiler için önerilir:-)!",
+                    "updated": 1670335369030
                 },
                 {
                     "language": "ID",
                     "text": "Sistem ini luas dan mencakup hal-hal kompleks. Berjalan sendiri pada hari-hari pertamamu dengan Superalgos hanya direkomendasikan untuk orang-orang yang suka membenturkan kepala ke dinding!",
                     "updated": 1640600702243
+                },
+                {
+                    "language": "RU",
+                    "text": "Система обширна и охватывает сложные вопросы. В первые дни работы с Superalgos рекомендуется заниматься в одиночку только тем, кто любит биться головой о стену!",
+                    "updated": 1642774650427
+                },
+                {
+                    "language": "NL",
+                    "text": "Het systeem is omvangrijk en omvat complexe zaken. Solo gaan in je eerste dagen met Superalgos is alleen aan te raden voor mensen die graag met hun hoofd tegen de muur lopen!",
+                    "updated": 1667139125692
                 }
             ]
         },
@@ -105,6 +125,16 @@
                     "language": "ID",
                     "text": "First Steps Tutorials book di sebelah kananmu memberikan semua detail tentang cara terbaik untuk menginvestasikan waktu kamu mempelajari Superalgos.",
                     "updated": 1640600737479
+                },
+                {
+                    "language": "RU",
+                    "text": "Книга First Steps Tutorials, расположенная справа от вас, содержит все подробности о том, как лучше всего потратить свое время на изучение Superalgos.",
+                    "updated": 1642774666905
+                },
+                {
+                    "language": "NL",
+                    "text": "Het boek First Step Tutorials aan uw rechterkant biedt alle details over de beste manier om uw tijd te investeren in het leren van Superalgos.",
+                    "updated": 1667139161448
                 }
             ]
         },
@@ -139,6 +169,16 @@
                     "language": "ID",
                     "text": "Sebelum kamu selesai, aku akan meninggalkan kamu dengan tutorial terbaik berikutnya dalam series!",
                     "updated": 1640600776299
+                },
+                {
+                    "language": "RU",
+                    "text": "Прежде чем вы закончите, я оставлю вам следующий лучший учебник из этой серии!",
+                    "updated": 1642774749825
+                },
+                {
+                    "language": "NL",
+                    "text": "Voordat je klaar bent, zal ik je achterlaten met de volgende beste handleiding in de serie!",
+                    "updated": 1667139184948
                 }
             ]
         }

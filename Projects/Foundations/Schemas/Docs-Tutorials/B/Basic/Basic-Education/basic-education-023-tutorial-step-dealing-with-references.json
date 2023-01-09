@@ -36,6 +36,16 @@
                 "language": "RU",
                 "text": "Ссылки (References) - это способ, с помощью которого узел может получить информацию о другом, не связанном с ним узле. Это очень важная концепция, поэтому будьте внимательны!",
                 "updated": 1640868992374
+            },
+            {
+                "language": "ID",
+                "text": "References adalah bagaimana sebuah node dapat memperoleh informasi tentang node lain yang tidak terkait. Ini adalah konsep penting jadi benar-benar harus diperhatikan!",
+                "updated": 1644947567774
+            },
+            {
+                "language": "NL",
+                "text": "References geven aan hoe een knooppunt informatie kan verkrijgen over een ander knooppunt dat verder geen verband houdt. Dit is een cruciaal concept, dus let op!",
+                "updated": 1668340906744
             }
         ]
     },
@@ -71,6 +81,16 @@
                     "language": "RU",
                     "text": "Внимательно прочитайте эту страницу! Если вы не являетесь разработчиком, возможно, вам захочется прочитать ее дважды, пока все не усвоится!",
                     "updated": 1640869009641
+                },
+                {
+                    "language": "ID",
+                    "text": "Baca halaman ini dengan cermat! Jika kamu bukan developer, Kamu mungkin ingin membacanya dua kali sampai benar-benar paham!",
+                    "updated": 1644947618882
+                },
+                {
+                    "language": "NL",
+                    "text": "Lees deze pagina goed door! Als je geen ontwikkelaar bent, wil je het misschien twee keer lezen totdat het tot je doordringt!",
+                    "updated": 1668340925616
                 }
             ]
         },
@@ -105,6 +125,16 @@
                     "language": "RU",
                     "text": "Короче говоря, ссылки...",
                     "updated": 1640869032650
+                },
+                {
+                    "language": "ID",
+                    "text": "Singkatnya, references miliki...",
+                    "updated": 1644947651386
+                },
+                {
+                    "language": "NL",
+                    "text": "Kortom, referenties hebben...",
+                    "updated": 1668340937552
                 }
             ]
         },
@@ -139,6 +169,16 @@
                     "language": "RU",
                     "text": "направление: исходящее или входящее,",
                     "updated": 1640869047240
+                },
+                {
+                    "language": "ID",
+                    "text": "Direction: keluaran atau masukan,",
+                    "updated": 1644947673116
+                },
+                {
+                    "language": "NL",
+                    "text": "<b>een richting</b>: uitgaand of inkomend,",
+                    "updated": 1668340965400
                 }
             ]
         },
@@ -172,6 +212,16 @@
                     "language": "RU",
                     "text": "и область применения: внутренняя или внешняя.",
                     "updated": 1640869062653
+                },
+                {
+                    "language": "ID",
+                    "text": "Scope: internal atau eksternal.",
+                    "updated": 1644947703276
+                },
+                {
+                    "language": "NL",
+                    "text": "<b>en een scope</b>: intern of extern.",
+                    "updated": 1668340983764
                 }
             ]
         },
@@ -206,6 +256,16 @@
                     "language": "RU",
                     "text": "Последнее понятие - объем ссылки - имеет решающее значение для понимания различий между резервными копиями (Backups) и клонами (Clones).",
                     "updated": 1640869114024
+                },
+                {
+                    "language": "ID",
+                    "text": "Konsep selanjutnya — ruang lingkup referensi — sangat penting untuk memahami perbedaan antara Backups dan Clones.",
+                    "updated": 1644947731155
+                },
+                {
+                    "language": "NL",
+                    "text": "Het latere concept - de reikwijdte van een referentie - is cruciaal om de verschillen tussen Backups en Clones te begrijpen.",
+                    "updated": 1668341013295
                 }
             ]
         }

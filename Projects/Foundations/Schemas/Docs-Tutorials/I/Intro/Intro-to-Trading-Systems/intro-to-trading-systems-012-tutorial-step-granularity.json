@@ -1,13 +1,13 @@
 {
     "tutorial": "Intro to Trading Systems",
-    "pageNumber": 12,
+    "pageNumber": "12",
     "type": "Tutorial Step - Granularity!",
     "definition": {
+        "text": "I mentioned the concept of granularity during the Welcome tutorial... remember?",
         "icon": {
             "name": "Trading\\trading-system",
             "project": "Foundations"
         },
-        "text": "I mentioned the concept of granularity during the Welcome tutorial... remember?",
         "translations": [
             {
                 "language": "DE",
@@ -23,6 +23,11 @@
                 "language": "RU",
                 "text": "Я упоминал концепцию гранулярности в учебнике Welcome... помните?",
                 "updated": 1640885878435
+            },
+            {
+                "language": "NL",
+                "text": "Ik noemde het concept van granulariteit tijdens de Welcome zelfstudie... weet je nog?",
+                "updated": 1670792020291
             }
         ]
     },
@@ -30,6 +35,7 @@
         {
             "style": "Text",
             "text": "Granularity is a device that helps in handling complexity. Instead of letting strategies grow into a complex web of rules and definitions, it is always preferable to split complex logic in pieces and deal with smaller units.",
+            "updated": 1640641303063,
             "translations": [
                 {
                     "language": "DE",
@@ -45,9 +51,13 @@
                     "language": "RU",
                     "text": "Гранулярность - это инструмент, который помогает справиться со сложностью. Вместо того чтобы позволять стратегиям разрастаться в сложную паутину правил и определений, всегда предпочтительнее разделить сложную логику на части и работать с более мелкими единицами.",
                     "updated": 1640885899204
+                },
+                {
+                    "language": "NL",
+                    "text": "Granulariteit is een apparaat dat helpt bij het omgaan met complexiteit. In plaats van strategieën te laten uitgroeien tot een complex web van regels en definities, verdient het altijd de voorkeur complexe logica in stukken te splitsen en met kleinere eenheden om te gaan.",
+                    "updated": 1670792046363
                 }
-            ],
-            "updated": 1640641303063
+            ]
         },
         {
             "style": "Callout",
@@ -67,6 +77,11 @@
                     "language": "RU",
                     "text": "Разделение сложной логики на несколько стратегий помогает сохранить стратегии простыми и понятными. Это облегчает отладку и сопровождение стратегий!",
                     "updated": 1640885914418
+                },
+                {
+                    "language": "NL",
+                    "text": "Het opsplitsen van complexe logica in meerdere strategieën helpt om strategieën eenvoudig en begrijpelijk te houden. Het maakt strategieën gemakkelijker te debuggen en te onderhouden!",
+                    "updated": 1670792060723
                 }
             ]
         },
@@ -83,6 +98,17 @@
                     "language": "RU",
                     "text": "Всегда, когда это возможно, упрощайте!",
                     "updated": 1640885944269
+                },
+                {
+                    "language": "TR",
+                    "text": "Mümkün olduğunca basit tutun!",
+                    "updated": 1654394084700,
+                    "style": "Text"
+                },
+                {
+                    "language": "NL",
+                    "text": "Houd het zo eenvoudig mogelijk!",
+                    "updated": 1670792071308
                 }
             ]
         }

@@ -32,6 +32,8 @@ function newWorkspacesSystemActionUndoRedo() {
                 let action = undoStack[i].action
                 let node
                 let nodeClone
+                let nodesToClone
+                let nodeClones
                 let parentNode
                 let chainParent
                 let referenceParent
@@ -98,9 +100,6 @@ function newWorkspacesSystemActionUndoRedo() {
                     case 'Add Missing Crypto Exchanges':
                     case 'Add Missing Assets':
                     case 'Add Missing Markets':
-                    //doesn’t work:
-                    //case 'Install Market':
-                    //case 'Uninstall Market':
                     case 'Add All Data Products':
                     case 'Add All Data Mine Products':
                     case 'Add All Learning Mine Products':
@@ -134,7 +133,7 @@ function newWorkspacesSystemActionUndoRedo() {
                     case 'Add Missing Children':
                     /* Workspaces actions */
                     case 'Add Missing Workspace Projects':
-                    case 'Add Specified Workspace Project':
+                    case 'Add Specified Project':
                         undoStack[i].nodeClones = []
                         for (let newUiObject of undoStack[i].newUiObjects) {
                             node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(newUiObject.id)
@@ -212,6 +211,53 @@ function newWorkspacesSystemActionUndoRedo() {
                         node.payload.floatingObject.freezeToggle()
                         break
 
+                    case 'Install Market':
+                    case 'Uninstall Market':
+                        /* inefficient brute-force method */
+                        nodesToClone = []
+                        nodeClones = []
+                        for (let rootNode of action.rootNodes) {
+                            if (rootNode.type === 'LAN Network' || rootNode.type === 'Charting Space') {
+                                let node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(rootNode.id)
+                                nodesToClone.push(node)
+                            }
+                        }
+                        for (let node of nodesToClone) {
+                            let nodeClone = UI.projects.visualScripting.nodeActionFunctions.nodeCloning.getNodeClone(node, false)
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.deleteUIObject(node, action.rootNodes)
+                            nodeClones.push(nodeClone)
+                        }
+                        for (let nodeClone of undoStack[i].nodeClones) {
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.unDeleteUIObject(nodeClone, undefined, undefined, action.rootNodes)
+                        }
+                        undoStack[i].nodeClones = nodeClones
+                        break
+
+                    case 'Install Product':
+                        nodesToClone = []
+                        nodeClones = []
+                        for (let rootNode of action.rootNodes) {
+                            if (
+                                rootNode.type === 'LAN Network' ||
+                                rootNode.type === 'Charting Space' ||
+                                rootNode.type === 'Portfolio Mine' ||
+                                rootNode.type === 'Trading Mine'
+                                ) {
+                                let node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(rootNode.id)
+                                nodesToClone.push(node)
+                            }
+                        }
+                        for (let node of nodesToClone) {
+                            let nodeClone = UI.projects.visualScripting.nodeActionFunctions.nodeCloning.getNodeClone(node, false)
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.deleteUIObject(node, action.rootNodes)
+                            nodeClones.push(nodeClone)
+                        }
+                        for (let nodeClone of undoStack[i].nodeClones) {
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.unDeleteUIObject(nodeClone, undefined, undefined, action.rootNodes)
+                        }
+                        undoStack[i].nodeClones = nodeClones
+                        break
+
                     case 'Parent Attach':
                         UI.projects.visualScripting.nodeActionFunctions.chainAttachDetach.chainDetachNode(node, action.rootNodes)
                         break
@@ -242,7 +288,7 @@ function newWorkspacesSystemActionUndoRedo() {
 
                     case 'Snap saved node to position':
                         node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(undoStack[i].nodeId)
-                    case 'Drag Node':
+                    case 'Move Node':
                         previousPosition = {
                             x: node.payload.position.x,
                             y: node.payload.position.y
@@ -294,6 +340,8 @@ function newWorkspacesSystemActionUndoRedo() {
                 let action = redoStack[i].action
                 let node
                 let nodeClone
+                let nodesToClone
+                let nodeClones
                 let parentNode
                 let chainParent
                 let referenceParent
@@ -354,9 +402,6 @@ function newWorkspacesSystemActionUndoRedo() {
                     case 'Add Missing Crypto Exchanges':
                     case 'Add Missing Assets':
                     case 'Add Missing Markets':
-                    //doesn’t work:
-                    //case 'Install Market':
-                    //case 'Uninstall Market':
                     case 'Add All Data Products':
                     case 'Add All Data Mine Products':
                     case 'Add All Learning Mine Products':
@@ -390,7 +435,7 @@ function newWorkspacesSystemActionUndoRedo() {
                     case 'Add Missing Children':
                     /* Workspaces actions */
                     case 'Add Missing Workspace Projects':
-                    case 'Add Specified Workspace Project':
+                    case 'Add Specified Project':
                         for (let nodeClone of redoStack[i].nodeClones) {
                             node = (nodeClone.cleaned !== true) ?
                                 nodeClone :
@@ -471,6 +516,52 @@ function newWorkspacesSystemActionUndoRedo() {
                         node.payload.floatingObject.freezeToggle()
                         break
 
+                    case 'Install Market':
+                    case 'Uninstall Market':
+                        nodesToClone = []
+                        nodeClones = []
+                        for (let rootNode of action.rootNodes) {
+                            if (rootNode.type === 'LAN Network' || rootNode.type === 'Charting Space') {
+                                let node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(rootNode.id)
+                                nodesToClone.push(node)
+                            }
+                        }
+                        for (let node of nodesToClone) {
+                            let nodeClone = UI.projects.visualScripting.nodeActionFunctions.nodeCloning.getNodeClone(node, false)
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.deleteUIObject(node, action.rootNodes)
+                            nodeClones.push(nodeClone)
+                        }
+                        for (let nodeClone of redoStack[i].nodeClones) {
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.unDeleteUIObject(nodeClone, undefined, undefined, action.rootNodes)
+                        }
+                        redoStack[i].nodeClones = nodeClones
+                        break
+                        
+                    case 'Install Product':
+                        nodesToClone = []
+                        nodeClones = []
+                        for (let rootNode of action.rootNodes) {
+                            if (
+                                rootNode.type === 'LAN Network' ||
+                                rootNode.type === 'Charting Space' ||
+                                rootNode.type === 'Portfolio Mine' ||
+                                rootNode.type === 'Trading Mine'
+                                ) {
+                                let node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(rootNode.id)
+                                nodesToClone.push(node)
+                            }
+                        }
+                        for (let node of nodesToClone) {
+                            let nodeClone = UI.projects.visualScripting.nodeActionFunctions.nodeCloning.getNodeClone(node, false)
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.deleteUIObject(node, action.rootNodes)
+                            nodeClones.push(nodeClone)
+                        }
+                        for (let nodeClone of redoStack[i].nodeClones) {
+                            await UI.projects.visualScripting.nodeActionFunctions.nodeDeleter.unDeleteUIObject(nodeClone, undefined, undefined, action.rootNodes)
+                        }
+                        redoStack[i].nodeClones = nodeClones
+                        break
+
                     case 'Parent Attach':
                         parentNode = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(redoStack[i].relatedNodeId)
                         UI.projects.visualScripting.nodeActionFunctions.chainAttachDetach.chainAttachNode(node, parentNode, action.rootNodes)
@@ -501,7 +592,7 @@ function newWorkspacesSystemActionUndoRedo() {
 
                     case 'Snap saved node to position':
                         node = await UI.projects.workspaces.spaces.designSpace.workspace.getNodeById(redoStack[i].nodeId)
-                    case 'Drag Node':
+                    case 'Move Node':
                         let previousPosition = {
                             x: node.payload.position.x,
                             y: node.payload.position.y

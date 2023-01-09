@@ -1,13 +1,13 @@
 {
     "tutorial": "Testing a Trading Idea - The Trigger Stage",
-    "pageNumber": 61,
+    "pageNumber": "61",
     "type": "Tutorial Step - Let's Break It Down!",
     "definition": {
-        "icon": {
-            "project": "Foundations",
-            "name": "condition"
-        },
         "text": "We will go through the statement step and step and put it into proper syntax!",
+        "icon": {
+            "name": "condition",
+            "project": "Foundations"
+        },
         "translations": [
             {
                 "language": "DE",
@@ -16,8 +16,13 @@
             },
             {
                 "language": "TR",
-                "text": "İfadeyi adım adım inceleyeceğiz ve doğru sözdizimine getireceğiz!",
-                "updated": 1641663516896
+                "text": "İfadeyi adım adım inceleyeceğiz ve doğru sözdizimini yazacağız!",
+                "updated": 1669664712041
+            },
+            {
+                "language": "RU",
+                "text": "Мы пройдем пошагово через утверждение и приведем его к правильному синтаксису!",
+                "updated": 1642660856072
             }
         ]
     },
@@ -34,8 +39,13 @@
                 },
                 {
                     "language": "TR",
-                    "text": "Unutmayın, zaman önce gelir: 1H diyagramında!",
-                    "updated": 1641663535365
+                    "text": "Unutmayın, zaman her zaman önce yazılır: 1H zaman diliminde!",
+                    "updated": 1669664770192
+                },
+                {
+                    "language": "RU",
+                    "text": "Помните, время идет первым: в графике 1H!",
+                    "updated": 1642660878963
                 }
             ]
         },
@@ -57,6 +67,11 @@
                     "language": "TR",
                     "text": "Mumun kapanışı şundan daha azdır:",
                     "updated": 1641663552553
+                },
+                {
+                    "language": "RU",
+                    "text": "Закрытие свечи меньше, чем:",
+                    "updated": 1642660897026
                 }
             ]
         },
@@ -73,6 +88,17 @@
                     "language": "DE",
                     "text": "Der gleitende Durchschnitt minus die Abweichung, wobei für jede Anweisung ein Zeitrahmen definiert wird:",
                     "updated": 1639389589076
+                },
+                {
+                    "language": "RU",
+                    "text": "Скользящая средняя минус отклонение, с таймфреймом, определенным для каждого показания:",
+                    "updated": 1642660947764
+                },
+                {
+                    "language": "TR",
+                    "text": "Hareketli ortalama ( movingAverage ) - sapma ( deviation ), her ifade için zaman dilimini ilave etmeyi unutmayın:",
+                    "updated": 1669664892158,
+                    "style": "List"
                 }
             ]
         },

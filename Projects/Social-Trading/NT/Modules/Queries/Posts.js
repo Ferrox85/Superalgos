@@ -44,26 +44,27 @@ exports.newSocialTradingModulesQueriesPosts = function newSocialTradingModulesQu
                     if (arrayItem === undefined) {
                         break
                     }
-                    addToResponse(arrayItem[1])
+                    addToResponse(arrayItem[1], i)
                 }
                 break
             }
             case SA.projects.socialTrading.globals.queryConstants.DIRECTION_PAST: {
-                for (let i = thisObject.initialIndex; i > thisObject.initialIndex - thisObject.amountRequested; i--) {
+                for (let i = thisObject.initialIndex; i > thisObject.initialIndex - thisObject.amountRequested && i >= 0; i--) {
                     let arrayItem = thisObject.array[i]
                     if (arrayItem === undefined) {
                         break
                     }
-                    addToResponse(arrayItem[1])
+                    addToResponse(arrayItem[1], i)
                 }
                 break
             }
         }
         return response
 
-        function addToResponse(post) {
+        function addToResponse(post, index) {
 
             let postResponse = {
+                index: index, 
                 originSocialPersonaId: post.originSocialPersonaId,
                 targetSocialPersonaId: post.targetSocialPersonaId,
                 originSocialTradingBotId: post.originSocialTradingBotId,

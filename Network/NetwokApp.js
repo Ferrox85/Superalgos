@@ -7,11 +7,13 @@ exports.newNetworkApp = function newNetworkApp() {
         webSocketsInterface: undefined,
         httpInterface: undefined,
         socialGraphNetworkService: undefined,
+        machineLearningNetworkService: undefined,
         tradingSignalsNetworkService: undefined,
         run: run
     }
 
     NT.networkApp = thisObject
+    const NETWORK_NODE_VERSION = 2
 
     return thisObject
 
@@ -21,10 +23,15 @@ exports.newNetworkApp = function newNetworkApp() {
         await setupNetworkServices()
         setupNetworkInterfaces()
 
-        console.log('Network Type ................................................................. ' + thisObject.p2pNetworkNode.node.p2pNetworkReference.referenceParent.type)
-        console.log('Network Code Name ............................................................ ' + thisObject.p2pNetworkNode.node.p2pNetworkReference.referenceParent.config.codeName)
-        console.log('Network App .................................................................. Running')
-        console.log(' ')
+        NT.logger.info('Network Node User Profile Code Name .......................................... ' + thisObject.p2pNetworkNode.userProfile.config.codeName)
+        NT.logger.info('Network Node User Profile Balance ............................................ ' + SA.projects.governance.utilities.balances.toSABalanceString(thisObject.p2pNetworkNode.userProfile.balance))
+        NT.logger.info('Network Node Code Name ....................................................... ' + thisObject.p2pNetworkNode.node.config.codeName)
+        NT.logger.info('Minimum User Profile Balance Required to Connect to this Network Node ........ ' + SA.projects.governance.utilities.balances.toSABalanceString(thisObject.p2pNetworkNode.node.config.clientMinimunBalance))
+        NT.logger.info('Network Node Version ......................................................... ' + NETWORK_NODE_VERSION)
+        NT.logger.info('Network Type ................................................................. ' + thisObject.p2pNetworkNode.node.p2pNetworkReference.referenceParent.type)
+        NT.logger.info('Network Code Name ............................................................ ' + thisObject.p2pNetworkNode.node.p2pNetworkReference.referenceParent.config.codeName)
+        NT.logger.info('Network App .................................................................. Running')
+        NT.logger.info(' ')
 
         async function setupNetwork() {
             /*
@@ -38,7 +45,7 @@ exports.newNetworkApp = function newNetworkApp() {
             This is what we call the bootstrap process.
             */
             let appBootstrapingProcess = SA.projects.network.modules.appBootstrapingProcess.newNetworkModulesAppBootstrapingProcess()
-            await appBootstrapingProcess.run(global.env.P2P_NETWORK_NODE_SIGNING_ACCOUNT, thisObject.p2pNetworkNode)
+            await appBootstrapingProcess.initialize(global.env.P2P_NETWORK_NODE_SIGNING_ACCOUNT, thisObject.p2pNetworkNode, true, true)
             /*
             Let's discover which are the nodes at the p2p network and have an array of nodes
             to which we can connect to. This module will run the rules of who we can connect to.
@@ -70,8 +77,23 @@ exports.newNetworkApp = function newNetworkApp() {
                 thisObject.p2pNetworkNode.node.networkServices.socialGraph !== undefined
             ) {
                 thisObject.socialGraphNetworkService = NT.projects.socialTrading.modules.socialGraphNetworkService.newSocialTradingModulesSocialGraphNetworkService()
-                await thisObject.socialGraphNetworkService.initialize()
-                console.log('Social Graph Network Service ................................................. Running')
+                await thisObject.socialGraphNetworkService.initialize(
+                    thisObject.p2pNetworkNode,
+                    thisObject.p2pNetworkReachableNodes
+                )
+                NT.logger.info('Social Graph Network Service ................................................. Running')
+            }
+
+            if (
+                thisObject.p2pNetworkNode.node.networkServices !== undefined &&
+                thisObject.p2pNetworkNode.node.networkServices.machineLearning !== undefined
+            ) {
+                thisObject.machineLearningNetworkService = NT.projects.bitcoinFactory.modules.machineLearningNetworkService.newBitcoinFactoryModulesMachineLearningNetworkService()
+                await thisObject.machineLearningNetworkService.initialize(
+                    thisObject.p2pNetworkNode,
+                    thisObject.p2pNetworkReachableNodes
+                )
+                NT.logger.info('Machine Learning Network Service ............................................. Running')
             }
 
             if (
@@ -80,23 +102,47 @@ exports.newNetworkApp = function newNetworkApp() {
             ) {
                 thisObject.tradingSignalsNetworkService = NT.projects.tradingSignals.modules.tradingSignalsNetworkService.newTradingSignalsModulesTradingSignalsNetworkService()
                 await thisObject.tradingSignalsNetworkService.initialize()
-                console.log('Trading Signals Network Service .............................................. Running')
+                NT.logger.info('Trading Signals Network Service .............................................. Running')
             }
         }
 
         function setupNetworkInterfaces() {
-            /*
-             Other Network Nodes and Client Apps will communicate with this Network Node via it's Websocket Interface.
-             */
-            thisObject.webSocketsInterface = NT.projects.network.modules.webSocketsInterface.newNetworkModulesWebSocketsInterface()
-            thisObject.webSocketsInterface.initialize()
-            console.log('Network Node Web Sockets Interface ........................................... Listening at port ' + NT.networkApp.p2pNetworkNode.node.config.webSocketsPort)
-            /*
-            Other Network Nodes and Client Apps will communicate with this Network Node via it's HTTP Interface.
-            */
-            thisObject.httpInterface = NT.projects.network.modules.httpInterface.newNetworkModulesHttpInterface()
-            thisObject.httpInterface.initialize()
-            console.log('Network Node Http Interface .................................................. Listening at port ' + NT.networkApp.p2pNetworkNode.node.config.webPort)
+            if (
+                thisObject.p2pNetworkNode.node.networkInterfaces !== undefined &&
+                thisObject.p2pNetworkNode.node.networkInterfaces.websocketsNetworkInterface !== undefined
+            ) {
+                /*
+                 Other Network Nodes and Client Apps will communicate with this Network Node via it's Websocket Interface.
+                 */
+                thisObject.webSocketsInterface = NT.projects.network.modules.webSocketsInterface.newNetworkModulesWebSocketsInterface()
+                thisObject.webSocketsInterface.initialize()
+                NT.logger.info('Network Node Web Sockets Interface ........................................... Listening at port ' + NT.networkApp.p2pNetworkNode.node.networkInterfaces.websocketsNetworkInterface.config.webSocketsPort)
+            }
+/*
+TODO this breaks the network if uncommented with a complete p2p node tree setted up
+            if (
+                thisObject.p2pNetworkNode.node.networkInterfaces !== undefined &&
+                thisObject.p2pNetworkNode.node.networkInterfaces.webrtcNetworkInterface !== undefined
+            ) {
+                /!*
+                 Other Network Nodes and Client Apps will communicate with this Network Node via it's WebRTC Interface.
+                 *!/
+                thisObject.webSocketsInterface = NT.projects.network.modules.webSocketsInterface.newNetworkModulesWebRTCInterface()
+                thisObject.webSocketsInterface.initialize()
+                NT.logger.info('Network Node Web Sockets Interface ........................................... Interface Node Id ' + '')
+            }
+*/
+            if (
+                thisObject.p2pNetworkNode.node.networkInterfaces !== undefined &&
+                thisObject.p2pNetworkNode.node.networkInterfaces.httpNetworkInterface !== undefined
+            ) {
+                /*
+                Other Network Nodes and Client Apps will communicate with this Network Node via it's HTTP Interface.
+                */
+                thisObject.httpInterface = NT.projects.network.modules.httpInterface.newNetworkModulesHttpInterface()
+                thisObject.httpInterface.initialize()
+                NT.logger.info('Network Node Http Interface .................................................. Listening at port ' + NT.networkApp.p2pNetworkNode.node.networkInterfaces.httpNetworkInterface.config.httpPort)
+            }
         }
     }
 }

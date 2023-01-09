@@ -32,7 +32,14 @@ exports.newNetworkModulesHttpNetworkClient = function newNetworkModulesHttpNetwo
         thisObject.p2pNetworkNode = p2pNetworkNode
 
         thisObject.host = thisObject.p2pNetworkNode.node.config.host
-        thisObject.port = thisObject.p2pNetworkNode.node.config.webPort
+
+        if (thisObject.p2pNetworkNode.node.networkInterfaces === undefined ||
+            thisObject.p2pNetworkNode.node.networkInterfaces.httpNetworkInterface === undefined) {
+                thisObject.port = 0
+                SA.logger.warn('Network Node belonging to User Profile ' + thisObject.p2pNetworkNode.userProfile.name + ' it is NOT reachable via http because the Network Node does not have the children Network Interfaces or Http Netework Interdace configured with the httpPort.')
+        } else {
+            thisObject.port = thisObject.p2pNetworkNode.node.networkInterfaces.httpNetworkInterface.config.httpPort
+        }
     }
 
     async function sendMessage(message) {
@@ -49,16 +56,16 @@ exports.newNetworkModulesHttpNetworkClient = function newNetworkModulesHttpNetwo
             axios
                 .post('http://' + thisObject.host + ':' + thisObject.port + '/New-Message', message)
                 .then(res => {
-                    //console.log(`statusCode: ${res.status}`)
-                    //console.log('Response Received from P2P Network Node: ' + JSON.stringify(res.data))
+                    //SA.logger.debug(`statusCode: ${res.status}`)
+                    //SA.logger.debug('Response Received from P2P Network Node: ' + JSON.stringify(res.data))
                     // TODO : Do something when Network Node could not process this signal.
                     promiseStatus = 'Resolved'
                     resolve()
                 })
                 .catch(error => {
-                    console.error('[ERROR] Error trying to send message to the P2P Network node via its http interface -> Error = ' + error)
+                    SA.logger.error('Error trying to send message to the P2P Network node via its http interface -> Error = ' + error)
                     promiseStatus = 'Rejected'
-                    reject()
+                    reject(error)
                 })
             function checkPromise() {
                 if (promiseStatus === 'Pending') {
@@ -83,8 +90,10 @@ exports.newNetworkModulesHttpNetworkClient = function newNetworkModulesHttpNetwo
             axios
                 .post('http://' + thisObject.host + ':' + thisObject.port + '/Ping/' + networkServide)
                 .then(res => {
-                    if (res.data.indexOf("Pong") >= 0) {
-                        console.log('Http Client Detected Network Node is Online .................................. Connected to ' + thisObject.p2pNetworkNode.userProfile.config.codeName + ' -> ' + thisObject.p2pNetworkNode.node.name + ' -> ' + thisObject.host + ':' + thisObject.port)
+                    if (res.data.indexOf("Pong" + "/"  + thisObject.p2pNetworkNode.userProfile.config.codeName + "/" + thisObject.p2pNetworkNode.node.config.codeName ) >= 0) {
+                        SA.logger.info('')
+                        SA.logger.info('Http Client Detected Network Node is Online .................................. Connected to ' + thisObject.p2pNetworkNode.userProfile.config.codeName + ' -> ' + thisObject.p2pNetworkNode.node.name + ' -> ' + thisObject.host + ':' + thisObject.port)
+                        SA.logger.info('')
                         promiseStatus = 'Resolved'
                         resolve()
                     } else {

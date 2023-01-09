@@ -404,23 +404,6 @@ function newUiObjectConstructor() {
         )
         menuItemsInitialValues.push(
             {
-                action: 'Parent Detach',
-                askConfirmation: true,
-                confirmationLabel: "Confirm to Detach",
-                actionFunction: floatingObject.payload.executeAction,
-                actionProject: 'Visual-Scripting',
-                label: undefined,
-                visible: true,
-                iconPathOn: 'detach-node',
-                iconPathOff: 'detach-node',
-                rawRadius: 12,
-                targetRadius: 0,
-                currentRadius: 0,
-                ring: 3
-            }
-        )
-        menuItemsInitialValues.push(
-            {
                 action: 'Reference Detach',
                 askConfirmation: true,
                 confirmationLabel: "Confirm to Detach",
@@ -453,8 +436,41 @@ function newUiObjectConstructor() {
                 }
             )
         }
-
         menuItemsInitialValues.push(
+            {
+                action: 'Highlight Referencing Nodes',
+                actionFunction: floatingObject.payload.executeAction,
+                actionProject: 'Visual-Scripting',
+                actionStatus: floatingObject.payload.uiObject.getHighlightReferenceChildrenStatus,
+                label: undefined,
+                visible: true,
+                iconPathOn: 'highlight-referencing-nodes-on',
+                iconPathOff: 'highlight-referencing-nodes-off',
+                iconProject: 'Visual-Scripting',
+                rawRadius: 12,
+                targetRadius: 0,
+                currentRadius: 0,
+                ring: 3
+            }
+        )
+        menuItemsInitialValues.push(
+            {
+                action: 'Parent Detach',
+                askConfirmation: true,
+                confirmationLabel: "Confirm to Detach",
+                actionFunction: floatingObject.payload.executeAction,
+                actionProject: 'Visual-Scripting',
+                label: undefined,
+                visible: true,
+                iconPathOn: 'detach-node',
+                iconPathOff: 'detach-node',
+                rawRadius: 12,
+                targetRadius: 0,
+                currentRadius: 0,
+                ring: 4
+            }
+        )
+    menuItemsInitialValues.push(
             {
                 action: 'Open Documentation',
                 actionFunction: floatingObject.payload.executeAction,
@@ -581,7 +597,7 @@ function newUiObjectConstructor() {
 
         let schemaDocument = getSchemaDocument(payload.node)
         if (schemaDocument === undefined) {
-            console.log('[WARN] Set up of the object ' + payload.node.name + ' of type ' + payload.node.type + ' can not be completed becasue its definition can not be found at the APP SCHEMA.')
+            console.log((new Date()).toISOString(), '[WARN] Set up of the object ' + payload.node.name + ' of type ' + payload.node.type + ' can not be completed becasue its definition can not be found at the APP SCHEMA.')
             return
         }
 
